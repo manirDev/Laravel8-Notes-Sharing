@@ -25,6 +25,13 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::post('category/update/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'update'])->name('admin_category_update');
     Route::get('category/delete/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'destroy'])->name('admin_category_delete');
     Route::get('category/show', [\App\Http\Controllers\Admin\CategoryController::class, 'show'])->name('admin_category_show');
+
+
+
+
+    #Setting
+    Route::get('setting', [\App\Http\Controllers\Admin\SettingController::class, 'index'])->name('admin_setting');
+    Route::post('setting/update', [\App\Http\Controllers\Admin\SettingController::class, 'update'])->name('admin_setting_update');
 });
 Route::get('/admin/login', [\App\Http\Controllers\HomeController::class, 'login'])->name('admin_login');
 Route::post('/admin/check', [\App\Http\Controllers\HomeController::class, 'check'])->name('admin_check');

@@ -27,6 +27,8 @@
     <!-- Custom Style-->
     <link href="{{asset('assets')}}/css/app-style.css" rel="stylesheet"/>
 
+    @yield('js')
+
 </head>
 
 <body class="bg-theme bg-theme1">
@@ -102,7 +104,9 @@
                         <li class="dropdown-divider"></li>
                         <li class="dropdown-item"><i class="icon-wallet mr-2"></i> Account</li>
                         <li class="dropdown-divider"></li>
-                        <li class="dropdown-item"><i class="icon-settings mr-2"></i> Setting</li>
+                        <li class="dropdown-item">
+                            <a href="{{route('admin_setting')}}"> <i class="icon-settings mr-2"></i> Setting</a>
+                        </li>
                         <li class="dropdown-divider"></li>
                         <li class="dropdown-item">
 
