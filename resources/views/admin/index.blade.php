@@ -1,6 +1,6 @@
 @extends('layouts.adminHome')
 
-@section('title', 'Admine Gettir')
+@section('title', 'Admin Dashboard')
 
 @section('content')
     @include('admin.content')
