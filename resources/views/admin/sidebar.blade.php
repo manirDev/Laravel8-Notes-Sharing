@@ -16,8 +16,8 @@
 
 
         <li>
-            <a href="{{route('admin_home')}}">
-                <i class="zmdi zmdi-format-list-bulleted"></i> <span>Forms</span>
+            <a href="{{route('admin_content')}}">
+                <i class="zmdi zmdi-format-list-bulleted"></i> <span>Content</span>
             </a>
         </li>
 

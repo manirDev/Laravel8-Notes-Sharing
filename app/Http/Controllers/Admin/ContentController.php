@@ -16,6 +16,7 @@ class ContentController extends Controller
     public function index()
     {
         //
+        echo "content setted for tomorrow";
     }
 
     /**

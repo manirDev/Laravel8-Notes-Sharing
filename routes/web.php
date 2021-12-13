@@ -28,7 +28,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
 
     #Product
     Route::prefix('content')->group(function (){
-        Route::get('/', [\App\Http\Controllers\Cont::class, 'index'])->name('admin_content');
+        Route::get('/', [\App\Http\Controllers\Admin\ContentController::class, 'index'])->name('admin_content');
         Route::get('create', [\App\Http\Controllers\Admin\ContentController::class, 'create'])->name('admin_content_add');
         Route::post('store', [\App\Http\Controllers\Admin\ContentController::class, 'store'])->name('admin_content_store');
         Route::get('edit/{id}', [\App\Http\Controllers\Admin\ContentController::class, 'edit'])->name('admin_content_edit');
