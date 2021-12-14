@@ -22,13 +22,6 @@
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">Category list</h3> <br><br>
-
-            <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                    <i class="fas fa-minus"></i></button>
-                <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-                    <i class="fas fa-times"></i></button>
-            </div>
         </div>
         <div class="card-body">
 
@@ -60,8 +53,8 @@
                         <td>{{ $rs->image}}</td>
                         <td>{{ $rs->slug}}</td>
                         <td>{{ $rs->status}}</td>
-                        <td><a href="{{route('admin_category_edit', ['id' => $rs->id]) }}" >Edit</a></td>
-                        <td><a href="{{route('admin_category_delete', ['id' => $rs->id]) }}" onclick="return confirm('Delete! Are you sure?')" >Delete</a></td>
+                        <td><a href="{{route('admin_category_edit', ['id' => $rs->id]) }}" ><i class="fas fa-edit p-2 text-info" style="font-size: 24px"></i></a></td>
+                        <td><a href="{{route('admin_category_delete', ['id' => $rs->id]) }}" onclick="return confirm('Delete! Are you sure?')" ><i class="fas fa-trash p-2 text-danger" style="font-size: 24px"></i></a></td>
                     </tr>
 
                 @endforeach

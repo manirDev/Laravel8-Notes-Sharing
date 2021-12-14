@@ -26,13 +26,13 @@
     <link href="{{asset('assets')}}/css/sidebar-menu.css" rel="stylesheet"/>
     <!-- Custom Style-->
     <link href="{{asset('assets')}}/css/app-style.css" rel="stylesheet"/>
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     @yield('cssx')
 
     @yield('jsx')
 </head>
 
-<body class="bg-theme bg-theme1">
+<body class="bg-theme bg-theme9">
 <!-- Start wrapper-->
 <div id="wrapper">
 

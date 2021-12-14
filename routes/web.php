@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']);
 
 Route::middleware('auth')->prefix('admin')->group(function () {
@@ -26,7 +27,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::get('category/delete/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'destroy'])->name('admin_category_delete');
     Route::get('category/show', [\App\Http\Controllers\Admin\CategoryController::class, 'show'])->name('admin_category_show');
 
-    #Product
+    #Content
     Route::prefix('content')->group(function (){
         Route::get('/', [\App\Http\Controllers\Admin\ContentController::class, 'index'])->name('admin_content');
         Route::get('create', [\App\Http\Controllers\Admin\ContentController::class, 'create'])->name('admin_content_add');
@@ -37,6 +38,14 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::get('show', [\App\Http\Controllers\Admin\ContentController::class, 'show'])->name('admin_content_show');
     });
 
+    #Image
+    Route::prefix('image')->group(function (){
+        //Route::get('/', [\App\Http\Controllers\ProductController::class, 'index'])->name(admin_image');
+        Route::get('create/{content_id}', [\App\Http\Controllers\Admin\ImageController::class, 'create'])->name('admin_image_add');
+        Route::post('store/{content_id}', [\App\Http\Controllers\Admin\ImageController::class, 'store'])->name('admin_image_store');
+        Route::get('delete/{id}', [\App\Http\Controllers\Admin\ImageController::class, 'destroy'])->name('admin_image_delete');
+        Route::get('show', [\App\Http\Controllers\Admin\ImageController::class, 'show'])->name('admin_image_show');
+    });
 
     #Setting
     Route::get('setting', [\App\Http\Controllers\Admin\SettingController::class, 'index'])->name('admin_setting');
