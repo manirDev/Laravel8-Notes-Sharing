@@ -1,153 +1,80 @@
-<!--Start Dashboard Content-->
+@extends('layouts.adminHome')
 
-<div class="card mt-3">
-    <div class="card-content">
-        <div class="row row-group m-0">
-            <div class="col-12 col-lg-6 col-xl-3 border-light">
-                <div class="card-body">
-                    <h5 class="text-white mb-0">9526 <span class="float-right"><i class="fa fa-shopping-cart"></i></span></h5>
-                    <div class="progress my-3" style="height:3px;">
-                        <div class="progress-bar" style="width:55%"></div>
-                    </div>
-                    <p class="mb-0 text-white small-font">Total Orders <span class="float-right">+4.2% <i class="zmdi zmdi-long-arrow-up"></i></span></p>
+@section('title', 'Product')
+
+@section('content')
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Products</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Product</li>
+                    </ol>
                 </div>
             </div>
-            <div class="col-12 col-lg-6 col-xl-3 border-light">
-                <div class="card-body">
-                    <h5 class="text-white mb-0">8323 <span class="float-right"><i class="fa fa-usd"></i></span></h5>
-                    <div class="progress my-3" style="height:3px;">
-                        <div class="progress-bar" style="width:55%"></div>
-                    </div>
-                    <p class="mb-0 text-white small-font">Total Revenue <span class="float-right">+1.2% <i class="zmdi zmdi-long-arrow-up"></i></span></p>
-                </div>
-            </div>
-            <div class="col-12 col-lg-6 col-xl-3 border-light">
-                <div class="card-body">
-                    <h5 class="text-white mb-0">6200 <span class="float-right"><i class="fa fa-eye"></i></span></h5>
-                    <div class="progress my-3" style="height:3px;">
-                        <div class="progress-bar" style="width:55%"></div>
-                    </div>
-                    <p class="mb-0 text-white small-font">Visitors <span class="float-right">+5.2% <i class="zmdi zmdi-long-arrow-up"></i></span></p>
-                </div>
-            </div>
-            <div class="col-12 col-lg-6 col-xl-3 border-light">
-                <div class="card-body">
-                    <h5 class="text-white mb-0">5630 <span class="float-right"><i class="fa fa-envira"></i></span></h5>
-                    <div class="progress my-3" style="height:3px;">
-                        <div class="progress-bar" style="width:55%"></div>
-                    </div>
-                    <p class="mb-0 text-white small-font">Messages <span class="float-right">+2.2% <i class="zmdi zmdi-long-arrow-up"></i></span></p>
-                </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Product list</h3> <br><br>
+            <a href="{{route('admin_content_add')}}"><button type="button" class="btn  btn-primary">Add Product</button></a>
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                    <i class="fas fa-minus"></i></button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                    <i class="fas fa-times"></i></button>
             </div>
         </div>
-    </div>
-</div>
+        <div class="card-body">
 
-<div class="row">
-    <div class="col-12 col-lg-12">
-        <div class="card">
-            <div class="card-header">Recent Order Tables
-                <div class="card-action">
-                    <div class="dropdown">
-                        <a href="" class="dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown">
-                            <i class="icon-options"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="">Action</a>
-                            <a class="dropdown-item" href="">Another action</a>
-                            <a class="dropdown-item" href="">Something else here</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="">Separated link</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="table-responsive">
-                <table class="table align-items-center table-flush table-borderless">
-                    <thead>
-                    <tr>
-                        <th>Product</th>
-                        <th>Photo</th>
-                        <th>Product ID</th>
-                        <th>Amount</th>
-                        <th>Date</th>
-                        <th>Shipping</th>
-                    </tr>
-                    </thead>
-                    <tbody><tr>
-                        <td>Iphone 5</td>
-                        <td><img src="https://via.placeholder.com/110x110" class="product-img" alt="product img"></td>
-                        <td>#9405822</td>
-                        <td>$ 1250.00</td>
-                        <td>03 Aug 2017</td>
-                        <td><div class="progress shadow" style="height: 3px;">
-                                <div class="progress-bar" role="progressbar" style="width: 90%"></div>
-                            </div></td>
-                    </tr>
+            <table id="example2" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Category Id</th>
+                    <th>User Id</th>
+                    <th>Title</th>
+                    <th>Keywords</th>
+                    <th>Description</th>
+                    <th>Slug</th>
+                    <th>Status</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                @foreach ($datalist as $rs)
 
                     <tr>
-                        <td>Earphone GL</td>
-                        <td><img src="https://via.placeholder.com/110x110" class="product-img" alt="product img"></td>
-                        <td>#9405820</td>
-                        <td>$ 1500.00</td>
-                        <td>03 Aug 2017</td>
-                        <td><div class="progress shadow" style="height: 3px;">
-                                <div class="progress-bar" role="progressbar" style="width: 60%"></div>
-                            </div></td>
+                        <td>{{ $rs->id }}</td>
+                        <td>{{ $rs->category_id}}</td>
+                        <td>{{ $rs->user_id}}</td>
+                        <td>{{ $rs->title}}</td>
+                        <td>{{ $rs->keywords}}</td>
+                        <td>{{ $rs->description}}</td>
+                        <td>{{ $rs->slug}}</td>
+                        <td>{{ $rs->status}}</td>
+                        <td><a href="{{route('admin_content_edit', ['id' => $rs->id]) }}" >  <i class="nav-icon fas fa-edit"></i> </a></td>
+                        <td><a href="{{route('admin_content_delete', ['id' => $rs->id]) }}" onclick="return confirm('Delete! Are you sure?')" > <i class="nav-icon fas fa-trash"></i> </a></td>
                     </tr>
 
-                    <tr>
-                        <td>HD Hand Camera</td>
-                        <td><img src="https://via.placeholder.com/110x110" class="product-img" alt="product img"></td>
-                        <td>#9405830</td>
-                        <td>$ 1400.00</td>
-                        <td>03 Aug 2017</td>
-                        <td><div class="progress shadow" style="height: 3px;">
-                                <div class="progress-bar" role="progressbar" style="width: 70%"></div>
-                            </div></td>
-                    </tr>
-
-                    <tr>
-                        <td>Clasic Shoes</td>
-                        <td><img src="https://via.placeholder.com/110x110" class="product-img" alt="product img"></td>
-                        <td>#9405825</td>
-                        <td>$ 1200.00</td>
-                        <td>03 Aug 2017</td>
-                        <td><div class="progress shadow" style="height: 3px;">
-                                <div class="progress-bar" role="progressbar" style="width: 100%"></div>
-                            </div></td>
-                    </tr>
-
-                    <tr>
-                        <td>Hand Watch</td>
-                        <td><img src="https://via.placeholder.com/110x110" class="product-img" alt="product img"></td>
-                        <td>#9405840</td>
-                        <td>$ 1800.00</td>
-                        <td>03 Aug 2017</td>
-                        <td><div class="progress shadow" style="height: 3px;">
-                                <div class="progress-bar" role="progressbar" style="width: 40%"></div>
-                            </div></td>
-                    </tr>
-
-                    <tr>
-                        <td>Clasic Shoes</td>
-                        <td><img src="https://via.placeholder.com/110x110" class="product-img" alt="product img"></td>
-                        <td>#9405825</td>
-                        <td>$ 1200.00</td>
-                        <td>03 Aug 2017</td>
-                        <td><div class="progress shadow" style="height: 3px;">
-                                <div class="progress-bar" role="progressbar" style="width: 100%"></div>
-                            </div></td>
-                    </tr>
-
-                    </tbody></table>
-            </div>
+                @endforeach
+                </tbody>
+            </table>
         </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+            Footer
+        </div>
+        <!-- /.card-footer-->
     </div>
-</div><!--End Row-->
+    <!-- /.card -->
 
-<!--End Dashboard Content-->
 
-<!--start overlay-->
-<div class="overlay toggle-menu"></div>
-<!--end overlay-->
+@endsection
