@@ -1,20 +1,18 @@
 @extends('layouts.adminHome')
 
 @section('title', 'Admine Gettir')
-
+@section('jsx')
+    <script src="https://cdn.ckeditor.com/ckeditor5/31.1.0/classic/ckeditor.js"></script>
+@endsection
+<style>
+    .ck-editor__editable {min-height: 200px; color: black;}
+</style>
 @section('content')
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Content Add</h1>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Content add</li>
-                    </ol>
-                </div>
+
+
             </div>
         </div><!-- /.container-fluid -->
     </section>
@@ -62,12 +60,22 @@
                                     <input type="file" name="image" class="form-control" >
                                 </div>
                                 <div class="form-group">
+                                    <label for="exampleInputPassword1">File</label>
+                                    <input type="file" name="file" class="form-control" >
+                                </div>
+                                <div class="form-group">
                                     <label for="">Detail</label>
-                                    <textarea id="summernote" name="detail"></textarea>
+                                    <textarea id="editor1" name="detail" class="form-control"></textarea>
                                     <script>
-                                        $('#summernote').summernote({
+                                        ClassicEditor
+                                            .create( document.querySelector( '#editor1' ) )
+                                            .then( editor => {
+                                                console.log( editor );
+                                            } )
+                                            .catch( error => {
+                                                console.error( error );
+                                            } );
 
-                                        });
                                     </script>
                                 </div>
                                 <div class="form-group">

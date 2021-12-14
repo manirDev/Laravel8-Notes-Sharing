@@ -1,7 +1,12 @@
 @extends('layouts.adminHome')
 
 @section('title', 'Admine Gettir')
-
+@section('jsx')
+    <script src="https://cdn.ckeditor.com/ckeditor5/31.1.0/classic/ckeditor.js"></script>
+@endsection
+<style>
+    .ck-editor__editable {min-height: 100px; color: black;}
+</style>
 @section('content')
     <section class="content-header">
         <div class="container-fluid">
@@ -191,29 +196,47 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="">Aboutus</label>
-                                                <textarea id="summernote" name="aboutus"></textarea>
+                                                <textarea id="editor1" name="aboutus"></textarea>
                                                 <script>
-                                                    $('#summernote').summernote({
+                                                    ClassicEditor
+                                                        .create( document.querySelector( '#editor1' ) )
+                                                        .then( editor => {
+                                                            console.log( editor );
+                                                        } )
+                                                        .catch( error => {
+                                                            console.error( error );
+                                                        } );
 
-                                                    });
                                                 </script>
                                             </div>
                                             <div class="form-group">
                                                 <label for="">Contact</label>
-                                                <textarea id="Csummernote" name="contact"></textarea>
+                                                <textarea id="editor2" name="contact"></textarea>
                                                 <script>
-                                                    $('#Csummernote').summernote({
+                                                    ClassicEditor
+                                                        .create( document.querySelector( '#editor2' ) )
+                                                        .then( editor => {
+                                                            console.log( editor );
+                                                        } )
+                                                        .catch( error => {
+                                                            console.error( error );
+                                                        } );
 
-                                                    });
                                                 </script>
                                             </div>
                                             <div class="form-group">
                                                 <label for="">References</label>
-                                                <textarea id="Rsummernote" name="references"></textarea>
+                                                <textarea id="editor3" name="references"></textarea>
                                                 <script>
-                                                    $('#Rsummernote').summernote({
+                                                    ClassicEditor
+                                                        .create( document.querySelector( '#editor3' ) )
+                                                        .then( editor => {
+                                                            console.log( editor );
+                                                        } )
+                                                        .catch( error => {
+                                                            console.error( error );
+                                                        } );
 
-                                                    });
                                                 </script>
                                             </div>
                                             <div class="form-group">

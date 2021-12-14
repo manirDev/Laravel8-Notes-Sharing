@@ -27,8 +27,9 @@
     <!-- Custom Style-->
     <link href="{{asset('assets')}}/css/app-style.css" rel="stylesheet"/>
 
-    @yield('js')
+    @yield('cssx')
 
+    @yield('jsx')
 </head>
 
 <body class="bg-theme bg-theme1">

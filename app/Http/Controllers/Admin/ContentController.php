@@ -59,8 +59,8 @@ class ContentController extends Controller
         $data->slug = $request->input('slug');
         $data->status = $request->input('status');
         $data->detail = $request->input('detail');
-        //$data->image = Storage::putFile('images', $request->file('image') );
-
+        $data->image = Storage::putFile('images', $request->file('image') );
+        $data->file = Storage::putFile('files', $request->file('file') );
         $data->save();
         return redirect()->route('admin_content');
     }
@@ -111,7 +111,8 @@ class ContentController extends Controller
         $data->slug = $request->input('slug');
         $data->status = $request->input('status');
         $data->detail = $request->input('detail');
-        //$data->image = Storage::putFile('images', $request->file('image') );
+        $data->image = Storage::putFile('images', $request->file('image'));
+        $data->file = Storage::putFile('files', $request->file('file') );
         $data->save();
         return redirect()->route('admin_content');
     }

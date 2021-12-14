@@ -63,6 +63,16 @@
                                     @if($data->image)
                                         <img src="{{Storage::url($data->image)}}" height="60" >
                                     @endif
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">File</label>
+                                    <input type="file" name="file" value="{{$data->file}}" class="form-control" >
+                                    @if($data->file)
+                                        <object data="{{Storage::url($data->file)}}" type="application/pdf"  height="60">
+                                            <a href="{{Storage::url($data->file)}}">{{ $data->title}}.pdf</a>
+                                        </object>
+                                    @endif
                                 </div>
 
                                 <div class="form-group">
