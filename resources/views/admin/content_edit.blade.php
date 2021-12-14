@@ -1,6 +1,6 @@
 @extends('layouts.adminHome')
 
-@section('title', 'Product Add')
+@section('title', 'Content Edit')
 
 @section('content')
     <section class="content-header">
@@ -69,22 +69,7 @@
                                     <label for="exampleInputPassword1">Detail</label>
                                     <input type="text" name="detail" value="{{$data->detail}}" class="form-control" id="exampleInputPassword1" >
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Quantity</label>
-                                    <input type="number" name="quantity" value="{{$data->quantity}}" class="form-control" id="exampleInputPassword1" >
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Price</label>
-                                    <input type="number" name="price" value="{{$data->price}}" class="form-control" id="exampleInputPassword1" >
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">MinQuantity</label>
-                                    <input type="number" name="minquantity" value="{{$data->minquantity}}" class="form-control" id="exampleInputPassword1" >
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Tax</label>
-                                    <input type="number" name="tax" value="{{$data->tax}}" class="form-control" id="exampleInputPassword1" >
-                                </div>
+
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Slug</label>
                                     <input type="text" name="slug" value="{{$data->slug}}" class="form-control" id="exampleInputPassword1" >

@@ -28,7 +28,7 @@
                     <!-- jquery validation -->
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Product Form </h3>
+                            <h3 class="card-title">Not-Content Form </h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
@@ -69,22 +69,6 @@
 
                                         });
                                     </script>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Quantity</label>
-                                    <input type="number" name="quantity" class="form-control" id="exampleInputPassword1" >
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Price</label>
-                                    <input type="number" name="price" value="0" class="form-control" id="exampleInputPassword1" >
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">MinQuantity</label>
-                                    <input type="number" name="minquantity" value="5" class="form-control" id="exampleInputPassword1" >
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Tax</label>
-                                    <input type="number" name="tax" class="form-control" id="exampleInputPassword1" >
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Slug</label>

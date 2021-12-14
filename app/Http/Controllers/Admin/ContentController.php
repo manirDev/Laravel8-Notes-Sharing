@@ -3,23 +3,28 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Content;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class ContentController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
+     * @return
      */
     public function index()
     {
         //
         //$datalist = DB::select('select * from categories');
-        //$datalist = DB::table('contents')->get();
-        $datalist = Content::all();
-        return view('admin.content', ['datalist' => $datalist]);
+        $datalist = DB::table('contents')->get();
+        //$datalist = Content::all();
+        //echo var_dump($datalist) ;
+        return view('admin.not-content', ['datalist' => $datalist]);
     }
 
     /**
@@ -54,7 +59,7 @@ class ContentController extends Controller
         $data->slug = $request->input('slug');
         $data->status = $request->input('status');
         $data->detail = $request->input('detail');
-        $data->image = Storage::putFile('images', $request->file('image') );
+        //$data->image = Storage::putFile('images', $request->file('image') );
 
         $data->save();
         return redirect()->route('admin_content');
@@ -75,7 +80,7 @@ class ContentController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Content  $content
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function edit(Content $content, $id)
     {
@@ -106,7 +111,7 @@ class ContentController extends Controller
         $data->slug = $request->input('slug');
         $data->status = $request->input('status');
         $data->detail = $request->input('detail');
-        $data->image = Storage::putFile('images', $request->file('image') );
+        //$data->image = Storage::putFile('images', $request->file('image') );
         $data->save();
         return redirect()->route('admin_content');
     }
