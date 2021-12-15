@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Content extends Model
 {
     use HasFactory;
+
+    //one to many(Inverse)/Belongs
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

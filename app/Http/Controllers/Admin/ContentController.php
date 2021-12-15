@@ -21,8 +21,8 @@ class ContentController extends Controller
     {
         //
         //$datalist = DB::select('select * from categories');
-        $datalist = DB::table('contents')->get();
-        //$datalist = Content::all();
+        //$datalist = DB::table('contents')->get();
+        $datalist = Content::all();
         //echo var_dump($datalist) ;
         return view('admin.not-content', ['datalist' => $datalist]);
     }
@@ -35,8 +35,8 @@ class ContentController extends Controller
     public function create()
     {
         //
-        $datalist = Category::all();
-
+       // $datalist = Category::all();
+        $datalist = Category::with('children')->get();
         return view('admin.content_add', ['datalist' => $datalist]);
     }
 
@@ -86,8 +86,8 @@ class ContentController extends Controller
     {
         //
         $data = Content::find($id);
-        $datalist = Category::all();
-
+        //$datalist = Category::all();
+        $datalist = Category::with('children')->get();
         return view('admin.content_edit', ['data' => $data,'datalist'=>$datalist]);
     }
 
@@ -111,8 +111,14 @@ class ContentController extends Controller
         $data->slug = $request->input('slug');
         $data->status = $request->input('status');
         $data->detail = $request->input('detail');
-        $data->image = Storage::putFile('images', $request->file('image'));
-        $data->file = Storage::putFile('files', $request->file('file') );
+        if($request->file('image')!=NULL){
+            $data->image = Storage::putFile('images', $request->file('image'));
+        }
+        if($request->file('file')!=NULL){
+            $data->file = Storage::putFile('files', $request->file('file') );
+        }
+
+
         $data->save();
         return redirect()->route('admin_content');
     }

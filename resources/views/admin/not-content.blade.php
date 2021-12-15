@@ -50,7 +50,7 @@
                 <tr>
                     <th>Id</th>
                     <th>User Id</th>
-                    <th>Category Id</th>
+                    <th>Category</th>
                     <th>Title</th>
                     <th>Keywords</th>
                     <th>Description</th>
@@ -69,8 +69,10 @@
 
                     <tr>
                         <td>{{ $rs->id }}</td>
-                        <td>{{ $rs->category_id}}</td>
                         <td>{{ $rs->user_id}}</td>
+                        <td>
+                            {{ \App\Http\Controllers\Admin\CategoryController::getParentsTree($rs->category, $rs->category->title) }}
+                        </td>
                         <td>{{ $rs->title}}</td>
                         <td>{{ $rs->keywords}}</td>
                         <td>{{ $rs->description}}</td>
