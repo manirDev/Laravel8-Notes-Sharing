@@ -16,14 +16,29 @@ class HomeController extends Controller
         return $setting = Setting::first();
     }
     //
-    public function test($s1, $s2){
-        return $s1 + $s2;
-    }
+
     public function index(){
         $setting = Setting::first();
         return view('home.index', ['setting' => $setting]);
     }
+//Pages start
+    public function aboutus(){
+        return   view('home.aboutus');
 
+    }
+    public function references(){
+        return  view('home.aboutus');
+
+    }
+    public function faq(){
+        return  view('home.aboutus');
+
+    }
+    public function contact(){
+        return  view('home.aboutus');
+    }
+
+    //pages end
     public function login(){
         return view('admin.login');
     }
