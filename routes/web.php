@@ -64,6 +64,7 @@ Route::middleware('auth')->prefix('myaccount')->namespace('myaccount')->group(fu
     Route::get('/user-profile', [\App\Http\Controllers\UserController::class, 'userProfile'])->name('user-profile');
 });
 
+
 Route::get('/admin/login', [\App\Http\Controllers\HomeController::class, 'login'])->name('admin_login');
 Route::post('/admin/check', [\App\Http\Controllers\HomeController::class, 'check'])->name('admin_check');
 Route::get('/admin/logout', [\App\Http\Controllers\HomeController::class, 'logout'])->name('admin_logout');

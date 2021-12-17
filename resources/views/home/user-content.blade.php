@@ -17,8 +17,8 @@
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore atque officiis maxime suscipit expedita obcaecati nulla in ducimus.</p>
                         <ul class="contact-info">
                             <li><i class='bx bx-envelope'></i> <a href="#"><span class="__cf_email__" data-cfemail="28404d444447684249454d5b49464c4d5a5b4746064b4745">{{Auth::user()->email}}</span></a></li>
-                            <li><i class='bx bx-phone'></i> <a href="#">+502 464 674</a></li>
-                            <li><i class='bx bx-world'></i> <a href="#" target="_blank">www.jamesanderson.com</a></li>
+                            <li><i class='bx bx-phone'></i> <a href="#">{{Auth::user()->phone}}</a></li>
+                            <li><i class='bx bx-map'></i> <a href="#" target="_blank">{{Auth::user()->address}}</a></li>
                         </ul>
                 @endauth
                         <ul class="social">
@@ -34,14 +34,7 @@
             </div>
         </div>
         <div class="myAccount-navigation">
-            <ul>
-                <li><a href="my-account.html" class="active"><i class='bx bxs-dashboard'></i> Dashboard</a></li>
-                <li><a href="orders.html"><i class='bx bx-cart'></i> Orders</a></li>
-                <li><a href="downloads.html"><i class='bx bx-download'></i> Downloads</a></li>
-                <li><a href="edit-address.html"><i class='bx bx-home-alt'></i> Addresses</a></li>
-                <li><a href="{{route('user-profile')}}"><i class='bx bx-edit'></i> Account Details</a></li>
-                <li><a href="#"><i class='bx bx-log-out'></i> Logout</a></li>
-            </ul>
+            @include('home.user-header')
         </div>
         <div class="myAccount-content">
             <p>Hello <strong>James Anderson</strong> (not <strong>James Anderson</strong>? <a href="#">Log out</a>)</p>
