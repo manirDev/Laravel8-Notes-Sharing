@@ -109,7 +109,7 @@
     @yield('hero')
 
         <!-- Banner-->
-    @include('home._banner')
+    @yield('banner')
 
         <!--content-->
     @yield('content')

@@ -57,6 +57,13 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::get('setting', [\App\Http\Controllers\Admin\SettingController::class, 'index'])->name('admin_setting');
     Route::post('setting/update', [\App\Http\Controllers\Admin\SettingController::class, 'update'])->name('admin_setting_update');
 });
+
+//user routes
+Route::middleware('auth')->prefix('myaccount')->namespace('myaccount')->group(function () {
+    Route::get('/', [\App\Http\Controllers\UserController::class, 'index'])->name('myprofile');
+    Route::get('/user-profile', [\App\Http\Controllers\UserController::class, 'userProfile'])->name('user-profile');
+});
+
 Route::get('/admin/login', [\App\Http\Controllers\HomeController::class, 'login'])->name('admin_login');
 Route::post('/admin/check', [\App\Http\Controllers\HomeController::class, 'check'])->name('admin_check');
 Route::get('/admin/logout', [\App\Http\Controllers\HomeController::class, 'logout'])->name('admin_logout');

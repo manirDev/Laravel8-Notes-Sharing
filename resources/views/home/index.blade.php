@@ -11,8 +11,8 @@
     @include('home._hero')
 @endsection
 
-@section('slider')
-    @include('home._slider')
+@section('banner')
+    @include('home._banner')
 @endsection
 
 @section('content')

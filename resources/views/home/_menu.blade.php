@@ -39,7 +39,7 @@
                                     <i class='bx bx-log-out'></i>
                                     <span>Logout</span>
                                 </a>
-                                <a href="#" class="dropdown-item d-flex align-items-center">
+                                <a href="{{route('myprofile')}}" class="dropdown-item d-flex align-items-center">
                                     <i class='bx bx-user'></i>
                                     <span>My account</span>
                                 </a>
@@ -48,8 +48,8 @@
                         @endauth
 
                        @guest
-                            <span style="border-right: 1px solid black;height: 5px; padding: 10px"><a href="login.html"><i class='bx bx-log-in'></i> Login</a></span>
-                            <a href="register.html" class=""><i class='bx bx-log-in-circle'></i> Register</a>
+                            <span style="border-right: 1px solid black;height: 5px; padding: 10px"><a href="{{route('login')}}"><i class='bx bx-log-in'></i> Login</a></span>
+                            <a href="{{route('register')}}" class=""><i class='bx bx-log-in-circle'></i> Register</a>
                         @endguest
                             <div class="search-box d-inline-block">
                                 <i class='bx bx-search'></i>
