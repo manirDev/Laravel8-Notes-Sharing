@@ -1,60 +1,80 @@
-<!--
-Footer
--->
-<footer class="footer">
-    <div class="row-fluid">
-        <div class="span2">
-            <h5>Your Account</h5>
-            <a href="#">YOUR ACCOUNT</a><br>
-            <a href="#">PERSONAL INFORMATION</a><br>
-            <a href="#">ADDRESSES</a><br>
-            <a href="#">DISCOUNT</a><br>
-            <a href="#">ORDER HISTORY</a><br>
+<footer class="footer-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="single-footer-widget mb-30">
+                    <h3>Contact Us</h3>
+                    <ul class="contact-us-link">
+                        <li>
+                            <i class='bx bx-map'></i>
+                            <a href="#" target="_blank">2750 Quadra Street Victoria Road, New York, USA</a>
+                        </li>
+                        <li>
+                            <i class='bx bx-phone-call'></i>
+                            <a href="#">+1 (123) 456 7890</a>
+                        </li>
+                        <li>
+                            <i class='bx bx-envelope'></i>
+                            <a href="#"><span class="__cf_email__" data-cfemail="84ece1e8e8ebc4f6e5f5f1e1aae7ebe9">[email&#160;protected]</span></a>
+                        </li>
+                    </ul>
+                    <ul class="social-link">
+                        <li><a href="#" class="d-block" target="_blank"><i class='bx bxl-facebook'></i></a></li>
+                        <li><a href="#" class="d-block" target="_blank"><i class='bx bxl-twitter'></i></a></li>
+                        <li><a href="#" class="d-block" target="_blank"><i class='bx bxl-instagram'></i></a></li>
+                        <li><a href="#" class="d-block" target="_blank"><i class='bx bxl-linkedin'></i></a></li>
+                        <li><a href="#" class="d-block" target="_blank"><i class='bx bxl-pinterest-alt'></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6 col-sm-6">
+                <div class="single-footer-widget mb-30">
+                    <h3>Support</h3>
+                    <ul class="support-link">
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">FAQ's</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Terms</a></li>
+                        <li><a href="#">Condition</a></li>
+                        <li><a href="#">Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6 col-sm-6">
+                <div class="single-footer-widget mb-30">
+                    <h3>Useful Link</h3>
+                    <ul class="useful-link">
+                        <li><a href="#">Web Design</a></li>
+                        <li><a href="#">UI/UX Design</a></li>
+                        <li><a href="#">WP Development</a></li>
+                        <li><a href="#">App</a></li>
+                        <li><a href="#">Whitepaper</a></li>
+                        <li><a href="#">Web Development</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="single-footer-widget mb-30">
+                    <h3>Newsletter</h3>
+                    <div class="newsletter-box">
+                        <p>To get the latest news and latest updates from us.</p>
+                        <form class="newsletter-form" data-bs-toggle="validator">
+                            <label>Your e-mail address:</label>
+                            <input type="email" class="input-newsletter" placeholder="Enter your email" name="EMAIL" required autocomplete="off">
+                            <button type="submit">Subscribe</button>
+                            <div id="validator-newsletter" class="form-result"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="span2">
-            <h5>Iinformation</h5>
-            <a href="contact.html">CONTACT</a><br>
-            <a href="#">SITEMAP</a><br>
-            <a href="#">LEGAL NOTICE</a><br>
-            <a href="#">TERMS AND CONDITIONS</a><br>
-            <a href="#">ABOUT US</a><br>
-        </div>
-        <div class="span2">
-            <h5>Our Offer</h5>
-            <a href="#">NEW PRODUCTS</a> <br>
-            <a href="#">TOP SELLERS</a><br>
-            <a href="#">SPECIALS</a><br>
-            <a href="#">MANUFACTURERS</a><br>
-            <a href="#">SUPPLIERS</a> <br/>
-        </div>
-        <div class="span6">
-            <h5>The standard chunk of Lorem</h5>
-            The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for
-            those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et
-            Malorum" by Cicero are also reproduced in their exact original form,
-            accompanied by English versions from the 1914 translation by H. Rackham.
+    </div>
+    <div class="footer-bottom-area">
+        <div class="container">
+            <div class="logo">
+                <a href="index-5.html" class="d-inline-block"><img src="{{asset('assets')}}/fhome/img/logo.png" alt="image"></a>
+            </div>
+            <p><i class='bx bx-copyright'></i>2021 <a href="index-5.html" target="_blank">Raque</a> Designed By <a href="https://envytheme.com/" target="_blank">EnvyTheme</a> | All rights reserved.</p>
         </div>
     </div>
 </footer>
-</div><!-- /container -->
-
-<div class="copyright">
-    <div class="container">
-        <p class="pull-right">
-            <a href="#"><img src="{{asset('assets')}}/img/maestro.png" alt="payment"></a>
-            <a href="#"><img src="{{asset('assets')}}/img/mc.png" alt="payment"></a>
-            <a href="#"><img src="{{asset('assets')}}/img/pp.png" alt="payment"></a>
-            <a href="#"><img src="{{asset('assets')}}/img/visa.png" alt="payment"></a>
-            <a href="#"><img src="{{asset('assets')}}/img/disc.png" alt="payment"></a>
-        </p>
-        <span>Copyright &copy; 2013<br> bootstrap ecommerce shopping template</span>
-    </div>
-</div>
-<a href="#" class="gotop"><i class="icon-double-angle-up"></i></a>
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="{{asset('assets')}}/js/jquery.js"></script>
-<script src="{{asset('assets')}}/js/bootstrap.min.js"></script>
-<script src="{{asset('assets')}}/js/jquery.easing-1.3.min.js"></script>
-<script src="{{asset('assets')}}/js/jquery.scrollTo-1.4.3.1-min.js"></script>
-<script src="{{asset('assets')}}/js/shop.js"></script>
-

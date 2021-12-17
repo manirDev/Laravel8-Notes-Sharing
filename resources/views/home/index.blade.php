@@ -1,15 +1,13 @@
 @extends('layouts.home')
 
-@section('title', $setting->title)
+@section('title', 'Main')
 
-@section('description')
-    {{$setting->description}}
-@endsection
+@section('description', 'Main')
 
-@section('keywords', $setting->keywords)
+@section('keywords', 'Main')
 
-@section('sidebar')
-    @include('home._sidebar')
+@section('hero')
+    @include('home._hero')
 @endsection
 
 @section('slider')

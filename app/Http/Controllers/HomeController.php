@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     //
     public function index(){
-        echo "Home sayfasi yeni zamanda geliyor simdilik admin ve user panellerini yapiyoruz";
+        return view('home.index');
     }
 
     public function login(){
