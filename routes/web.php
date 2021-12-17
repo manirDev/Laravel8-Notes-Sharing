@@ -14,10 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 //pages routes
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');;
-Route::get('/aboutus', [HomeController::class, 'aboutus'])->name('aboutus');
-Route::get('/references', [HomeController::class, 'references'])->name('references');
-Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
-Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
+Route::get('/aboutus', [\App\Http\Controllers\HomeController::class, 'aboutus'])->name('aboutus');
+Route::get('/references', [\App\Http\Controllers\HomeController::class, 'references'])->name('references');
+Route::get('/contact', [\App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
+Route::get('/faq', [\App\Http\Controllers\HomeController::class, 'faq'])->name('faq');
+Route::post('/sendmessage', [\App\Http\Controllers\HomeController::class, 'sendmessage'])->name('send-message');
+
 
 
 //admin routes
@@ -51,6 +53,15 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::post('store/{content_id}', [\App\Http\Controllers\Admin\ImageController::class, 'store'])->name('admin_image_store');
         Route::get('delete/{id}', [\App\Http\Controllers\Admin\ImageController::class, 'destroy'])->name('admin_image_delete');
         Route::get('show', [\App\Http\Controllers\Admin\ImageController::class, 'show'])->name('admin_image_show');
+    });
+
+    #Messages
+    Route::prefix('messages')->group(function (){
+        Route::get('/', [\App\Http\Controllers\Admin\MessageController::class, 'index'])->name('admin_message');
+        Route::get('edit/{id}', [\App\Http\Controllers\Admin\MessageController::class, 'edit'])->name('admin_message_edit');
+        Route::post('update/{id}', [\App\Http\Controllers\Admin\MessageController::class, 'update'])->name('admin_message_update');
+        Route::get('delete/{id}', [\App\Http\Controllers\Admin\MessageController::class, 'destroy'])->name('admin_message_delete');
+        Route::get('show', [\App\Http\Controllers\Admin\MessageController::class, 'show'])->name('admin_message_show');
     });
 
     #Setting

@@ -27,6 +27,11 @@
             </a>
         </li>
         <li>
+            <a href="{{route('admin_message')}}">
+                <i class="icon-settings mr-2"></i> <span>Messages</span>
+            </a>
+        </li>
+        <li>
             <a href="{{route('admin_setting')}}">
                 <i class="icon-settings mr-2"></i> <span>Settings</span>
             </a>

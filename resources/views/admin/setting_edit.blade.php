@@ -196,7 +196,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="">Aboutus</label>
-                                                <textarea id="editor1" name="aboutus"></textarea>
+                                                <textarea id="editor1" name="aboutus" value="{{$data->aboutus}}"></textarea>
                                                 <script>
                                                     ClassicEditor
                                                         .create( document.querySelector( '#editor1' ) )
@@ -211,7 +211,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="">Contact</label>
-                                                <textarea id="editor2" name="contact"></textarea>
+                                                <textarea id="editor2" name="contact" value="{{$data->contact}}"></textarea>
                                                 <script>
                                                     ClassicEditor
                                                         .create( document.querySelector( '#editor2' ) )
@@ -226,7 +226,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="">References</label>
-                                                <textarea id="editor3" name="references"></textarea>
+                                                <textarea id="editor3" name="references" value="{{$data->references}}"></textarea>
                                                 <script>
                                                     ClassicEditor
                                                         .create( document.querySelector( '#editor3' ) )

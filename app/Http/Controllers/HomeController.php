@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Message;
 use App\Models\Setting;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use MongoDB\Driver\Session;
 
 class HomeController extends Controller
 {
@@ -35,7 +38,27 @@ class HomeController extends Controller
 
     }
     public function contact(){
-        return  view('home.aboutus');
+        return  view('home.contact');
+    }
+    public function sendmessage(Request $request)
+    {
+        DB::table('messages')->insert([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'phone' => $request->input('phone'),
+            'subject' => $request->input('subject'),
+            'message' => $request->input('message')
+        ]);
+//        $data = new Message();
+//        $data->name = $request->input('name');
+//        $data->email = $request->input('email');
+//        $data->phone = $request->input('phone');
+//        $data->subject = $request->input('subject');
+//        $data->message = $request->input('message');
+//
+//        $data->save();
+
+        return redirect()->route('contact')->with('success', 'Message successfully sent!');
     }
 
     //pages end
