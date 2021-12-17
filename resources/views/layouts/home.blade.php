@@ -1,6 +1,6 @@
-{{--@php--}}
-{{--    $setting = \App\Http\Controllers\HomeController::getSetting()--}}
-{{--@endphp--}}
+@php
+    $setting = \App\Http\Controllers\HomeController::getSetting()
+@endphp
 
 
     <!DOCTYPE html>
@@ -43,32 +43,36 @@
     <!-- Header--->
 
     <header class="header-area ">
-        <div class="top-header">
+        <div class="top-header top-header-style-four">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-lg-8">
-                        <ul class="top-header-contact-info">
-                            <li>
-                                <i class='bx bx-phone-call'></i>
-                                <span>Contact support</span>
-                                <a href="tel:502464674">+502 464 674</a>
-                            </li>
-                            <li>
-                                <i class='bx bx-map'></i>
-                                <span>Our location</span>
-                                <a href="#">New York, USA</a>
-                            </li>
-                            <li>
-                                <i class='bx bx-envelope'></i>
-                                <span>Contact email</span>
-                                <a href="/cdn-cgi/l/email-protection#741c1118181b3406150501115a171b19"><span class="__cf_email__" data-cfemail="2e464b4242416e5c4f5f5b4b004d4143">[email&#160;protected]</span></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="top-header-btn">
-                            <a href="login.html" class="default-btn"><i class='bx bx-log-in icon-arrow before'></i><span class="label">Log In</span><i class="bx bx-log-in icon-arrow after"></i></a>
+                    <div class="col-lg-8 col-md-8">
+                        <div class="top-header-social">
+                            <span>Soru, Ders Notu Talep - İstek</span>
                         </div>
+                        <div class="top-header-social">
+                            <span>Üniversiteli Efsaneleri</span>
+                        </div>
+                        <div class="top-header-social">
+                            <span>Sınav Haftası Şarkıları</span>
+                        </div>
+                        <div class="top-header-social">
+                            <span></span>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <ul class="top-header-login-register">
+                            <div class="top-header-social" style="border: none;">
+
+                                @if($setting->twitter!=null)<a href="{{$setting->twitter}}"  target="_blank"><i class='bx bxl-facebook'></i></a>@endif
+                                @if($setting->facebook!=null)<a href="{{$setting->facebook}}" target="_blank"><i class='bx bxl-twitter'></i></a>@endif
+                                @if($setting->youtube!=null) <a href="{{$setting->facebook}}" target="_blank"><i class='bx bxl-linkedin'></i></a>@endif
+                                @if($setting->instagram!=null) <a href="{{$setting->instagram}}" target="_blank"><i class='bx bxl-instagram'></i></a>@endif
+
+
+                            </div>
+                        </ul>
                     </div>
                 </div>
             </div>

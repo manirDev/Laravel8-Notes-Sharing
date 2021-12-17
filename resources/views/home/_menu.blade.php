@@ -70,46 +70,9 @@
                                 <li class="nav-item"><a href="coming-soon.html" class="nav-link">Comign Soon</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item"><a href="#" class="nav-link">Courses <i class='bx bx-chevron-down'></i></a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item"><a href="#" class="nav-link">Courses Category <i class='bx bx-chevron-right'></i></a>
-                                    <ul class="dropdown-menu">
-                                        <li class="nav-item"><a href="courses-category-style-1.html" class="nav-link">Category Style 1</a></li>
-                                        <li class="nav-item"><a href="courses-category-style-2.html" class="nav-link">Category Style 2</a></li>
-                                        <li class="nav-item"><a href="courses-category-style-3.html" class="nav-link">Category Style 3</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item"><a href="courses-list.html" class="nav-link">Courses List</a></li>
-                                <li class="nav-item"><a href="#" class="nav-link">Courses Grid Style 1 <i class='bx bx-chevron-right'></i></a>
-                                    <ul class="dropdown-menu">
-                                        <li class="nav-item"><a href="courses-2-columns-style-1.html" class="nav-link">2 Columns</a></li>
-                                        <li class="nav-item"><a href="courses-3-columns-style-1.html" class="nav-link">3 Columns</a></li>
-                                        <li class="nav-item"><a href="courses-4-columns-style-1.html" class="nav-link">4 Columns Full Width</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item"><a href="#" class="nav-link">Courses Grid Style 2 <i class='bx bx-chevron-right'></i></a>
-                                    <ul class="dropdown-menu">
-                                        <li class="nav-item"><a href="courses-2-columns-style-2.html" class="nav-link">2 Columns</a></li>
-                                        <li class="nav-item"><a href="courses-3-columns-style-2.html" class="nav-link">3 Columns</a></li>
-                                        <li class="nav-item"><a href="courses-4-columns-style-2.html" class="nav-link">4 Columns Full Width</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item"><a href="#" class="nav-link">Courses Grid Style 3 <i class='bx bx-chevron-right'></i></a>
-                                    <ul class="dropdown-menu">
-                                        <li class="nav-item"><a href="courses-2-columns-style-3.html" class="nav-link">2 Columns</a></li>
-                                        <li class="nav-item"><a href="courses-3-columns-style-3.html" class="nav-link">3 Columns</a></li>
-                                        <li class="nav-item"><a href="courses-4-columns-style-3.html" class="nav-link">4 Columns Full Width</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item"><a href="#" class="nav-link">Courses Details <i class='bx bx-chevron-right'></i></a>
-                                    <ul class="dropdown-menu">
-                                        <li class="nav-item"><a href="single-courses.html" class="nav-link">Courses Details 1</a></li>
-                                        <li class="nav-item"><a href="single-courses-2.html" class="nav-link">Courses Details 2</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item"><a href="my-account.html" class="nav-link">My Account</a></li>
-                            </ul>
-                        </li>
+                        <!-- Category-->
+                       @include('home._category')
+
                         <li class="nav-item"><a href="#" class="nav-link">Blog <i class='bx bx-chevron-down'></i></a>
                             <ul class="dropdown-menu">
                                 <li class="nav-item"><a href="blog-style-1.html" class="nav-link">Blog Grid</a></li>
@@ -129,42 +92,38 @@
                         </li>
                         <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
                     </ul>
+
+
+
                     <div class="others-option">
+
+                        @auth
                         <div class="dropdown language-switcher d-inline-block">
                             <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="{{asset('assets')}}/fhome/img/us-flag.jpg" class="shadow" alt="image">
-                                <span>Eng <i class='bx bx-chevron-down'></i></span>
+                                <i class='bx bx-user'></i>
+                                <span>{{Auth::user()->name}} <i class='bx bx-chevron-down'></i></span>
                             </button>
                             <div class="dropdown-menu">
-                                <a href="#" class="dropdown-item d-flex align-items-center">
-                                    <img src="{{asset('assets')}}/fhome/img/germany-flag.jpg" class="shadow-sm" alt="flag">
-                                    <span>Ger</span>
+                                <a href="{{route('admin_logout')}}" class="dropdown-item d-flex align-items-center">
+                                    <i class='bx bx-log-out'></i>
+                                    <span>Logout</span>
                                 </a>
                                 <a href="#" class="dropdown-item d-flex align-items-center">
-                                    <img src="{{asset('assets')}}/fhome/img/france-flag.jpg" class="shadow-sm" alt="flag">
-                                    <span>Fre</span>
-                                </a>
-                                <a href="#" class="dropdown-item d-flex align-items-center">
-                                    <img src="{{asset('assets')}}/fhome/img/spain-flag.jpg" class="shadow-sm" alt="flag">
-                                    <span>Spa</span>
-                                </a>
-                                <a href="#" class="dropdown-item d-flex align-items-center">
-                                    <img src="{{asset('assets')}}/fhome/img/russia-flag.jpg" class="shadow-sm" alt="flag">
-                                    <span>Rus</span>
-                                </a>
-                                <a href="#" class="dropdown-item d-flex align-items-center">
-                                    <img src="{{asset('assets')}}/fhome/img/italy-flag.jpg" class="shadow-sm" alt="flag">
-                                    <span>Ita</span>
+                                    <i class='bx bx-user'></i>
+                                    <span>My account</span>
                                 </a>
                             </div>
                         </div>
-                        <a href="cart.html" class="cart-wrapper-btn d-inline-block">
-                            <i class='bx bx-cart-alt'></i>
-                            <span>01</span>
-                        </a>
-                        <div class="search-box d-inline-block">
-                            <i class='bx bx-search'></i>
-                        </div>
+                        @endauth
+
+                       @guest
+                            <span style="border-right: 1px solid black;height: 5px; padding: 10px"><a href="login.html"><i class='bx bx-log-in'></i> Login</a></span>
+                            <a href="register.html" class=""><i class='bx bx-log-in-circle'></i> Register</a>
+                        @endguest
+                            <div class="search-box d-inline-block">
+                                <i class='bx bx-search'></i>
+                            </div>
+
                     </div>
                 </div>
             </nav>
@@ -232,46 +191,10 @@
                                 <li class="nav-item"><a href="coming-soon.html" class="nav-link">Comign Soon</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item"><a href="#" class="nav-link">Courses <i class='bx bx-chevron-down'></i></a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item"><a href="#" class="nav-link">Courses Category <i class='bx bx-chevron-right'></i></a>
-                                    <ul class="dropdown-menu">
-                                        <li class="nav-item"><a href="courses-category-style-1.html" class="nav-link">Category Style 1</a></li>
-                                        <li class="nav-item"><a href="courses-category-style-2.html" class="nav-link">Category Style 2</a></li>
-                                        <li class="nav-item"><a href="courses-category-style-3.html" class="nav-link">Category Style 3</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item"><a href="courses-list.html" class="nav-link">Courses List</a></li>
-                                <li class="nav-item"><a href="#" class="nav-link">Courses Grid Style 1 <i class='bx bx-chevron-right'></i></a>
-                                    <ul class="dropdown-menu">
-                                        <li class="nav-item"><a href="courses-2-columns-style-1.html" class="nav-link">2 Columns</a></li>
-                                        <li class="nav-item"><a href="courses-3-columns-style-1.html" class="nav-link">3 Columns</a></li>
-                                        <li class="nav-item"><a href="courses-4-columns-style-1.html" class="nav-link">4 Columns Full Width</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item"><a href="#" class="nav-link">Courses Grid Style 2 <i class='bx bx-chevron-right'></i></a>
-                                    <ul class="dropdown-menu">
-                                        <li class="nav-item"><a href="courses-2-columns-style-2.html" class="nav-link">2 Columns</a></li>
-                                        <li class="nav-item"><a href="courses-3-columns-style-2.html" class="nav-link">3 Columns</a></li>
-                                        <li class="nav-item"><a href="courses-4-columns-style-2.html" class="nav-link">4 Columns Full Width</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item"><a href="#" class="nav-link">Courses Grid Style 3 <i class='bx bx-chevron-right'></i></a>
-                                    <ul class="dropdown-menu">
-                                        <li class="nav-item"><a href="courses-2-columns-style-3.html" class="nav-link">2 Columns</a></li>
-                                        <li class="nav-item"><a href="courses-3-columns-style-3.html" class="nav-link">3 Columns</a></li>
-                                        <li class="nav-item"><a href="courses-4-columns-style-3.html" class="nav-link">4 Columns Full Width</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item"><a href="#" class="nav-link">Courses Details <i class='bx bx-chevron-right'></i></a>
-                                    <ul class="dropdown-menu">
-                                        <li class="nav-item"><a href="single-courses.html" class="nav-link">Courses Details 1</a></li>
-                                        <li class="nav-item"><a href="single-courses-2.html" class="nav-link">Courses Details 2</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item"><a href="my-account.html" class="nav-link">My Account</a></li>
-                            </ul>
-                        </li>
+
+                        <!-- Category-->
+                        @include('home._category')
+
                         <li class="nav-item"><a href="#" class="nav-link">Blog <i class='bx bx-chevron-down'></i></a>
                             <ul class="dropdown-menu">
                                 <li class="nav-item"><a href="blog-style-1.html" class="nav-link">Blog Grid</a></li>
@@ -292,38 +215,30 @@
                         <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
                     </ul>
                     <div class="others-option">
-                        <div class="dropdown language-switcher d-inline-block">
-                            <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="{{asset('assets')}}/fhome/img/us-flag.jpg" class="shadow" alt="image">
-                                <span>Eng <i class='bx bx-chevron-down'></i></span>
-                            </button>
-                            <div class="dropdown-menu">
-                                <a href="#" class="dropdown-item d-flex align-items-center">
-                                    <img src="{{asset('assets')}}/fhome/img/germany-flag.jpg" class="shadow-sm" alt="flag">
-                                    <span>Ger</span>
-                                </a>
-                                <a href="#" class="dropdown-item d-flex align-items-center">
-                                    <img src="{{asset('assets')}}/fhome/img/france-flag.jpg" class="shadow-sm" alt="flag">
-                                    <span>Fre</span>
-                                </a>
-                                <a href="#" class="dropdown-item d-flex align-items-center">
-                                    <img src="{{asset('assets')}}/fhome/img/spain-flag.jpg" class="shadow-sm" alt="flag">
-                                    <span>Spa</span>
-                                </a>
-                                <a href="#" class="dropdown-item d-flex align-items-center">
-                                    <img src="{{asset('assets')}}/fhome/img/russia-flag.jpg" class="shadow-sm" alt="flag">
-                                    <span>Rus</span>
-                                </a>
-                                <a href="#" class="dropdown-item d-flex align-items-center">
-                                    <img src="{{asset('assets')}}/fhome/img/italy-flag.jpg" class="shadow-sm" alt="flag">
-                                    <span>Ita</span>
-                                </a>
+                        @auth
+                            <div class="dropdown language-switcher d-inline-block">
+                                <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class='bx bx-user'></i>
+                                    <span>{{Auth::user()->name}} <i class='bx bx-chevron-down'></i></span>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a href="{{route('admin_logout')}}" class="dropdown-item d-flex align-items-center">
+                                        <i class='bx bx-log-out'></i>
+                                        <span>Logout</span>
+                                    </a>
+                                    <a href="#" class="dropdown-item d-flex align-items-center">
+                                        <i class='bx bx-user'></i>
+                                        <span>My account</span>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                        <a href="cart.html" class="cart-wrapper-btn d-inline-block">
-                            <i class='bx bx-cart-alt'></i>
-                            <span>01</span>
-                        </a>
+                        @endauth
+
+                        @guest
+                            <a href="login.html" style="border-right: 1px solid black; padding: 10px"><i class='bx bx-log-in'></i> Login</a>
+                            <a href="register.html"><i class='bx bx-log-in-circle'></i> Register</a>
+                        @endguest
+
                         <div class="search-box d-inline-block">
                             <i class='bx bx-search'></i>
                         </div>

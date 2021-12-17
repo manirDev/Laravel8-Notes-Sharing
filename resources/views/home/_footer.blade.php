@@ -7,24 +7,25 @@
                     <ul class="contact-us-link">
                         <li>
                             <i class='bx bx-map'></i>
-                            <a href="#" target="_blank">2750 Quadra Street Victoria Road, New York, USA</a>
+                            <a href="#" target="_blank">{{$setting->address}}</a>
                         </li>
                         <li>
                             <i class='bx bx-phone-call'></i>
-                            <a href="#">+1 (123) 456 7890</a>
+                            <a href="#">{{$setting->phone}}</a>
                         </li>
                         <li>
                             <i class='bx bx-envelope'></i>
-                            <a href="#"><span class="__cf_email__" data-cfemail="84ece1e8e8ebc4f6e5f5f1e1aae7ebe9">[email&#160;protected]</span></a>
+                            <a href="#"><span class="__cf_email__" data-cfemail="84ece1e8e8ebc4f6e5f5f1e1aae7ebe9">{{$setting->email}}</span></a>
                         </li>
                     </ul>
                     <ul class="social-link">
-                        <li><a href="#" class="d-block" target="_blank"><i class='bx bxl-facebook'></i></a></li>
-                        <li><a href="#" class="d-block" target="_blank"><i class='bx bxl-twitter'></i></a></li>
-                        <li><a href="#" class="d-block" target="_blank"><i class='bx bxl-instagram'></i></a></li>
-                        <li><a href="#" class="d-block" target="_blank"><i class='bx bxl-linkedin'></i></a></li>
-                        <li><a href="#" class="d-block" target="_blank"><i class='bx bxl-pinterest-alt'></i></a></li>
+                        <li>  @if($setting->twitter!=null)<a href="{{$setting->twitter}}" class="d-block" target="_blank"><i class='bx bxl-facebook'></i></a>@endif</li>
+                        <li>@if($setting->twitter!=null)<a href="{{$setting->twitter}}"  class="d-block" target="_blank"><i class='bx bxl-facebook'></i></a>@endif</li>
+                        <li> @if($setting->facebook!=null)<a href="{{$setting->facebook}}"  class="d-block" target="_blank"><i class='bx bxl-twitter'></i></a>@endif</li>
+                        <li>@if($setting->youtube!=null) <a href="{{$setting->facebook}}"  class="d-block" target="_blank"><i class='bx bxl-linkedin'></i></a>@endif</li>
+                        <li>@if($setting->instagram!=null) <a href="{{$setting->instagram}}"  class="d-block" target="_blank"><i class='bx bxl-instagram'></i></a>@endif</li>
                     </ul>
+
                 </div>
             </div>
             <div class="col-lg-2 col-md-6 col-sm-6">
@@ -74,7 +75,7 @@
             <div class="logo">
                 <a href="index-5.html" class="d-inline-block"><img src="{{asset('assets')}}/fhome/img/logo.png" alt="image"></a>
             </div>
-            <p><i class='bx bx-copyright'></i>2021 <a href="index-5.html" target="_blank">Raque</a> Designed By <a href="https://envytheme.com/" target="_blank">EnvyTheme</a> | All rights reserved.</p>
+            <p><i class='bx bx-copyright'></i>2021 <a href="index-5.html" target="_blank">Raque</a> Designed By <a href="/" target="_blank">{{$setting->title}}</a> | All rights reserved.</p>
         </div>
     </div>
 </footer>
