@@ -46,7 +46,7 @@
         <div class="top-header top-header-style-four">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-lg-8 col-md-8">
+                    <div class="col-lg-9 col-md-9">
                         <div class="top-header-social">
                             <span>Soru, Ders Notu Talep - İstek</span>
                         </div>
@@ -57,11 +57,14 @@
                             <span>Sınav Haftası Şarkıları</span>
                         </div>
                         <div class="top-header-social">
+                            <span>Sınav Haftası Dualar</span>
+                        </div>
+                        <div class="top-header-social">
                             <span></span>
                         </div>
 
                     </div>
-                    <div class="col-lg-4 col-md-4">
+                    <div class="col-lg-3 col-md-3">
                         <ul class="top-header-login-register">
                             <div class="top-header-social" style="border: none;">
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Message;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MessageController extends Controller
 {
@@ -59,9 +60,13 @@ class MessageController extends Controller
      * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function edit(Message $message)
+    public function edit(Message $message, $id)
     {
         //
+        $data = Message::find($id);
+        $data->status = 'Read';
+        $data->save();
+        return view('admin.message_edit', ['data' => $data]);
     }
 
     /**
@@ -71,9 +76,13 @@ class MessageController extends Controller
      * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Message $message)
+    public function update(Request $request, Message $message, $id)
     {
         //
+        $data = Message::find($id);
+        $data->note = $request->input('note');
+        $data->save();
+        return back()->with('success', 'Message Updated');
     }
 
     /**
@@ -82,8 +91,11 @@ class MessageController extends Controller
      * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Message $message)
+    public function destroy(Message $message, $id)
     {
         //
+        DB::table('messages')->where('id', '=', $id)->delete();
+
+        return redirect()->route('admin_message')->with('success', 'Message is deleted');
     }
 }

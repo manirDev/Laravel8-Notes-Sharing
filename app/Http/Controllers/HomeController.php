@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Content;
 use App\Models\Message;
 use App\Models\Setting;
 use App\Models\Category;
@@ -19,10 +20,28 @@ class HomeController extends Controller
         return $setting = Setting::first();
     }
     //
+    public function categorycontents($id, $slug){
+        $datalist = Content::where('category_id',$id)->get();
+        $data = Category::find($id);
+//        print_r($data);
+//        exit();
+        return view('home.category_content', ['data' => $data, 'datalist' => $datalist]);
+    }
 
     public function index(){
         $setting = Setting::first();
-        return view('home.index', ['setting' => $setting]);
+        $daily = Content::select('id', 'title', 'image', 'description', 'slug')->limit(6)->inRandomOrder()->get();
+        $last = Content::select('id', 'title', 'image', 'description', 'slug')->limit(6)->inRandomDesc()->get();
+        $picked = Content::select('id', 'title', 'image', 'description', 'slug')->limit(6)->inRandomOrder()->get();
+//        print_r($picked);
+//        exit();
+        $data = [
+            'setting'=>$setting,
+            'daily'=>$daily,
+            'last'=>$last,
+            'picked'=>$picked
+        ];
+        return view('home.index', $data);
     }
 //Pages start
     public function aboutus(){

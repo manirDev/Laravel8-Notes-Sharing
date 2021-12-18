@@ -11,9 +11,9 @@
             <div class="page-title-content">
                 <ul>
                     <li><a href="{{route('home')}}">Home</a></li>
-                    <li>My Account</li>
+                    <li>Contact</li>
                 </ul>
-                <h2>My Account</h2>
+                <h2>Contact</h2>
             </div>
         </div>
     </div>

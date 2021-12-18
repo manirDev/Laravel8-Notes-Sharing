@@ -42,6 +42,7 @@
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">Messages list</h3> <br><br>
+            @include('home.flash-message')
         </div>
         <div class="card-body">
 
@@ -54,6 +55,7 @@
                     <th>Phone</th>
                     <th>Subject</th>
                     <th>Message</th>
+                    <th>Admin note</th>
                     <th>Status</th>
                     <th>Edit</th>
                     <th>Delete</th>
@@ -72,9 +74,14 @@
                         <td>{{ $rs->phone}}</td>
                         <td>{{ $rs->subject}}</td>
                         <td>{{ $rs->message}}</td>
+                        <td>{{ $rs->note}}</td>
                         <td>{{ $rs->status}}</td>
-                        <td><a href="{{route('admin_category_edit', ['id' => $rs->id]) }}" ><i class="fas fa-edit p-2 text-info" style="font-size: 24px"></i></a></td>
-                        <td><a href="{{route('admin_category_delete', ['id' => $rs->id]) }}" onclick="return confirm('Delete! Are you sure?')" ><i class="fas fa-trash p-2 text-danger" style="font-size: 24px"></i></a></td>
+                        <td>
+                            <a href="{{route('admin_message_edit', ['id' => $rs->id]) }}" onclick="return !window.open(this.href, '', 'top=50 left=100 width=800 height=600')" >
+                                <i class="fas fa-edit p-2 text-info" style="font-size: 24px"></i>
+                            </a>
+                        </td>
+                        <td><a href="{{route('admin_message_delete', ['id' => $rs->id]) }}" onclick="return confirm('Delete! Are you sure?')" ><i class="fas fa-trash p-2 text-danger" style="font-size: 24px"></i></a></td>
                     </tr>
 
                 @endforeach

@@ -4,7 +4,7 @@
         <div class="container">
             <div class="raque-responsive-menu">
                 <div class="logo">
-                    <a href="index-7.html">
+                    <a href="{{route('home')}}">
                         <img src="{{asset('assets')}}/fhome/img/black-logo.png" alt="logo">
                     </a>
                 </div>
@@ -14,7 +14,7 @@
     <div class="raque-nav">
         <div class="container">
             <nav class="navbar navbar-expand-md navbar-light">
-                <a class="navbar-brand" href="index-7.html">
+                <a class="navbar-brand" href="{{route('home')}}">
                     <img src="{{asset('assets')}}/fhome/img/black-logo.png" alt="logo">
                 </a>
                 <div class="collapse navbar-collapse mean-menu">

@@ -55,7 +55,11 @@
                         <td>{{ $rs->image}}</td>
                         <td>{{ $rs->slug}}</td>
                         <td>{{ $rs->status}}</td>
-                        <td><a href="{{route('admin_category_edit', ['id' => $rs->id]) }}" ><i class="fas fa-edit p-2 text-info" style="font-size: 24px"></i></a></td>
+                        <td>
+                            <a href="{{route('admin_category_edit', ['id' => $rs->id]) }}" onclick="return !window.open(this.href, '', 'top=50 left=100 width=800 height=600')" >
+                                <i class="fas fa-edit p-2 text-info" style="font-size: 24px"></i>
+                            </a>
+                        </td>
                         <td><a href="{{route('admin_category_delete', ['id' => $rs->id]) }}" onclick="return confirm('Delete! Are you sure?')" ><i class="fas fa-trash p-2 text-danger" style="font-size: 24px"></i></a></td>
                     </tr>
 

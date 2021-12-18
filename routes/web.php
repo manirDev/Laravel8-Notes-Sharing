@@ -19,7 +19,7 @@ Route::get('/references', [\App\Http\Controllers\HomeController::class, 'referen
 Route::get('/contact', [\App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
 Route::get('/faq', [\App\Http\Controllers\HomeController::class, 'faq'])->name('faq');
 Route::post('/sendmessage', [\App\Http\Controllers\HomeController::class, 'sendmessage'])->name('send-message');
-
+Route::get('/categorycontents/{id}/{slug}', [\App\Http\Controllers\HomeController::class, 'categorycontents'])->name('categorycontents');
 
 
 //admin routes
