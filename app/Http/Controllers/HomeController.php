@@ -20,6 +20,13 @@ class HomeController extends Controller
         return $setting = Setting::first();
     }
     //
+    public function notContent($id, $slug){
+        $data = Content::find($id);
+        $datalist = Content::where('category_id',$id)->get();
+//        print_r($data);
+//        exit();
+        return view('home.not-content_detail', ['data' => $data,'datalist' => $datalist]);
+    }
     public function categorycontents($id, $slug){
         $datalist = Content::where('category_id',$id)->get();
         $data = Category::find($id);
@@ -27,6 +34,7 @@ class HomeController extends Controller
 //        exit();
         return view('home.category_content', ['data' => $data, 'datalist' => $datalist]);
     }
+
 
     public function index(){
         $setting = Setting::first();

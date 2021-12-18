@@ -12,7 +12,7 @@
                     <div class="col-lg-4 col-md-6 mix business design language">
                         <div class="single-courses-item mb-30">
                             <div class="courses-image">
-                                <a href="single-courses.html" class="d-block"><img src="{{ Storage::url($rs->image) }}" alt="image" style="height:200px;"></a>
+                                <a href="{{route('notContent', ['id'=>$rs->id, 'slug'=>$rs->slug])}}" class="d-block"><img src="{{ Storage::url($rs->image) }}" alt="image" style="height:200px;"></a>
                             </div>
                             <div class="courses-content">
                                 <div class="d-flex justify-content-between align-items-center">

@@ -32,11 +32,11 @@
                         <div class="col-lg-4 col-md-4">
                             <div class="single-blog-post mb-30">
                                 <div class="post-image">
-                                    <a href="single-blog.html" class="d-block">
+                                    <a href="{{route('notContent', ['id'=>$rs->id, 'slug'=>$rs->slug])}}" class="d-block">
                                         <img src="{{ Storage::url($rs->image) }}" alt="image" style="height: 200px">
                                     </a>
                                     <div class="tag">
-                                        <a href="#">{{$rs->title}}</a>
+                                        <a href="{{route('notContent', ['id'=>$rs->id, 'slug'=>$rs->slug])}}">{{$rs->title}}</a>
                                     </div>
                                 </div>
                                 <div class="post-content">
@@ -45,13 +45,13 @@
                                         <li class="post-author">
 
                                             <img src="{{Auth::user()->profile_photo_url}}" class="d-inline-block rounded-circle mr-2" alt="image">
-                                            By: <a href="#" class="d-inline-block">{{Auth::user()->name}}</a>
+                                            By: <a href="{{route('notContent', ['id'=>$rs->id, 'slug'=>$rs->slug])}}" class="d-inline-block">{{Auth::user()->name}}</a>
                                         </li>
                                         @endauth
                                         <li><a href="#">August 30, 2021</a></li>
                                     </ul>
                                     <h3><a href="#" class="d-inline-block">{{$rs->description}}</a></h3>
-                                    <a href="#" class="read-more-btn">Read More <i class='bx bx-right-arrow-alt'></i></a>
+                                    <a href="{{route('notContent', ['id'=>$rs->id, 'slug'=>$rs->slug])}}" class="read-more-btn">Read More <i class='bx bx-right-arrow-alt'></i></a>
                                 </div>
                             </div>
                         </div>
