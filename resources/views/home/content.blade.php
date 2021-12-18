@@ -2,274 +2,58 @@
 <section class="courses-area pt-100 pb-70">
     <div class="container">
         <div class="section-title text-left">
-            <span class="sub-title">Discover Courses</span>
-            <h2>Our Popular Online Courses</h2>
-            <a href="courses-2-columns-style-2.html" class="default-btn"><i class='bx bx-show-alt icon-arrow before'></i><span class="label">All Courses</span><i class="bx bx-show-alt icon-arrow after"></i></a>
-        </div>
-        <div class="shorting-menu">
-            <button class="filter" data-filter="all">All (06)</button>
-            <button class="filter" data-filter=".business">Business (02)</button>
-            <button class="filter" data-filter=".design">Design (05)</button>
-            <button class="filter" data-filter=".development">Development (04)</button>
-            <button class="filter" data-filter=".language">Language (02)</button>
-            <button class="filter" data-filter=".management">Management (03)</button>
-            <button class="filter" data-filter=".photography">Photography (04)</button>
+            <span class="sub-title">Discover Lessons</span>
+            <h2> Popular Daily Students Shared Lessons</h2>
+            <a href="courses-2-columns-style-2.html" class="default-btn"><i class='bx bx-show-alt icon-arrow before'></i><span class="label">All Lessons</span><i class="bx bx-show-alt icon-arrow after"></i></a>
         </div>
         <div class="shorting">
             <div class="row">
-                <div class="col-lg-4 col-md-6 mix business design language">
-                    <div class="single-courses-item mb-30">
-                        <div class="courses-image">
-                            <a href="single-courses.html" class="d-block"><img src="{{asset('assets')}}/fhome/img/courses/1.jpg" alt="image"></a>
-                        </div>
-                        <div class="courses-content">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="course-author d-flex align-items-center">
-                                    <img src="{{asset('assets')}}/fhome/img/user1.jpg" class="shadow" alt="image">
-                                    <span>Steven Smith</span>
-                                </div>
-                                <div class="courses-rating">
-                                    <div class="review-stars-rated">
-                                        <i class='bx bxs-star'></i>
-                                        <i class='bx bxs-star'></i>
-                                        <i class='bx bxs-star'></i>
-                                        <i class='bx bxs-star'></i>
-                                        <i class='bx bxs-star-half'></i>
-                                    </div>
-                                    <div class="rating-total">
-                                        4.5 (2)
-                                    </div>
-                                </div>
+                @foreach($daily as $rs)
+                    <div class="col-lg-4 col-md-6 mix business design language">
+                        <div class="single-courses-item mb-30">
+                            <div class="courses-image">
+                                <a href="single-courses.html" class="d-block"><img src="{{ Storage::url($rs->image) }}" alt="image" style="height:200px;"></a>
                             </div>
-                            <h3><a href="single-courses.html" class="d-inline-block">Raque Professional IT Expert Certificate Course</a></h3>
-                            <p>Education encompasses both the teaching and learning of knowledge.</p>
-                        </div>
-                        <div class="courses-box-footer">
-                            <ul>
-                                <li class="students-number">
-                                    <i class='bx bx-user'></i> 10 students
-                                </li>
-                                <li class="courses-lesson">
-                                    <i class='bx bx-book-open'></i> 6 lessons
-                                </li>
-                                <li class="courses-price">
-                                    Free
-                                </li>
-                            </ul>
+                            <div class="courses-content">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    @auth
+                                        <div class="course-author d-flex align-items-center">
+                                            <img src="{{Auth::user()->profile_photo_url}}" class="shadow" alt="image">
+                                            <span>{{Auth::user()->name}}</span>
+                                        </div>
+                                    @endauth
+                                    <div class="courses-rating">
+                                        <div class="review-stars-rated">
+                                            <i class='bx bxs-star'></i>
+                                            <i class='bx bxs-star'></i>
+                                            <i class='bx bxs-star'></i>
+                                            <i class='bx bxs-star'></i>
+                                            <i class='bx bxs-star-half'></i>
+                                        </div>
+                                        <div class="rating-total">
+                                            4.5 (2)
+                                        </div>
+                                    </div>
+                                </div>
+                                <h3><a href="single-courses.html" class="d-inline-block">{{$rs->title}}</a></h3>
+                                <p>{{$rs->description}}</p>
+                            </div>
+                            <div class="courses-box-footer">
+                                <ul>
+                                    <li class="students-number">
+                                        <i class='bx bx-user'></i> 10 students
+                                    </li>
+                                    <li class="courses-lesson">
+                                        <i class='bx bx-book-open'></i> 6 lessons
+                                    </li>
+                                    <li class="courses-price">
+                                        Free
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mix design development management photography">
-                    <div class="single-courses-item mb-30">
-                        <div class="courses-image">
-                            <a href="single-courses.html" class="d-block"><img src="{{asset('assets')}}/fhome/img/courses/2.jpg" alt="image"></a>
-                        </div>
-                        <div class="courses-content">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="course-author d-flex align-items-center">
-                                    <img src="{{asset('assets')}}/fhome/img/user2.jpg" class="shadow" alt="image">
-                                    <span>Sarah Taylor</span>
-                                </div>
-                                <div class="courses-rating">
-                                    <div class="review-stars-rated">
-                                        <i class='bx bxs-star'></i>
-                                        <i class='bx bxs-star'></i>
-                                        <i class='bx bxs-star'></i>
-                                        <i class='bx bxs-star'></i>
-                                        <i class='bx bxs-star-half'></i>
-                                    </div>
-                                    <div class="rating-total">
-                                        4.5 (2)
-                                    </div>
-                                </div>
-                            </div>
-                            <h3><a href="single-courses.html" class="d-inline-block">Certified Graphic Design with Free Project Course</a></h3>
-                            <p>Education encompasses both the teaching and learning of knowledge.</p>
-                        </div>
-                        <div class="courses-box-footer">
-                            <ul>
-                                <li class="students-number">
-                                    <i class='bx bx-user'></i> 15 students
-                                </li>
-                                <li class="courses-lesson">
-                                    <i class='bx bx-book-open'></i> 10 lessons
-                                </li>
-                                <li class="courses-price">
-                                    $250
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mix development business management">
-                    <div class="single-courses-item mb-30">
-                        <div class="courses-image">
-                            <a href="single-courses.html" class="d-block"><img src="{{asset('assets')}}/fhome/img/courses/3.jpg" alt="image"></a>
-                        </div>
-                        <div class="courses-content">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="course-author d-flex align-items-center">
-                                    <img src="{{asset('assets')}}/fhome/img/user3.jpg" class="shadow" alt="image">
-                                    <span>Anderson</span>
-                                </div>
-                                <div class="courses-rating">
-                                    <div class="review-stars-rated">
-                                        <i class='bx bxs-star'></i>
-                                        <i class='bx bxs-star'></i>
-                                        <i class='bx bxs-star'></i>
-                                        <i class='bx bxs-star'></i>
-                                        <i class='bx bx-star'></i>
-                                    </div>
-                                    <div class="rating-total">
-                                        4.0 (1)
-                                    </div>
-                                </div>
-                            </div>
-                            <h3><a href="single-courses.html" class="d-inline-block">Photography Crash Course for Photographer</a></h3>
-                            <p>Education encompasses both the teaching and learning of knowledge.</p>
-                        </div>
-                        <div class="courses-box-footer">
-                            <ul>
-                                <li class="students-number">
-                                    <i class='bx bx-user'></i> 5 students
-                                </li>
-                                <li class="courses-lesson">
-                                    <i class='bx bx-book-open'></i> 5 lessons
-                                </li>
-                                <li class="courses-price">
-                                    $150
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mix language design development photography">
-                    <div class="single-courses-item mb-30">
-                        <div class="courses-image">
-                            <a href="single-courses.html" class="d-block"><img src="{{asset('assets')}}/fhome/img/courses/4.jpg" alt="image"></a>
-                        </div>
-                        <div class="courses-content">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="course-author d-flex align-items-center">
-                                    <img src="{{asset('assets')}}/fhome/img/user4.jpg" class="shadow" alt="image">
-                                    <span>Liam King</span>
-                                </div>
-                                <div class="courses-rating">
-                                    <div class="review-stars-rated">
-                                        <i class='bx bxs-star'></i>
-                                        <i class='bx bxs-star'></i>
-                                        <i class='bx bxs-star'></i>
-                                        <i class='bx bxs-star'></i>
-                                        <i class='bx bx-star'></i>
-                                    </div>
-                                    <div class="rating-total">
-                                        4.0 (1)
-                                    </div>
-                                </div>
-                            </div>
-                            <h3><a href="single-courses.html" class="d-inline-block">Web Design for Developing Technology with Joy</a></h3>
-                            <p>Education encompasses both the teaching and learning of knowledge.</p>
-                        </div>
-                        <div class="courses-box-footer">
-                            <ul>
-                                <li class="students-number">
-                                    <i class='bx bx-user'></i> 10 students
-                                </li>
-                                <li class="courses-lesson">
-                                    <i class='bx bx-book-open'></i> 6 lessons
-                                </li>
-                                <li class="courses-price">
-                                    <span>$200</span>
-                                    $195
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mix management design photography">
-                    <div class="single-courses-item mb-30">
-                        <div class="courses-image">
-                            <a href="single-courses.html" class="d-block"><img src="{{asset('assets')}}/fhome/img/courses/5.jpg" alt="image"></a>
-                        </div>
-                        <div class="courses-content">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="course-author d-flex align-items-center">
-                                    <img src="{{asset('assets')}}/fhome/img/user5.jpg" class="shadow" alt="image">
-                                    <span>Lina</span>
-                                </div>
-                                <div class="courses-rating">
-                                    <div class="review-stars-rated">
-                                        <i class='bx bxs-star'></i>
-                                        <i class='bx bxs-star'></i>
-                                        <i class='bx bxs-star'></i>
-                                        <i class='bx bxs-star'></i>
-                                        <i class='bx bxs-star'></i>
-                                    </div>
-                                    <div class="rating-total">
-                                        5.0 (1)
-                                    </div>
-                                </div>
-                            </div>
-                            <h3><a href="single-courses.html" class="d-inline-block">Information About UI/UX Design Degree</a></h3>
-                            <p>Education encompasses both the teaching and learning of knowledge.</p>
-                        </div>
-                        <div class="courses-box-footer">
-                            <ul>
-                                <li class="students-number">
-                                    <i class='bx bx-user'></i> 5 students
-                                </li>
-                                <li class="courses-lesson">
-                                    <i class='bx bx-book-open'></i> 5 lessons
-                                </li>
-                                <li class="courses-price">
-                                    $178
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mix photography design development photography">
-                    <div class="single-courses-item mb-30">
-                        <div class="courses-image">
-                            <a href="single-courses.html" class="d-block"><img src="{{asset('assets')}}/fhome/img/courses/6.jpg" alt="image"></a>
-                        </div>
-                        <div class="courses-content">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="course-author d-flex align-items-center">
-                                    <img src="{{asset('assets')}}/fhome/img/user6.jpg" class="shadow" alt="image">
-                                    <span>David Warner</span>
-                                </div>
-                                <div class="courses-rating">
-                                    <div class="review-stars-rated">
-                                        <i class='bx bxs-star'></i>
-                                        <i class='bx bxs-star'></i>
-                                        <i class='bx bxs-star'></i>
-                                        <i class='bx bxs-star'></i>
-                                        <i class='bx bx-star'></i>
-                                    </div>
-                                    <div class="rating-total">
-                                        4.0 (1)
-                                    </div>
-                                </div>
-                            </div>
-                            <h3><a href="single-courses.html" class="d-inline-block">Photography Photo modify and Beautiful</a></h3>
-                            <p>Education encompasses both the teaching and learning of knowledge.</p>
-                        </div>
-                        <div class="courses-box-footer">
-                            <ul>
-                                <li class="students-number">
-                                    <i class='bx bx-user'></i> 11 students
-                                </li>
-                                <li class="courses-lesson">
-                                    <i class='bx bx-book-open'></i> 1 lessons
-                                </li>
-                                <li class="courses-price">
-                                    $500
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

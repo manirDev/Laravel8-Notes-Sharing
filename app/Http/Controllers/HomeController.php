@@ -31,7 +31,7 @@ class HomeController extends Controller
     public function index(){
         $setting = Setting::first();
         $daily = Content::select('id', 'title', 'image', 'description', 'slug')->limit(6)->inRandomOrder()->get();
-        $last = Content::select('id', 'title', 'image', 'description', 'slug')->limit(6)->inRandomDesc()->get();
+        $last = Content::select('id', 'title', 'image', 'description', 'slug')->limit(6)->inRandomOrder()->get();
         $picked = Content::select('id', 'title', 'image', 'description', 'slug')->limit(6)->inRandomOrder()->get();
 //        print_r($picked);
 //        exit();
