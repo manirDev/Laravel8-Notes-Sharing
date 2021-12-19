@@ -1,0 +1,290 @@
+body {
+
+    color: rgb(255 255 255 / 70%);
+	background-color: #151313;
+ }
+
+ .h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: rgb(255 255 255);
+}
+
+a {
+	color: #fff;
+	text-decoration: underline
+}
+a:hover {
+	color: #fff
+}
+
+
+.table {
+	--bs-table-bg: transparent;
+	--bs-table-striped-color: rgb(255 255 255 / 85%);
+	--bs-table-striped-bg: rgb(255 255 255 / 12%);
+	--bs-table-active-color: rgb(255 255 255 / 27%);
+	--bs-table-active-bg: rgb(255 255 255 / 10%);
+	--bs-table-hover-color: rgb(255 255 255);
+	--bs-table-hover-bg: rgba(0, 0, 0, 0.075);
+	width: 100%;
+	margin-bottom: 1rem;
+	color: rgb(255 255 255 / 85%);
+	vertical-align: top;
+	border-color: rgb(255 255 255 / 15%);
+}
+
+
+.table-light {
+    --bs-table-bg: rgb(255 255 255 / 15%);
+    color: #fff;
+	border-color: rgb(255 255 255 / 15%)
+}
+
+
+.form-control  {
+    color: #ffffff;
+	background-color: rgb(0 0 0 / 15%);
+    border: 1px solid rgb(255 255 255 / 15%);
+}
+
+
+.form-control:focus {
+    color: #fff;
+	background-color: rgb(0 0 0 / 20%);
+	border-color: 1px solid rgb(255 255 255 / 15%);
+	box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .25)
+}
+
+.form-control:disabled,
+.form-control[readonly] {
+	background-color: rgb(233 236 239 / 22%);
+}
+
+
+.form-select {
+    color: #ffffff;
+}
+
+.form-select:focus {
+    border-color: rgb(255 255 255 / 35%);
+	box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .25)
+}
+
+.form-select option {
+	background-color: #171717;
+}
+
+.form-check-input {
+    background-color: rgb(255 255 255 / 15%);
+    border: 1px solid rgb(255 255 255 / 15%);
+}
+
+.form-check-input:focus {
+    border-color: rgb(255 255 255 / 15%);
+	box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .25)
+}
+
+.form-check-input:checked {
+	background-color: rgb(255 255 255 / 15%);
+	border-color: rgb(255 255 255 / 15%);
+}
+
+.input-group-text {
+    color: #ffffff;
+    background-color: rgb(0 0 0 / 20%);
+	border: 1px solid rgb(255 255 255 / 20%);
+}
+
+.btn-light {
+	color: #fff;
+	background-color: rgb(255 255 255 / 15%);
+	border-color: rgb(255 255 255 / 35%);
+}
+.btn-light:hover {
+	color: #fff;
+	background-color: rgb(255 255 255 / 20%);
+	border-color: rgb(255 255 255 / 40%);
+}
+
+.card {
+    background-color: rgb(0 0 0 / 20%);
+    box-shadow: 0 .3rem .8rem rgba(0, 0, 0, .12);
+    margin-bottom: 1.5rem;
+    border: 0 solid transparent;
+}
+
+.card-footer {
+    border-top: 1px solid rgba(255, 255, 255, .125)
+}
+
+
+.accordion-item {
+    background-color: rgb(255 255 255 / 12%);
+    border: 1px solid rgb(255 255 255 / 12%);
+}
+
+.accordion-button {
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, .125);
+    background-color: rgb(255 255 255 / 12%);
+}
+
+.accordion-button:not(.collapsed) {
+	color: #ffffff;
+	background-color: rgb(255 255 255 / 15%);
+}
+
+.accordion-button:focus {
+    border-color: #fff;
+	box-shadow: 0 0 0 .25rem rgba(225, 225, 225, .25)
+}
+
+.breadcrumb-item.active {
+	color: #ffffff
+}
+
+.page-link {
+    color: #ffffff;
+    background-color: rgb(255 255 255 / 15%);
+	border: 1px solid rgb(255 255 255 / 15%);
+}
+
+.page-link:hover {
+    color: #fff;
+	background-color: rgb(0 0 0 / 25%);
+	border-color: rgb(255 255 255 / 15%);
+}
+
+.page-link:focus {
+    color: #fff;
+	background-color: rgb(0 0 0 / 20%);
+	box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .25)
+}
+
+.page-item.active .page-link {
+    color: #fff;
+	background-color: rgb(0 0 0 / 20%);
+	border-color: rgb(255 255 255 / 15%);
+}
+
+.page-item.disabled .page-link {
+    color: #ffffff;
+	background-color: rgb(255 255 255 / 42%);
+	border-color: rgb(255 255 255 / 15%);
+}
+
+.alert {
+    background-color: rgb(0 0 0 / 15%);
+    box-shadow: 0 .3rem .8rem rgba(0, 0, 0, .12)
+}
+
+.progress {
+    background-color: rgb(255 255 255 / 15%);
+}
+
+.progress-bar {
+    color: #fff;
+    background-color: #ffffff;
+}
+
+.list-group-item {
+    color: rgba(255, 255, 255, 0.85);
+    background-color: rgb(255 255 255 / 12%);
+	border: 1px solid rgb(255 255 255 / 12%);
+}
+
+.modal-content {
+    background-color: #171717;
+    border: 1px solid rgba(255, 255, 255, .2);
+}
+
+.modal-header {
+    border-bottom: 1px solid rgb(255 255 255 / 15%);
+}
+
+.modal-footer {
+    border-top: 1px solid rgb(255 255 255 / 15%);
+}
+
+.border {
+	border: 1px solid rgb(255 255 255 / 15%)!important
+}
+
+.border-top {
+	border-top: 1px solid rgb(255 255 255 / 15%)!important;
+}
+
+.border-end {
+	border-right: 1px solid rgb(255 255 255 / 15%)!important;
+}
+.border-bottom {
+	border-bottom: 1px solid rgb(255 255 255 / 15%)!important;
+}
+.border-start {
+	border-left: 1px solid rgb(255 255 255 / 15%)!important;
+}
+
+.text-light {
+	color: #f8f9fa!important
+}
+.text-light-1 {
+	color: rgba(255,255,255,.125)!important
+}
+.text-light-2 {
+    color: rgba(255, 255, 255, 0.70)!important;
+}
+.text-light-3 {
+    color: rgba(255, 255, 255, 0.50)!important;
+}
+.text-light-4 {
+    color: rgba(255, 255, 255, 0.20)!important;
+}
+
+.bg-light {
+	background-color: rgb(255 255 255 / 15%)!important;
+}
+
+.bg-body {
+	background-color: rgb(255 255 255 / 15%)!important;
+}
+
+
+.dropdown-menu {
+    color: #ffffff;
+    background-color: #1e1e1e;
+    border: 1px solid rgba(0, 0, 0, .15);
+    top: 100%;
+	right: 0;
+}
+
+
+.dropdown-divider {
+    border-top: 1px solid rgba(255, 255, 255, .15)
+}
+
+
+.dropdown-item {
+    color: rgb(255 255 255 / 85%);
+}
+
+.dropdown-item:focus,
+.dropdown-item:hover {
+	color: #fff;
+	background-color: rgba(255, 255, 255, .15)
+}
+.dropdown-item.active,
+.dropdown-item:active {
+	color: #fff;
+	text-decoration: none;
+	background-color: #0d6efd
+}
