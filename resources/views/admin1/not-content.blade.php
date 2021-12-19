@@ -1,25 +1,9 @@
-@extends('layouts.adminHome')
+
+@extends('layouts.adminV1Home')
 
 @section('title', 'Admine Gettir')
 
 @section('cssx')
-<style>
-    table {
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
-    }
-</style>
-@endsection
-
-@section('jsx')
-<script>
-    $(document).ready(function() {
-        $('#example2').DataTable( {
-            "scrollX": true
-        } );
-    } );
-</script>
 @endsection
 
 @section('content')
@@ -33,7 +17,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Not-Content</li>
+                        <li class="breadcrumb-item active">Category</li>
                     </ol>
                 </div>
             </div>
@@ -41,11 +25,11 @@
     </section>
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Not-Content list</h3> <br><br>
+            <h3 class="card-title">Category list</h3> <br><br>
         </div>
         <div class="card-body">
 
-            <table id="example2" class="table table-bordered table-hover" style="overflow: auto;">
+            <table id="example" class="table  table-bordered" cellspacing="0" width="100%">
                 <thead>
                 <tr>
                     <th>Id</th>
@@ -84,9 +68,6 @@
                         <td><a href="{{route('admin_image_add', ['content_id' => $rs->id]) }}" >  <i class="fas fa-images p-2 text-info" style="font-size: 24px"></i> </a></td>
                         <td>
                             @if($rs->file)
-{{--                                <object data="{{Storage::url($rs->file)}}" type="application/pdf"  width="30" height="30">--}}
-{{--                                    <a href="{{Storage::url($rs->file)}}">{{ $rs->title}}.pdf</a>--}}
-{{--                                </object>--}}
                                 <a href="{{Storage::url($rs->file)}}" target="_blank"><i class="fas fa-file p-2 text-info" style="font-size: 24px"></i></a>
                             @endif
                         </td>
@@ -103,6 +84,7 @@
                 @endforeach
                 </tbody>
             </table>
+
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
@@ -110,6 +92,30 @@
         </div>
         <!-- /.card-footer-->
     </div>
-    <!-- /.card -->
+@endsection
+
+
+
+@section('jsz')
+    <script src='https://code.jquery.com/jquery-1.12.3.js'></script>
+    <script src='https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js'></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js" charset="utf-8"></script>
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.1.0/css/buttons.bootstrap4.min.css">
+
+
+
+    <script>
+        $(document).ready(function() {
+            var table = $('#example').DataTable( {
+                lengthChange: false,
+                buttons: [ 'copy', 'excel', 'pdf', 'colvis' ]
+            } );
+
+            table.buttons().container()
+                .appendTo( '#example_wrapper .col-md-6:eq(0)' );
+        } );
+    </script>
 
 @endsection

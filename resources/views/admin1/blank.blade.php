@@ -1,4 +1,71 @@
-@extends('layouts.adminHome')
+<thead>
+<tr>
+    <th>Id</th>
+    <th>User Id</th>
+    <th>Category</th>
+    <th>Title</th>
+    <th>Keywords</th>
+    <th>Description</th>
+    <th>Image</th>
+    <th>Gallery</th>
+    <th>PDF File</th>
+    <th>Slug</th>
+    <th>Status</th>
+    <th>Edit</th>
+    <th>Delete</th>
+
+</tr>
+</thead>
+<tbody>
+@foreach ($datalist as $rs)
+
+    <tr>
+        <td>{{ $rs->id }}</td>
+        <td>{{ $rs->user_id}}</td>
+        <td>
+            {{ \App\Http\Controllers\Admin\CategoryController::getParentsTree($rs->category, $rs->category->title) }}
+        </td>
+        <td>{{ $rs->title}}</td>
+        <td>{{ $rs->keywords}}</td>
+        <td>{{ $rs->description}}</td>
+        <td>
+            @if($rs->image)
+                <img src="{{Storage::url($rs->image)}}" width="30" height="30" >
+            @endif
+        </td>
+        <td><a href="{{route('admin_image_add', ['content_id' => $rs->id]) }}" >  <i class="fas fa-images p-2 text-info" style="font-size: 24px"></i> </a></td>
+        <td>
+            @if($rs->file)
+                {{--                                <object data="{{Storage::url($rs->file)}}" type="application/pdf"  width="30" height="30">--}}
+                {{--                                    <a href="{{Storage::url($rs->file)}}">{{ $rs->title}}.pdf</a>--}}
+                {{--                                </object>--}}
+                <a href="{{Storage::url($rs->file)}}" target="_blank"><i class="fas fa-file p-2 text-info" style="font-size: 24px"></i></a>
+            @endif
+        </td>
+        <td>{{ $rs->slug}}</td>
+        <td>{{ $rs->status}}</td>
+        <td>
+            <a href="{{route('admin_content_edit', ['id' => $rs->id]) }}" onclick="return !window.open(this.href, '', 'top=50 left=100 width=800 height=600')" >
+                <i class="fas fa-edit p-2 text-info" style="font-size: 24px"></i>
+            </a>
+        </td>
+        <td><a href="{{route('admin_content_delete', ['id' => $rs->id]) }}" onclick="return confirm('Delete! Are you sure?')" > <i class="fas fa-trash p-2 text-danger" style="font-size: 24px"></i></a></td>
+    </tr>
+
+@endforeach
+</tbody>
+
+
+
+
+
+
+
+
+
+
+
+@extends('layouts.adminV1Home')
 
 @section('title', 'Admine Gettir')
 

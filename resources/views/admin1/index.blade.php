@@ -1,8 +1,8 @@
-@extends('layouts.adminHome')
+@extends('layouts.adminV1Home')
 
 @section('title', 'Admin Dashboard')
 
 @section('content')
-    @include('admin.content')
+    @include('admin1.content')
 
 @endsection

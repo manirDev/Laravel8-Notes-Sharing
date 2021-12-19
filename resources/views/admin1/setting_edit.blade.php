@@ -1,4 +1,4 @@
-@extends('layouts.adminHome')
+@extends('layouts.adminV1Home')
 
 @section('title', 'Admine Gettir')
 @section('jsx')

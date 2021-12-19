@@ -1,20 +1,18 @@
-@extends('layouts.adminHome')
+@extends('layouts.adminV1Home')
 
 @section('title', 'Admine Gettir')
-
+@section('jsx')
+    <script src="https://cdn.ckeditor.com/ckeditor5/31.1.0/classic/ckeditor.js"></script>
+@endsection
+<style>
+    .ck-editor__editable {min-height: 200px; color: black;}
+</style>
 @section('content')
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Category Edit</h1>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Category edit</li>
-                    </ol>
-                </div>
+
+
             </div>
         </div><!-- /.container-fluid -->
     </section>
@@ -28,21 +26,20 @@
                     <!-- jquery validation -->
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Category Form </h3>
+                            <h3 class="card-title">Not-Content Form </h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{route('admin_category_update', ['id'=>$data->id])}}" role="form" id="quickForm" method="Post">
+                        <form action="{{route('admin_content_store')}}" role="form" id="quickForm" method="Post" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Parents</label>
+                                    <label for="exampleInputEmail1">Categories</label>
 
-                                    <select class="form-control select2" name="parent_id" style="width: 100%;">
+                                    <select class="form-control select2" name="category_id" style="width: 100%;">
 
-                                        <option value="0">Main Category</option>
                                         @foreach($datalist as $rs)
-                                            <option value="{{$rs->id}}" @if($rs->id==$data->parent_id) selected="selected" @endif>
+                                            <option value="{{$rs->id}}">
                                                 {{ \App\Http\Controllers\Admin\CategoryController::getParentsTree($rs, $rs->title) }}
                                             </option>
                                         @endforeach
@@ -50,32 +47,56 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Title</label>
-                                    <input type="text" name="title" class="form-control" value="{{$data->title}}">
+                                    <input type="text" name="title" class="form-control" id="exampleInputPassword1" >
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Keywords</label>
-                                    <input type="text" name="keywords" class="form-control"  value="{{$data->keywords}}">
+                                    <input type="text" name="keywords" class="form-control" id="exampleInputPassword1" >
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Description</label>
-                                    <input type="text" name="description" class="form-control"  value="{{$data->description}}">
+                                    <input type="text" name="description" class="form-control" id="exampleInputPassword1">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Image</label>
+                                    <input type="file" name="image" class="form-control" >
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">File</label>
+                                    <input type="file" name="file" class="form-control" >
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Detail</label>
+                                    <textarea id="editor1" name="detail" class="form-control"></textarea>
+                                    <script>
+                                        ClassicEditor
+                                            .create( document.querySelector( '#editor1' ) )
+                                            .then( editor => {
+                                                console.log( editor );
+                                            } )
+                                            .catch( error => {
+                                                console.error( error );
+                                            } );
+
+                                    </script>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Slug</label>
-                                    <input type="text" name="slug" class="form-control"  value="{{$data->slug}}">
+                                    <input type="text" name="slug" class="form-control" id="exampleInputPassword1" >
                                 </div>
+
                                 <div class="form-group">
                                     <label>Status</label>
                                     <select class="form-control select2" name="status" style="width: 100%;">
-                                        <option selected="selected">{{$data->status}}</option>
-                                        <option>False</option>
+                                        <option selected="selected">False</option>
                                         <option>True</option>
+
                                     </select>
                                 </div>
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Update</button>
+                                <button type="submit" class="btn btn-primary">Add Product</button>
                             </div>
                         </form>
                     </div>
@@ -91,4 +112,5 @@
             <!-- /.row -->
         </div><!-- /.container-fluid -->
     </section>
+
 @endsection
