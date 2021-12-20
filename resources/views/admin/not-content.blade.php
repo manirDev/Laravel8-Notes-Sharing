@@ -48,7 +48,7 @@
                         <th>Description</th>
                         <th>Image</th>
                         <th>Gallery</th>
-                        <th>PDFFile</th>
+                        <th>PDF-File</th>
                         <th>Slug</th>
                         <th>Status</th>
                         <th>Edit</th>
@@ -67,9 +67,11 @@
                         <td>{{ $rs->keywords}}</td>
                         <td>{{ $rs->description}}</td>
                         <td>
-                            @if($rs->image)
-                                <img src="{{Storage::url($rs->image)}}" width="30" height="30" >
-                            @endif
+                            <div class="p-2">
+                                @if($rs->image)
+                                    <img src="{{Storage::url($rs->image)}}"  width="32" height="32" >
+                                @endif
+                            </div>
                         </td>
                         <td>
                             <a href="{{route('admin_image_add', ['content_id' => $rs->id]) }}" >
@@ -79,7 +81,8 @@
                         <td>
                             @if($rs->file)
                                 <a href="{{Storage::url($rs->file)}}" target="_blank">
-                                    <i class="bx bxs-file-pdf p2" style="font-size: 32px"></i>
+                                    <i class="bx bxs-file-pdf p2" style="font-size: 32px"><span style="font-size: 16px">{{$rs->title}}</span></i>
+
                                 </a>
                             @endif
                         </td>

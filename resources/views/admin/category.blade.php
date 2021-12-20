@@ -35,7 +35,7 @@
     <div class="card">
         <div class="card-body">
             <div class="table-responsive">
-                <table id="example2" class="table table-striped table-bordered">
+                <table id="example2" class="table table-striped table-bordered" width="100%">
                     <thead>
                     <tr>
                         <th>Id</th>
@@ -107,7 +107,10 @@
     <script>
 
         $(document).ready(function() {
-            $('#example').DataTable()
+            $('#example').DataTable({
+                lengthChange: false,
+                    buttons: [ 'copy', 'excel', 'pdf', 'print']
+            })
         });
 
     </script>

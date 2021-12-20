@@ -11,6 +11,7 @@
     <!--favicon-->
     <link rel="icon" href="{{asset('assets')}}/Ahome/images/favicon-32x32.png" type="image/png" />
     <!--plugins-->
+    <link href="{{asset('assets')}}/Ahome/plugins/Drag-And-Drop/dist/imageuploadify.min.css" rel="stylesheet" />
     <link href="{{asset('assets')}}/Ahome/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet"/>
     <link href="{{asset('assets')}}/Ahome/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
     <link href="{{asset('assets')}}/Ahome/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
@@ -139,6 +140,7 @@
 <script src="{{asset('assets')}}/Ahome/js/app.js"></script>
 
 <script src="{{asset('assets')}}/Ahome/js/pace.min.js"></script>
+<script src="{{asset('assets')}}/Ahome/plugins/Drag-And-Drop/dist/imageuploadify.min.js"></script>
 
 @yield('jsz')
 </body>
