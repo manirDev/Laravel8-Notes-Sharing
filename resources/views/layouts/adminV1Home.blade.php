@@ -211,6 +211,7 @@
 <!-- Index js -->
 <script src="{{asset('assets')}}/js/index.js"></script>
 
+
 @yield('jsz')
 </body>
 </html>

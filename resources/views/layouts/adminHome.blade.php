@@ -32,7 +32,7 @@
     @yield('jsx')
 </head>
 
-<body class="bg-theme bg-theme9">
+<body class="bg-theme bg-theme1">
 
 <!-- Start wrapper-->
 <div class="wrapper">
@@ -64,9 +64,10 @@
     <!--start overlay-->
     <div class="overlay toggle-icon"></div>
     <!--end overlay-->
-    <!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
+    <!--Start Back To Top Button-->
+        <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
     <!--End Back To Top Button-->
-    <footer class="page-footer">
+    <footer class="page-footer" style="">
         <p class="mb-0">Copyright © 2021. All right reserved.</p>
     </footer>
 </div>
@@ -141,6 +142,8 @@
 
 <script src="{{asset('assets')}}/Ahome/js/pace.min.js"></script>
 <script src="{{asset('assets')}}/Ahome/plugins/Drag-And-Drop/dist/imageuploadify.min.js"></script>
+
+
 
 @yield('jsz')
 </body>
