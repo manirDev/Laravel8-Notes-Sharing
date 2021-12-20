@@ -7,13 +7,13 @@
     <!-- Content Header (Page header) -->
     <!--breadcrumb-->
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div class="breadcrumb-title pe-3">Tables</div>
+        <div class="breadcrumb-title pe-3">Data</div>
         <div class="ps-3">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0 p-0">
-                    <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+                    <li class="breadcrumb-item"><a href="{{route('admin_home')}}"><i class="bx bx-home-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">Data Table</li>
+                    <li class="breadcrumb-item active" aria-current="page">Category</li>
                 </ol>
             </nav>
         </div>
@@ -62,7 +62,10 @@
                             <td>{{ $rs->title}}</td>
                             <td>{{ $rs->keywords}}</td>
                             <td>{{ $rs->description}}</td>
-                            <td>{{ $rs->image}}</td>
+                            <td> @if($rs->image)
+                                    <img src="{{Storage::url($rs->image)}}"  width="32" height="32" >
+                                @endif
+                            </td>
                             <td>{{ $rs->slug}}</td>
                             <td>{{ $rs->status}}</td>
                             <td>
@@ -84,7 +87,7 @@
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
-            <a href="{{route('admin_category_add')}}"><button type="button" class="btn  btn-primary">Add Not-Content</button></a>
+            <a href="{{route('admin_category_add')}}"><button type="button" class="btn  btn-primary">Add Category</button></a>
         </div>
         <!-- /.card-footer-->
     </div>

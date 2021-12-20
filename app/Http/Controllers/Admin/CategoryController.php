@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Content;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -51,17 +53,25 @@ class CategoryController extends Controller
     }
     public function create(Request $request)
     {
-        //
-        DB::table('categories')->insert([
-            'parent_id' => $request->input('parent_id'),
-            'title' => $request->input('title'),
-            'keywords' => $request->input('keywords'),
-            'description' => $request->input('description'),
-            'slug' => $request->input('slug'),
-            'status' => $request->input('status')
-        ]);
 
-        return redirect()->route('admin_category');
+//        DB::table('categories')->insert([
+//            'parent_id' => $request->input('parent_id'),
+//            'title' => $request->input('title'),
+//            'keywords' => $request->input('keywords'),
+//            'description' => $request->input('description'),
+//            'slug' => $request->input('slug'),
+//            'status' => $request->input('status')
+//        ]);
+        $data = new Category;
+        $data->parent_id = $request->input('parent_id');
+        $data->title = $request->input('title');
+        $data->keywords = $request->input('keywords');
+        $data->description = $request->input('description');
+        $data->slug = $request->input('slug');
+        $data->status = $request->input('status');
+        $data->image = Storage::putFile('images', $request->file('image') );
+        $data->save();
+       return redirect()->route('admin_category');
     }
 
     /**
@@ -119,7 +129,9 @@ class CategoryController extends Controller
         $data->description = $request->input('description');
         $data->slug = $request->input('slug');
         $data->status = $request->input('status');
-
+        if($request->file('image')!=NULL){
+            $data->image = Storage::putFile('images', $request->file('image'));
+        }
         $data->save();
         return redirect()->route('admin_category');
     }

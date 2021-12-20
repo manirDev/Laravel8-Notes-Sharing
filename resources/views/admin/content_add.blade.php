@@ -1,42 +1,51 @@
 @extends('layouts.adminHome')
 
-@section('title', 'Admine Gettir')
-@section('jsx')
-    <script src="https://cdn.ckeditor.com/ckeditor5/31.1.0/classic/ckeditor.js"></script>
-@endsection
-<style>
-    .ck-editor__editable {min-height: 200px; color: black;}
-</style>
+@section('title', 'Not-Content Add')
+
 @section('content')
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
 
-
+    <!--breadcrumb-->
+    <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+        <div class="breadcrumb-title pe-3">Not-Content</div>
+        <div class="ps-3">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0 p-0">
+                    <li class="breadcrumb-item"><a href="{{route('admin_home')}}"><i class="bx bx-home-alt"></i></a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Add Content</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="ms-auto">
+            <div class="btn-group">
+                <button type="button" class="btn btn-light">Settings</button>
+                <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">Toggle Dropdown</span>
+                </button>
+                <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">	<a class="dropdown-item" href="javascript:;">Action</a>
+                    <a class="dropdown-item" href="javascript:;">Another action</a>
+                    <a class="dropdown-item" href="javascript:;">Something else here</a>
+                    <div class="dropdown-divider"></div>	<a class="dropdown-item" href="javascript:;">Separated link</a>
+                </div>
             </div>
-        </div><!-- /.container-fluid -->
-    </section>
+        </div>
+    </div>
+    <!--end breadcrumb-->
 
-    <!-- Main content -->
-    <section class="content">
-        <div class="container-fluid">
-            <div class="row">
-                <!-- left column -->
-                <div class="col-md-12">
-                    <!-- jquery validation -->
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">Not-Content Form </h3>
-                        </div>
-                        <!-- /.card-header -->
-                        <!-- form start -->
-                        <form action="{{route('admin_content_store')}}" role="form" id="quickForm" method="Post" enctype="multipart/form-data">
-                            @csrf
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Categories</label>
+    <div class="card">
+        <div class="card-body p-4">
+            <h5 class="card-title">Add a Not Content </h5>
+            <hr/>
+            <div class="form-body mt-4">
+                <div class="row">
+                    <form action="{{route('admin_content_store')}}" role="form" id="quickForm" method="Post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="col-lg-12">
+                            <div class="border border-3 p-4 rounded">
 
+                                <div class="mb-3">
+                                    <label for="inputProductTitle" class="form-label">Category</label>
                                     <select class="form-control select2" name="category_id" style="width: 100%;">
+
 
                                         @foreach($datalist as $rs)
                                             <option value="{{$rs->id}}">
@@ -45,72 +54,80 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Title</label>
-                                    <input type="text" name="title" class="form-control" id="exampleInputPassword1" >
+                                <div class="mb-3">
+                                    <label for="inputProductDescription" class="form-label">Title</label>
+                                    <input type="text" name="title" class="form-control" id="inputProductTitle" >
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Keywords</label>
-                                    <input type="text" name="keywords" class="form-control" id="exampleInputPassword1" >
+                                <div class="mb-3">
+                                    <label for="inputProductDescription" class="form-label">Keywords</label>
+                                    <input type="text" name="keywords"  class="form-control" id="inputProductTitle" >
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Description</label>
-                                    <input type="text" name="description" class="form-control" id="exampleInputPassword1">
+                                <div class="mb-3">
+                                    <label for="inputProductDescription" class="form-label">Description</label>
+                                    <textarea class="form-control" name="description" value="" id="inputProductDescription" rows="3"></textarea>
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Image</label>
-                                    <input type="file" name="image" class="form-control" >
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">File</label>
-                                    <input type="file" name="file" class="form-control" >
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Detail</label>
-                                    <textarea id="editor1" name="detail" class="form-control"></textarea>
-                                    <script>
-                                        ClassicEditor
-                                            .create( document.querySelector( '#editor1' ) )
-                                            .then( editor => {
-                                                console.log( editor );
-                                            } )
-                                            .catch( error => {
-                                                console.error( error );
-                                            } );
-
-                                    </script>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Slug</label>
-                                    <input type="text" name="slug" class="form-control" id="exampleInputPassword1" >
+                                <div class="mb-3" >
+                                    <label for="inputProductDescription" class="form-label">Content Image File </label> <br>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <input id="fancy-file-upload" type="file" name="image"  multiple>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <div class="form-group">
-                                    <label>Status</label>
-                                    <select class="form-control select2" name="status" style="width: 100%;">
+                                <div class="mb-3">
+                                    <label for="inputProductDescription" class="form-label">Content Pdf File </label> <br>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <input id="fancy-file-upload" type="file" name="file"  multiple>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+
+                                    <label for="inputProductDescription" class="form-label">Detail</label>
+                                    <textarea id="mytextarea" name="detail"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="inputProductDescription" class="form-label">Slug</label>
+                                    <input type="text" name="slug"  class="form-control" id="inputProductTitle" >
+                                </div>
+                                <div class="mb-3">
+                                    <label for="inputVendor" class="form-label">Status</label>
+                                    <select class="form-control select2" id="inputProductType" name="status" style="width: 100%;">
                                         <option selected="selected">False</option>
                                         <option>True</option>
-
                                     </select>
                                 </div>
                             </div>
-                            <!-- /.card-body -->
-                            <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Add Product</button>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- /.card -->
-                </div>
-                <!--/.col (left) -->
-                <!-- right column -->
-                <div class="col-md-6">
+                        </div>
 
-                </div>
-                <!--/.col (right) -->
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Add Not-Content</button>
+                        </div>
+                    </form>
+                </div><!--end row-->
             </div>
-            <!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </section>
+        </div>
+    </div>
+@endsection
+
+
+@section('jsz')
+    <script>
+        $(document).ready(function () {
+            $('#image-uploadify').imageuploadify();
+        })
+    </script>
+
+
+
+    <script src='https://cdn.tiny.cloud/1/vdqx2klew412up5bcbpwivg1th6nrh3murc6maz8bukgos4v/tinymce/5/tinymce.min.js' referrerpolicy="origin">
+    </script>
+    <script>
+        tinymce.init({
+            selector: '#mytextarea'
+        });
+    </script>
 
 @endsection

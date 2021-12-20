@@ -69,7 +69,7 @@
                                     <label for="inputProductDescription" class="form-label">Content Image File </label> <br>
                                     <div class="card">
                                         <div class="card-body">
-                                            <input id="fancy-file-upload" type="file" name="file" value="{{$data->image}}" multiple>
+                                            <input id="fancy-file-upload" type="file" name="image" value="{{$data->image}}" multiple>
 
                                         </div>
                                         @if($data->image)
@@ -102,7 +102,7 @@
                                     <input type="text" name="slug" value="{{$data->slug}}" class="form-control" id="inputProductTitle" >
                                 </div>
                                 <div class="mb-3">
-                                    <label for="inputVendor" class="form-label">Vendor</label>
+                                    <label for="inputVendor" class="form-label">Status</label>
                                     <select class="form-control select2" id="inputProductType" name="status" style="width: 100%;">
                                         <option selected="selected">{{$data->status}}</option>
                                         <option>False</option>
