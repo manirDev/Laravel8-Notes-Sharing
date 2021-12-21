@@ -16,7 +16,7 @@
         @include('home.flash-message')
         <div class="table-responsive">
 
-                @csrf
+
                 <div class="card-body">
                     <table id="example2" class="table table-striped table-bordered">
 
@@ -50,7 +50,8 @@
                             <tr>
                                 <th>Add Role</th>
                                 <td>
-                                    <form action="{{route('admin_user_role_add', ['id'=>$data->id])}}" role="form" id="quickForm" method="Post">
+                                    <form action="{{route('admin_user_role_add', ['id'=>$data->id])}}"  id="quickForm" method="Post">
+                                        @csrf
                                         <select  name="roleid">
                                             @foreach($datalist as $rs)
                                                 <option value="{{$rs->id}}" >

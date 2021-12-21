@@ -58,7 +58,7 @@
                             <td>{{ $rs->address}}</td>
                             <td>
                                 @foreach($rs->roles as $row)
-                                    {{$row->name}},
+                                    {{$row->name}} |
                                 @endforeach
                                 <a href="{{route('admin_user_roles', ['id' => $rs->id]) }}" onclick="return !window.open(this.href, '', 'top=50 left=100 width=800 height=600')" >
                                     <i class="bx bx-plus-circle text-info" ></i>

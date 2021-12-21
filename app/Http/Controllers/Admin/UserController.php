@@ -104,8 +104,9 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $roleid = $request->input('roleid');
-        $user->roles()->attach($roleid);
-
+//        echo $roleid;
+//        exit();
+        $user->roles()->attach($roleid); //many to many relation
         return redirect()->back()->with('success', 'Role added to user');
     }
     public function user_role_delete(Request $request, User $user, $userid, $roleid)
