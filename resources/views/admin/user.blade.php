@@ -69,7 +69,8 @@
                                     <i class="bx bx-edit p-2 text-info" style="font-size: 24px"></i>
                                 </a>
                             </td>
-                            <td><a href="{{route('admin_user_delete', ['id' => $rs->id]) }}" onclick="return confirm('Delete! Are you sure?')" >
+                            <td>
+                                <a href="{{route('admin_user_delete', ['id' => $rs->id]) }}" onclick="return confirm('Delete! Are you sure?')" >
                                     <i class="bx bx-trash p-2 text-danger" style="font-size: 24px"></i>
                                 </a>
                             </td>
