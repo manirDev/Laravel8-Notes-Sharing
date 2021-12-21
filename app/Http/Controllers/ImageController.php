@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
+use App\Models\Content;
 use App\Models\Image;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 class ImageController extends Controller
 {
     /**
@@ -22,9 +25,13 @@ class ImageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($content_id)
     {
         //
+        $data = Content::find($content_id);
+        $images = DB::table('images')->where('content_id', '=', $content_id)->get();
+
+        return view('home.user_image_add', ['data' => $data, 'images'=>$images]);
     }
 
     /**
@@ -33,9 +40,17 @@ class ImageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $content_id)
     {
         //
+        $data = new Image;
+        //$data->parent_id = $request->input('parent_id');
+        $data->content_id = $content_id;
+        $data->title = $request->input('title');
+        $data->image = Storage::putFile('images', $request->file('image') );
+
+        $data->save();
+        return redirect()->back();
     }
 
     /**
@@ -78,8 +93,12 @@ class ImageController extends Controller
      * @param  \App\Models\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Image $image)
+    public function destroy(Image $image, $id, $content_id)
     {
         //
+        $data = Image::find($id);
+        $data->delete();
+
+        return redirect()->back();
     }
 }

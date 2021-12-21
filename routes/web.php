@@ -89,10 +89,10 @@ Route::middleware('auth')->prefix('myaccount')->namespace('myaccount')->group(fu
     #Image
     Route::prefix('image')->group(function (){
         //Route::get('/', [\App\Http\Controllers\ProductController::class, 'index'])->name(admin_image');
-        Route::get('create/{content_id}', [\App\Http\Controllers\Admin\ImageController::class, 'create'])->name('user_image_add');
-        Route::post('store/{content_id}', [\App\Http\Controllers\Admin\ImageController::class, 'store'])->name('user_image_store');
-        Route::get('delete/{id}', [\App\Http\Controllers\Admin\ImageController::class, 'destroy'])->name('user_image_delete');
-        Route::get('show', [\App\Http\Controllers\Admin\ImageController::class, 'show'])->name('user_image_show');
+        Route::get('create/{content_id}', [\App\Http\Controllers\ImageController::class, 'create'])->name('user_image_add');
+        Route::post('store/{content_id}', [\App\Http\Controllers\ImageController::class, 'store'])->name('user_image_store');
+        Route::get('delete/{id}', [\App\Http\Controllers\ImageController::class, 'destroy'])->name('user_image_delete');
+        Route::get('show', [\App\Http\Controllers\ImageController::class, 'show'])->name('user_image_show');
     });
 });
 

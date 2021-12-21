@@ -12,7 +12,7 @@
 
 @extends('layouts.home')
 
-@section('title', 'User-Dashboard')
+@section('title', 'User-Not-Content')
 
 
 
@@ -87,6 +87,7 @@
                                     <a href="{{route('user_image_add', ['content_id' => $rs->id]) }}" >
                                         <i class="fadeIn animated bx bx-images p-2 text-info" style="font-size: 32px"></i>
                                     </a>
+
                                 </td>
                                 <td>
                                     @if($rs->file)
