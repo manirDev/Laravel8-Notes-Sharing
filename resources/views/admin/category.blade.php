@@ -52,7 +52,7 @@
                             <td>{{ $rs->keywords}}</td>
                             <td>{{ $rs->description}}</td>
                             <td> @if($rs->image)
-                                    <img src="{{Storage::url($rs->image)}}"  width="32" height="32" >
+                                    <img src="{{Storage::url($rs->image)}}" width="50" height="50" style="border-radius: 10px;" >
                                 @endif
                             </td>
                             <td>{{ $rs->slug}}</td>

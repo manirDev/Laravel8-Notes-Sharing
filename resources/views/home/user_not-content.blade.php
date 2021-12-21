@@ -79,7 +79,7 @@
                                 <td>
                                     <div class="p-2">
                                         @if($rs->image)
-                                            <img src="{{Storage::url($rs->image)}}"  width="32" height="32" >
+                                            <img src="{{Storage::url($rs->image)}}"   width="50" height="50" style="border-radius: 10px;width:50px !important; height:50px !important;" >
                                         @endif
                                     </div>
                                 </td>

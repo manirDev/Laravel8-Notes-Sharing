@@ -69,7 +69,7 @@
 
                                         </div>
                                         @if($data->image)
-                                            <img src="{{Storage::url($data->image)}}" width="60" height="60" >
+                                            <img src="{{Storage::url($data->image)}}"  width="70" height="70" style="border-radius: 10px;" >
                                         @endif
                                     </div>
                                 </div>

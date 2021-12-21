@@ -1,7 +1,9 @@
 @extends('layouts.adminHome')
 
 @section('title', 'Users')
+@section('csx')
 
+@endsection
 @section('content')
 
     <!-- Content Header (Page header) -->
@@ -24,22 +26,21 @@
         </div>
     </div>
 
-
     <div class="card">
         <div class="card-body">
             <div class="table-responsive">
-                <table id="users" class="table table-striped table-bordered" width="100%">
+                <table id="example2" class="table table-striped table-bordered">
                     <thead>
                     <tr>
                         <th>Id</th>
-                        <th></th>
+                        <th>Image</th>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Phone</th>
                         <th>Address</th>
                         <th>Roles</th>
-                        <th colspan="2">Actions</th>
-
+                        <th>Edit</th>
+                        <th>Delete</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -84,14 +85,12 @@
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
-            <a href="{{route('admin_category_add')}}"><button type="button" class="btn  btn-primary">Add Category</button></a>
+            <a href="{{route('admin_content_add')}}"><button type="button" class="btn  btn-primary">Add Not-Content</button></a>
         </div>
         <!-- /.card-footer-->
     </div>
 
 @endsection
-
-
 
 @section('jsz')
     <!-- <script>
@@ -107,10 +106,7 @@
     <script>
 
         $(document).ready(function() {
-            $('#example').DataTable({
-                lengthChange: false,
-                    buttons: [ 'copy', 'excel', 'pdf', 'print']
-            })
+            $('#example').DataTable()
         });
 
     </script>
@@ -119,22 +115,6 @@
     <script>
         $(document).ready(function() {
             var table = $('#example2').DataTable( {
-                lengthChange: false,
-                buttons: [ 'copy', 'excel', 'pdf', 'print']
-            } );
-
-            table.buttons().container()
-                .appendTo( '#example2_wrapper .col-md-6:eq(0)' );
-        } );
-    </script>
-@endsection
-
-@section('jsz')
-
-
-    <script>
-        $(document).ready(function() {
-            var table = $('#users').DataTable( {
                 lengthChange: false,
                 buttons: [ 'copy', 'excel', 'pdf', 'print']
             } );
