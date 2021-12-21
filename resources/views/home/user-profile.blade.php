@@ -15,13 +15,6 @@
             </div>
         </div>
     </div>
-    <section class="my-account-area ptb-100 d-flex justify-content-center">
-        <div class="container">
-            <div class="myAccount-navigation">
-                @include('home.user-header')
-            </div>
-        </div>
-    </section>
 @endsection
 
 @section('slider')
@@ -30,6 +23,19 @@
 
 @section('content')
 
-    @include('profile.show')
+
+        <section class="my-account-area ptb-100 d-flex justify-content-center">
+            <div class="container">
+                <div class="row">
+                    <div class="myAccount-navigation col-2">
+                        @include('home.user-header')
+                    </div>
+                    <div class="col-10">
+                        @include('profile.show')
+                    </div>
+                </div>
+            </div>
+        </section>
+
 
 @endsection

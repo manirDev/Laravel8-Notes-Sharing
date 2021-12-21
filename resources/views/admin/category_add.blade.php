@@ -94,6 +94,7 @@
                             <button type="submit" class="btn btn-primary">Add Category</button>
                         </div>
                     </form>
+
                 </div><!--end row-->
             </div>
         </div>

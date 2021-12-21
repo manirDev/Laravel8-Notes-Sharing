@@ -30,6 +30,8 @@
     <link rel="stylesheet" href="{{asset('assets')}}/fhome/css/responsive.css">
 {{--    <title>Raque - Education & Online Courses HTML Template</title>--}}
     <link rel="icon" type="image/png" href="{{asset('assets')}}/fhomeassets/img/favicon.png">
+
+    @yield('csz')
 </head>
 <body >
 
@@ -56,9 +58,7 @@
                         <div class="top-header-social">
                             <span>Sınav Haftası Şarkıları</span>
                         </div>
-                        <div class="top-header-social">
-                            <span>Sınav Haftası Dualar</span>
-                        </div>
+
                         <div class="top-header-social">
                             <span></span>
                         </div>
@@ -144,5 +144,7 @@
     <script src="{{asset('assets')}}/fhome/js/form-validator.min.js"></script>
     <script src="{{asset('assets')}}/fhome/js/contact-form-script.js"></script>
     <script src="{{asset('assets')}}/fhome/js/main.js"></script>
+
+@yield('jsz')
 </body>
 </html>
