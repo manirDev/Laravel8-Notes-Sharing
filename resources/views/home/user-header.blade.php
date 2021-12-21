@@ -5,13 +5,23 @@
     }
 </style>
 
-<div class="myHeader">
-    <ul>
-        <li><a href="{{route('myprofile')}}" class="active"><i class='bx bxs-dashboard'></i> Dashboard</a></li>
-        <li><a href="orders.html"><i class='bx bx-cart'></i> Orders</a></li>
-        <li><a href=""><i class='bx bx-download'></i> Downloads</a></li>
-        <li><a href="{{route('user_content')}}"><i class='bx bx-home-alt'></i> My Not-Contents</a></li>
-        <li><a href="{{route('user-profile')}}"><i class='bx bx-edit'></i> Account Details</a></li>
-        <li><a href="#"><i class='bx bx-log-out'></i> Logout</a></li>
-    </ul>
-</div>
+@auth
+    <div class="myHeader">
+        <ul>
+            {{--        <li><a href="{{route('myprofile')}}" class="active"><i class='bx bxs-dashboard'></i> Dashboard</a></li>--}}
+            <li><a href="{{route('user-profile')}}" class="active" ><i class='bx bx-edit'></i> Account Details</a></li>
+            <li><a href="{{route('user_content')}}"><i class='bx bx-home-alt'></i> My Not-Contents</a></li>
+            <li><a href="orders.html"><i class='bx bx-cart'></i> Orders</a></li>
+            <li><a href="orders.html"><i class='bx bx-cart'></i> Orders</a></li>
+            <li><a href="orders.html"><i class='bx bx-cart'></i> Orders</a></li>
+
+            @php
+                $userRoles = Auth::user()->roles->pluck('name') ;
+            @endphp
+            @if($userRoles->contains('admin'))
+                <li><a href="{{route('admin_home')}}"><i class='bx bx-log-out'></i> Admin Panel</a></li>
+            @endif
+            <li><a href="{{route('admin_logout')}}" target="_blank"><i class='bx bx-log-out'></i> Logout</a></li>
+        </ul>
+    </div>
+@endauth

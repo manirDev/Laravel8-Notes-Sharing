@@ -1,6 +1,6 @@
 @extends('layouts.adminHome')
 
-@section('title', 'Admine Gettir')
+@section('title', 'Category')
 
 @section('content')
 
@@ -74,11 +74,7 @@
                 </table>
             </div>
         </div>
-        <!-- /.card-body -->
-        <div class="card-footer">
-            <a href="{{route('admin_category_add')}}"><button type="button" class="btn  btn-primary">Add Category</button></a>
-        </div>
-        <!-- /.card-footer-->
+
     </div>
 
 @endsection

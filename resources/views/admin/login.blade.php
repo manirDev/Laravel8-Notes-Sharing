@@ -40,6 +40,7 @@
                     <img src="{{asset('assets')}}/images/logo-icon.png" alt="logo icon">
                 </div>
                 <div class="card-title text-uppercase text-center py-3">Sign In</div>
+                @include('home.flash-message')
                 <form action="{{ route('admin_check') }}" method="post">
                     @csrf
                     <div class="form-group">

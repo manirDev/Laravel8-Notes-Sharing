@@ -42,6 +42,13 @@
             </a>
         </li>
         <li>
+            <a href="{{route('admin_users')}}">
+                <div class="parent-icon"><i class='bx bx-user'></i>
+                </div>
+                <div class="menu-title">Users</div>
+            </a>
+        </li>
+        <li>
             <a href="{{route('admin_setting')}}">
                 <div class="parent-icon"><i class='bx bx-cog'></i>
                 </div>
