@@ -10,7 +10,7 @@
         "goodnesskay/laravelpdfviewer": "^1.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.65",
-        "laravel/jetstream": "^2.4",
+        "laravel/jetstream": "^2.5",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.5"

@@ -1,4 +1,6 @@
-
+@section('livewire')
+    @livewireScripts
+@endsection
 <div class="navbar-area">
     <div class="raque-responsive-nav">
         <div class="container">

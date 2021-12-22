@@ -118,6 +118,7 @@
     @yield('content')
 
     @include('home._footer')
+    @yield('livewire')
 
     <div class="go-top"><i class='bx bx-up-arrow-alt'></i></div>
     <!-- Include Libs & Plugins
@@ -146,5 +147,6 @@
     <script src="{{asset('assets')}}/fhome/js/main.js"></script>
 
 @yield('jsz')
+
 </body>
 </html>

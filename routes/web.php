@@ -122,3 +122,7 @@ Route::get('/admin/logout', [\App\Http\Controllers\HomeController::class, 'logou
 
 
 
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
