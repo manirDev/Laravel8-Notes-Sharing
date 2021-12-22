@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Review;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -21,6 +23,16 @@ class UserController extends Controller
     public function userProfile()
     {
         return view('home.user-profile');
+    }
+
+    public function myreviews(){
+        $datalist = Review::where('user_id', '=', Auth::user()->id)->get();
+        return view('home.user_reviews', ['datalist' => $datalist]);
+    }
+    public function destroyreview(Review $review, $id){
+        $data = Review::find($id);
+        $data->delete();
+        return redirect()->back()->with('success', 'Review Deleted');
     }
     /**
      * Show the form for creating a new resource.
