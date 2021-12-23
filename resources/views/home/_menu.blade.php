@@ -26,7 +26,7 @@
                          @include('home._category')
                         <li class="nav-item"><a href="{{route('home')}}" class="nav-link ">About Us </a></li>
                         <li class="nav-item"><a href="{{route('home')}}" class="nav-link ">References </a></li>
-                        <li class="nav-item"><a href="{{route('home')}}" class="nav-link ">Faq </a></li>
+                        <li class="nav-item"><a href="{{route('faq')}}" class="nav-link ">Faq </a></li>
                         <li class="nav-item"><a href="{{route('contact')}}" class="nav-link">Contact</a></li>
                     </ul>
                     <div class="others-option">

@@ -8,9 +8,6 @@
 
 @section('keywords', $data->keywords)
 
-@section('csz')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-@endsection
 
 @section('hero')
     <div class="page-title-area item-bg1 jarallax" data-jarallax='{"speed": 0.3}' style="background-image:url({{asset('assets')}}/fhome/img/main-banner3.jpg);">
@@ -87,17 +84,18 @@
                             </div>
                             <a href="#rev" ><span class="label">{{$countrev}} Reviews {{$avgrev}}</span></a>
 
-
                         </div>
                         <h3>Description</h3>
                         <p> {{ $data->description}}</p>
                         <div class="product-meta">
                         <span>Publisher:
                             <span class="sku">
-                                @auth
-                                    <img src="{{Auth::user()->profile_photo_url}}" style="width: 30px; height: 30px; border-radius: 100%;" class="shadow" alt="image">
-                                    <span>{{Auth::user()->name}}</span>
-                                @endauth
+                                @if($data->user->profile_photo_path)
+
+                                    <img src="{{Storage::url($data->user->profile_photo_path)}}" style="width: 30px; height: 30px; border-radius: 100%;" class="shadow" alt="image">
+                                @endif
+                                    <span>{{$data->user->name}}</span>
+
                             </span>
                         </span>
                             <span>Category: <a href="{{route('categorycontents',['id'=>$data->id, 'slug'=>$data->title])}}">{{ \App\Http\Controllers\Admin\CategoryController::getParentsTree($data, $data->title) }}</a></span>
@@ -175,8 +173,8 @@
                                                                 <h3>{{$rs->subject}}</h3>
                                                                 <span>
 {{--                                                                    @if($rs->user->profile_photo_url)--}}
-{{--                                                                     <img src="{{Storage::url($rs->user->profile_photo_url)}}" style="width: 30px; height: 30px; border-radius: 100%;" class="shadow" alt="image">--}}
-{{--                                                                    @endif--}}
+                                                                    {{--                                                                     <img src="{{Storage::url($rs->user->profile_photo_url)}}" style="width: 30px; height: 30px; border-radius: 100%;" class="shadow" alt="image">--}}
+                                                                    {{--                                                                    @endif--}}
                                                                     <strong>{{$rs->user->name}}</strong> on <strong>{{$rs->created_at}}</strong>
                                                                 </span>
                                                                 <p>{{$rs->review}}.</p>

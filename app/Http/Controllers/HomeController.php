@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Content;
+use App\Models\Faq;
 use App\Models\Message;
 use App\Models\Review;
 use App\Models\Setting;
@@ -28,12 +29,13 @@ class HomeController extends Controller
     {
         return Review::where('content_id', $id)->average('rate') ;
     }
+
     //
     public function notContent($id, $slug){
         $data = Content::find($id);
         $datalist = Content::where('category_id',$id)->get();
         $reviews = Review::where('content_id', $id)->get();
-//        print_r($data);
+//        print_r($reviews);
 //        exit();
         return view('home.not-content_detail', ['data' => $data,'datalist' => $datalist, 'reviews'=>$reviews]);
     }
@@ -47,9 +49,10 @@ class HomeController extends Controller
 
 
     public function index(){
+
         $setting = Setting::first();
         $slider = Content::select('id', 'title', 'image', 'description', 'slug')->limit(4)->get();
-        $daily = Content::select('id', 'title', 'image', 'description', 'slug')->limit(6)->inRandomOrder()->get();
+        $daily = Content::select('id','title', 'image', 'description', 'slug')->limit(6)->inRandomOrder()->get();
         $last = Content::select('id', 'title', 'image', 'description', 'slug')->limit(6)->inRandomOrder()->get();
         $picked = Content::select('id', 'title', 'image', 'description', 'slug')->limit(6)->inRandomOrder()->get();
 //        print_r($picked);
@@ -73,7 +76,8 @@ class HomeController extends Controller
 
     }
     public function faq(){
-        return  view('home.aboutus');
+        $datalist = Faq::all()->sortBy('position');
+        return view('home.faq', ['datalist' => $datalist]);
 
     }
     public function contact(){

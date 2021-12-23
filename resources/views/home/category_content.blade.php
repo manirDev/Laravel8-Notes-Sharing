@@ -41,13 +41,15 @@
                                 </div>
                                 <div class="post-content">
                                     <ul class="post-meta">
-                                        @auth
-                                        <li class="post-author">
 
-                                            <img src="{{Auth::user()->profile_photo_url}}" class="d-inline-block rounded-circle mr-2" alt="image">
-                                            By: <a href="{{route('notContent', ['id'=>$rs->id, 'slug'=>$rs->slug])}}" class="d-inline-block">{{Auth::user()->name}}</a>
+                                        <li class="post-author">
+                                            @if($rs->user->profile_photo_path)
+                                                <img src="{{Storage::url($rs->user->profile_photo_path)}}" class="d-inline-block rounded-circle mr-2" alt="image">
+                                            @endif
+
+                                            By: <a href="{{route('notContent', ['id'=>$rs->id, 'slug'=>$rs->slug])}}" class="d-inline-block">{{$rs->user->name}}</a>
                                         </li>
-                                        @endauth
+
                                         <li><a href="#">August 30, 2021</a></li>
                                     </ul>
                                     <h3><a href="#" class="d-inline-block">{{$rs->description}}</a></h3>
