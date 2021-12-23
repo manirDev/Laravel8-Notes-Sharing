@@ -53,7 +53,12 @@
 
                         <tr>
                             <td>{{ $rs->id }}</td>
-                            <td>{{ $rs->user->name }}</td>
+                            <td>
+                                <a href="{{route('admin_user_show', ['id' => $rs->user->id]) }}" onclick="return !window.open(this.href, '', 'top=50 left=100 width=800 height=600')" >
+                                    {{ $rs->user->name }}
+                                </a>
+
+                            </td>
                             <td>
                                 <a href="{{route('notContent', ['id'=>$rs->content->id, 'slug'=>$rs->content->slug])}}" target="_blank">
                                     {{$rs->content->title}}

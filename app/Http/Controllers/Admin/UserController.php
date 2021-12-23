@@ -52,9 +52,12 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(User $user, $id)
     {
-        //
+        $data = User::find($id);
+        $datalist = Role::all()->sortBy('name');
+
+        return view('admin.user_show', ['data' => $data, 'datalist' => $datalist]);
     }
 
     /**
