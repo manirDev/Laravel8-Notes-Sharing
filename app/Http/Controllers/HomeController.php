@@ -39,6 +39,26 @@ class HomeController extends Controller
 //        exit();
         return view('home.not-content_detail', ['data' => $data,'datalist' => $datalist, 'reviews'=>$reviews]);
     }
+    public function getcontent(Request $request){
+        if($request->input('search')){ $search =$request->input('search');}
+
+        $count = Content::where('title', 'like', '%'.$search.'%')->get()->count();
+        if($count==1)
+        {
+            $data = Content::where('title', 'like', '%'.$search.'%')->first();
+            return redirect()->route('notContent', ['id' => $data->id,'slug' => $data->slug]);
+        }
+        else
+        {
+            return redirect()->route('contentlist', ['search' => $search]);
+        }
+    }
+    public function contentlist($search){
+
+        $datalist = Content::where('title', 'like', '%'.$search.'%')->get();
+        return view('home.search_contents', ['search' => $search, 'datalist' => $datalist]);
+
+    }
     public function categorycontents($id, $slug){
         $datalist = Content::where('category_id',$id)->get();
         $data = Category::find($id);
