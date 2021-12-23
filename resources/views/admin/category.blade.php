@@ -17,7 +17,11 @@
                 </ol>
             </nav>
         </div>
-
+        <div class="ms-auto">
+            <div class="btn-group">
+                <a href="{{route('admin_category_add')}}"><button type="button" class="btn  btn-primary">Add Category</button></a>
+            </div>
+        </div>
     </div>
 
 

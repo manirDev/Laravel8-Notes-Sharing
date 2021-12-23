@@ -24,7 +24,7 @@
             <a href="{{route('admin_content')}}">
                 <div class="parent-icon"><i class='bx bx-message-square-edit'></i>
                 </div>
-                <div class="menu-title">Shared-Not</div>
+                <div class="menu-title">Shared-Notes</div>
             </a>
         </li>
         <li>
@@ -59,7 +59,7 @@
             <a href="{{route('admin_faq')}}">
                 <div class="parent-icon"><i class='bx bx-question-mark'></i>
                 </div>
-                <div class="menu-title">Faq</div>
+                <div class="menu-title">FAQs</div>
             </a>
         </li>
         <li>

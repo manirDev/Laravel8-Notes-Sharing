@@ -1,7 +1,7 @@
 
 @extends('layouts.adminHome')
 
-@section('title', 'Not Content')
+@section('title', 'Note Content')
 
 @section('cssx')
 @endsection
@@ -20,7 +20,11 @@
                 </ol>
             </nav>
         </div>
-
+        <div class="ms-auto">
+            <div class="btn-group">
+                <a href="{{route('admin_content_add')}}"><button type="button" class="btn  btn-primary">Add a Note</button></a>
+            </div>
+        </div>
     </div>
 
 
