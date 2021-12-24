@@ -157,8 +157,8 @@
 
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-6 review-comments">
-
+                                                    <div class="col-6 review-comments" >
+{{--                                                        id="dynamic_content"--}}
                                                             @foreach($reviews as $rs)
                                                                 <div class="review-item">
                                                                     <div class="rating">
@@ -180,9 +180,13 @@
                                                                     </span>
                                                                     <p>{{$rs->review}}.</p>
                                                                 </div>
+
+
                                                             @endforeach
 
                                                     </div>
+{{--                                                    <div id="show_paginator"></div>--}}
+
                                                     <div id="rev" class="col-6 review-form">
                                                         <h3>Write a Review</h3>
 
@@ -244,4 +248,23 @@
     </section>
 
 
+@endsection
+
+@section('jsz')
+    <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://botmonster.com/jquery-bootpag/jquery.bootpag.js"></script>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+
+    <script>
+        $('#show_paginator').bootpag({
+            total:10,
+            page: 1,
+            maxVisible: 4
+        }).on('page', function(event, num)
+        {
+            $("#dynamic_content").html("Page " + num); // or some ajax content loading...
+        });
+    </script>
 @endsection

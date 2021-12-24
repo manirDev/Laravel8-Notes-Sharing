@@ -4,26 +4,28 @@
         <div class="section-title text-left">
             <span class="sub-title">Discover Lessons</span>
             <h2> Popular Daily Students Shared Lessons</h2>
-            <a href="courses-2-columns-style-2.html" class="default-btn"><i class='bx bx-show-alt icon-arrow before'></i><span class="label">All Lessons</span><i class="bx bx-show-alt icon-arrow after"></i></a>
+            <a href="{{route('all_notes')}}" class="default-btn"><i class='bx bx-show-alt icon-arrow before'></i><span class="label">All Notes</span><i class="bx bx-show-alt icon-arrow after"></i></a>
         </div>
         <div class="shorting">
             <div class="row">
+                <div class="courses-slides owl-carousel owl-theme">
                 @foreach($daily as $rs)
-                    <div class="col-lg-4 col-md-6 mix business design language">
+
                         <div class="single-courses-item mb-30">
                             <div class="courses-image">
                                 <a href="{{route('notContent', ['id'=>$rs->id, 'slug'=>$rs->slug])}}" class="d-block"><img src="{{ Storage::url($rs->image) }}" alt="image" style="height:200px;"></a>
                             </div>
                             <div class="courses-content">
+
                                 <div class="d-flex justify-content-between align-items-center">
 
-{{--                                        <div class="course-author d-flex align-items-center">--}}
-{{--                                            @if($rs->user->profile_photo_path)--}}
+                                        <div class="course-author d-flex align-items-center">
+                                            @if($rs->user->profile_photo_path)
 
-{{--                                                <img src="{{Storage::url($rs->user->profile_photo_path)}}" style="width: 30px; height: 30px; border-radius: 100%;" class="shadow" alt="image">--}}
-{{--                                            @endif--}}
-{{--                                            By: <a href="#" class="d-inline-block">{{$rs->user->name}}</a>--}}
-{{--                                        </div>--}}
+                                                <img src="{{Storage::url($rs->user->profile_photo_path)}}" style="width: 30px; height: 30px; border-radius: 100%;" class="shadow" alt="image">
+                                            @endif
+                                            By: <a href="#" class="d-inline-block">{{$rs->user->name}}</a>
+                                        </div>
                                     @php
                                         $avgrev = App\Http\Controllers\HomeController::avgreview($rs->id);
                                         $countrev = App\Http\Controllers\HomeController::countreview($rs->id);
@@ -61,8 +63,9 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
+
                 @endforeach
+                </div>
             </div>
         </div>
     </div>
@@ -197,13 +200,13 @@
                         <div class="courses-content">
                             <div class="d-flex justify-content-between align-items-center">
 
-                                {{--                                        <div class="course-author d-flex align-items-center">--}}
-                                {{--                                            @if($rs->user->profile_photo_path)--}}
+                                   <div class="course-author d-flex align-items-center">
+                                       @if($rs->user->profile_photo_path)
 
-                                {{--                                                <img src="{{Storage::url($rs->user->profile_photo_path)}}" style="width: 30px; height: 30px; border-radius: 100%;" class="shadow" alt="image">--}}
-                                {{--                                            @endif--}}
-                                {{--                                            By: <a href="#" class="d-inline-block">{{$rs->user->name}}</a>--}}
-                                {{--                                        </div>--}}
+                                           <img src="{{Storage::url($rs->user->profile_photo_path)}}" style="width: 30px; height: 30px; border-radius: 100%;" class="shadow" alt="image">
+                                       @endif
+                                       By: <a href="#" class="d-inline-block">{{$rs->user->name}}</a>
+                                   </div>
                                 @php
                                     $avgrev = App\Http\Controllers\HomeController::avgreview($rs->id);
                                     $countrev = App\Http\Controllers\HomeController::countreview($rs->id);

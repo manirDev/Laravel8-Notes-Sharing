@@ -45,9 +45,9 @@
                 <div class="single-footer-widget mb-30">
                     <h3>Some Randoms Tags</h3>
                     <ul class="useful-link">
-                        @foreach($tags as $rs)
-                         <li><a href="{{route('notContent', ['id'=>$rs->id, 'slug'=>$rs->slug])}}">{{$rs->slug}}</a></li>
-                        @endforeach
+{{--                        @foreach($tags as $rs)--}}
+{{--                         <li><a href="{{route('notContent', ['id'=>$rs->id, 'slug'=>$rs->slug])}}">{{$rs->slug}}</a></li>--}}
+{{--                        @endforeach--}}
                     </ul>
                 </div>
             </div>

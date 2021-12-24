@@ -23,6 +23,7 @@ Route::get('/notContent/{id}/{slug}', [\App\Http\Controllers\HomeController::cla
 Route::get('/categorycontents/{id}/{slug}', [\App\Http\Controllers\HomeController::class, 'categorycontents'])->name('categorycontents');
 Route::post('/getcontent', [\App\Http\Controllers\HomeController::class, 'getcontent'])->name('getcontent');
 Route::get('/contentlist/{search}', [\App\Http\Controllers\HomeController::class, 'contentlist'])->name('contentlist');
+Route::get('/allnotes', [\App\Http\Controllers\HomeController::class, 'allnotes'])->name('all_notes');
 
 //admin routes
 Route::middleware('auth')->prefix('admin')->group(function () {

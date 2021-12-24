@@ -8,6 +8,7 @@ use App\Models\Message;
 use App\Models\Review;
 use App\Models\Setting;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -27,8 +28,49 @@ class HomeController extends Controller
     }
     public static function avgreview($id)
     {
-        return Review::where('content_id', $id)->average('rate') ;
+        return Review::where('content_id', $id)->average('rate');
     }
+    public static function avgmax($id)
+    {
+         $avg = Review::where('content_id', $id)->average('rate');
+         $max= Review::where('content_id', $id)->max('rate');
+        $list = Review::all();
+        $lineCount = count($list);;
+        $arr = array();
+        for($i=0;$i<=$lineCount;$i++){
+            $arr[] = $avg;
+        }
+
+        $third = $first = $second = 0;
+        for ($i = 0; $i < count($arr) ; $i++)
+        {
+            /* If current element is greater than first*/
+            if ($arr[$i] > $first)
+            {
+                $third = $second;
+                $second = $first;
+                $first = $arr[$i];
+            }
+
+            /* If arr[i] is in between first and second then update second  */
+            else if ($arr[$i] > $second)
+            {
+                $third = $second;
+                $second = $arr[$i];
+            }
+
+            else if ($arr[$i] > $third)
+                $third = $arr[$i];
+        }
+        $arrfinal = array($third,$second,$first);
+        return $arrfinal;
+    }
+    public static function gettags(){
+        return  Content::select('slug')->limit(6)->get();
+    }
+//    public static function tagcount(){
+//        return  Content::select('slug')->limit(6)->get();
+//    }
 
     //
     public function notContent($id, $slug){
@@ -58,6 +100,13 @@ class HomeController extends Controller
         return view('home.search_contents', ['search' => $search, 'datalist' => $datalist]);
 
     }
+    public function allnotes(){
+
+        $datalist = Content::all();
+        $rand = Content::select('id','category_id', 'title', 'image', 'description', 'slug','created_at','user_id')->limit(8)->inRandomOrder()->get();
+        return view('home.all_notes', ['datalist' => $datalist,'rand'=>$rand]);
+
+    }
     public function categorycontents($id, $slug){
         $datalist = Content::where('category_id',$id)->get();
         $data = Category::find($id);
@@ -71,9 +120,9 @@ class HomeController extends Controller
         $tags = Content::select('id', 'title', 'image', 'description', 'slug')->limit(5)->inRandomOrder()->get();
         $setting = Setting::first();
         $slider = Content::select('id', 'title', 'image', 'description', 'slug')->limit(4)->get();
-        $daily = Content::select('id','title', 'image', 'description', 'slug')->limit(6)->inRandomOrder()->get();
+        $daily = Content::select('id','title', 'image', 'description', 'slug','user_id')->limit(6)->inRandomOrder()->get();
         $last = Content::select('id', 'title', 'image', 'description', 'slug')->limit(6)->inRandomOrder()->get();
-        $picked = Content::select('id', 'title', 'image', 'description', 'slug')->limit(6)->inRandomOrder()->get();
+        $picked = Content::select('id', 'title', 'image', 'description', 'slug','user_id')->limit(6)->inRandomOrder()->get();
 //        print_r($picked);
 //        exit();
         $data = [

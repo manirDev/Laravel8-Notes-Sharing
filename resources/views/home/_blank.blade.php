@@ -1,166 +1,153 @@
-<style>
-    .row {
-        margin-top: 10px;
-    }
-</style>
 
-<div class="container" id="jar">
-    <div class="row mx-auto content">
-        <div class="col">
-            @foreach($reviews as $rs)
-                <div class="review-item">
-                    <div class="rating">
-                        @for ($i = 0; $i < 5; $i++)
-                            @if ($i < $rs->rate)
-                                <i class='bx bxs-star'></i>
-                            @else
-                                <span class="star"></span>
-                            @endif
-                        @endfor
+<section class="blog-area ptb-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <div class="row">
+                    @foreach($datalist as $rs)
+                    <div class="col-lg-6 col-md-6">
+                        <div class="single-blog-post mb-30">
+                            <div class="post-image">
+                                <a href="single-blog.html" class="d-block">
+                                    <img src="{{ Storage::url($rs->image) }}" alt="image">
+                                </a>
+                                <div class="tag">
+                                    <a href="#">{{$rs->slug}}</a>
+                                </div>
+                            </div>
+                            <div class="post-content">
+                                <ul class="post-meta">
+                                    <li class="post-author">
 
+                                        @if($rs->user->profile_photo_path)
+                                            <img src="{{Storage::url($rs->user->profile_photo_path)}}" class="d-inline-block rounded-circle mr-2" alt="image">
+                                        @endif
+                                        By: <a href="#" class="d-inline-block">{{$rs->user->name}}</a>
+                                    </li>
+                                    <li><a href="#">{{$rs->created_at}}</a></li>
+                                </ul>
+                                <h3><a href="{{route('notContent', ['id'=>$rs->id, 'slug'=>$rs->slug])}}" class="d-inline-block">{{$rs->title}}</a></h3>
+                                <a href="{{route('notContent', ['id'=>$rs->id, 'slug'=>$rs->slug])}}" class="read-more-btn">Read More <i class='bx bx-right-arrow-alt'></i></a>
+                            </div>
+                        </div>
                     </div>
-                    <h3>{{$rs->subject}}</h3>
-                    <span>
-    {{--                                                                    @if($rs->user->profile_photo_url)--}}
-                        {{--                                                                     <img src="{{Storage::url($rs->user->profile_photo_url)}}" style="width: 30px; height: 30px; border-radius: 100%;" class="shadow" alt="image">--}}
-                        {{--                                                                    @endif--}}
-                                                                        <strong>{{$rs->user->name}}</strong> on <strong>{{$rs->created_at}}</strong>
-                                                                    </span>
-                    <p>{{$rs->review}}.</p>
-                </div>
-            @endforeach
+                    @endforeach
+                   </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <aside class="widget-area">
+                    <section class="widget widget_search">
+                        <form class="search-form">
+                            <label>
+                                <span class="screen-reader-text">Search for:</span>
+                                <input type="search" class="search-field" placeholder="Search...">
+                            </label>
+                            <button type="submit"><i class="bx bx-search-alt"></i></button>
+                        </form>
+                    </section>
+                    <section class="widget widget_raque_posts_thumb">
+                        <h3 class="widget-title">Popular Posts</h3>
+                        <article class="item">
+                            <a href="single-blog.html" class="thumb">
+                                <span class="fullimage cover bg1" role="img"></span>
+                            </a>
+                            <div class="info">
+                                <time datetime="2021-06-30">June 10, 2021</time>
+                                <h4 class="title usmall"><a href="single-blog.html">Making Peace With The Feast Or Famine Of Freelancing</a></h4>
+                            </div>
+                            <div class="clear"></div>
+                        </article>
+                        <article class="item">
+                            <a href="single-blog.html" class="thumb">
+                                <span class="fullimage cover bg2" role="img"></span>
+                            </a>
+                            <div class="info">
+                                <time datetime="2021-06-30">June 21, 2021</time>
+                                <h4 class="title usmall"><a href="single-blog.html">I Used The Web For A Day On A 50 MB Budget</a></h4>
+                            </div>
+                            <div class="clear"></div>
+                        </article>
+                        <article class="item">
+                            <a href="single-blog.html" class="thumb">
+                                <span class="fullimage cover bg3" role="img"></span>
+                            </a>
+                            <div class="info">
+                                <time datetime="2021-06-30">June 30, 2021</time>
+                                <h4 class="title usmall"><a href="single-blog.html">How To Create A Responsive Popup Gallery?</a></h4>
+                            </div>
+                            <div class="clear"></div>
+                        </article>
+                    </section>
+                    <section class="widget widget_categories">
+                        <h3 class="widget-title">Categories</h3>
+                        <ul>
+                            <li><a href="#">Design <span class="post-count">(03)</span></a></li>
+                            <li><a href="#">Lifestyle <span class="post-count">(05)</span></a></li>
+                            <li><a href="#">Script <span class="post-count">(10)</span></a></li>
+                            <li><a href="#">Device <span class="post-count">(08)</span></a></li>
+                            <li><a href="#">Tips <span class="post-count">(01)</span></a></li>
+                        </ul>
+                    </section>
+                    <section class="widget widget_tag_cloud">
+                        <h3 class="widget-title">Raque Tags</h3>
+                        <div class="tagcloud">
+                            <a href="#">IT <span class="tag-link-count"> (3)</span></a>
+                            <a href="#">Raque <span class="tag-link-count"> (3)</span></a>
+                            <a href="#">Games <span class="tag-link-count"> (2)</span></a>
+                            <a href="#">Fashion <span class="tag-link-count"> (2)</span></a>
+                            <a href="#">Travel <span class="tag-link-count"> (1)</span></a>
+                            <a href="#">Smart <span class="tag-link-count"> (1)</span></a>
+                            <a href="#">Marketing <span class="tag-link-count"> (1)</span></a>
+                            <a href="#">Tips <span class="tag-link-count"> (2)</span></a>
+                        </div>
+                    </section>
+                    <section class="widget widget_instagram">
+                        <h3 class="widget-title">Instagram</h3>
+                        <ul>
+                            <li>
+                                <a href="#" class="d-block">
+                                    <img src="assets/img/blog/1.jpg" alt="image">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="d-block">
+                                    <img src="assets/img/blog/2.jpg" alt="image">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="d-block">
+                                    <img src="assets/img/blog/3.jpg" alt="image">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="d-block">
+                                    <img src="assets/img/blog/4.jpg" alt="image">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="d-block">
+                                    <img src="assets/img/blog/5.jpg" alt="image">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="d-block">
+                                    <img src="assets/img/blog/6.jpg" alt="image">
+                                </a>
+                            </li>
+                        </ul>
+                    </section>
+                    <section class="widget widget_contact">
+                        <div class="text">
+                            <div class="icon">
+                                <i class='bx bx-phone-call'></i>
+                            </div>
+                            <span>Emergency</span>
+                            <a href="#">+0987-9876-8753</a>
+                        </div>
+                    </section>
+                </aside>
+            </div>
         </div>
-
     </div>
-</div>
-<nav>
-    <ul class="pagination justify-content-center pagination-sm">
-    </ul>
-</nav>
+</section>
 
-<script>
-    // Returns an array of maxLength (or less) page numbers
-    // where a 0 in the returned array denotes a gap in the series.
-    // Parameters:
-    //   totalPages:     total number of pages
-    //   page:           current page
-    //   maxLength:      maximum size of returned array
-    function getPageList(totalPages, page, maxLength) {
-        if (maxLength < 5) throw "maxLength must be at least 5";
-
-        function range(start, end) {
-            return Array.from(Array(end - start + 1), (_, i) => i + start);
-        }
-
-        var sideWidth = maxLength < 9 ? 1 : 2;
-        var leftWidth = (maxLength - sideWidth * 2 - 3) >> 1;
-        var rightWidth = (maxLength - sideWidth * 2 - 2) >> 1;
-        if (totalPages <= maxLength) {
-            // no breaks in list
-            return range(1, totalPages);
-        }
-        if (page <= maxLength - sideWidth - 1 - rightWidth) {
-            // no break on left of page
-            return range(1, maxLength - sideWidth - 1)
-                .concat([0])
-                .concat(range(totalPages - sideWidth + 1, totalPages));
-        }
-        if (page >= totalPages - sideWidth - 1 - rightWidth) {
-            // no break on right of page
-            return range(1, sideWidth)
-                .concat([0])
-                .concat(
-                    range(totalPages - sideWidth - 1 - rightWidth - leftWidth, totalPages)
-                );
-        }
-        // Breaks on both sides
-        return range(1, sideWidth)
-            .concat([0])
-            .concat(range(page - leftWidth, page + rightWidth))
-            .concat([0])
-            .concat(range(totalPages - sideWidth + 1, totalPages));
-    }
-
-    $(function() {
-        // Number of items and limits the number of items per page
-        var numberOfItems = $("#jar .content").length;
-        var limitPerPage = 2;
-        // Total pages rounded upwards
-        var totalPages = Math.ceil(numberOfItems / limitPerPage);
-        // Number of buttons at the top, not counting prev/next,
-        // but including the dotted buttons.
-        // Must be at least 5:
-        var paginationSize = 7;
-        var currentPage;
-
-        function showPage(whichPage) {
-            if (whichPage < 1 || whichPage > totalPages) return false;
-            currentPage = whichPage;
-            $("#jar .content")
-                .hide()
-                .slice((currentPage - 1) * limitPerPage, currentPage * limitPerPage)
-                .show();
-            // Replace the navigation items (not prev/next):
-            $(".pagination li").slice(1, -1).remove();
-            getPageList(totalPages, currentPage, paginationSize).forEach(item => {
-                $("<li>")
-                    .addClass(
-                        "page-item " +
-                        (item ? "current-page " : "") +
-                        (item === currentPage ? "active " : "")
-                    )
-                    .append(
-                        $("<a>")
-                            .addClass("page-link")
-                            .attr({
-                                href: "javascript:void(0)"
-                            })
-                            .text(item || "...")
-                    )
-                    .insertBefore("#next-page");
-            });
-            return true;
-        }
-
-        // Include the prev/next buttons:
-        $(".pagination").append(
-            $("<li>").addClass("page-item").attr({ id: "previous-page" }).append(
-                $("<a>")
-                    .addClass("page-link")
-                    .attr({
-                        href: "javascript:void(0)"
-                    })
-                    .text("Prev")
-            ),
-            $("<li>").addClass("page-item").attr({ id: "next-page" }).append(
-                $("<a>")
-                    .addClass("page-link")
-                    .attr({
-                        href: "javascript:void(0)"
-                    })
-                    .text("Next")
-            )
-        );
-        // Show the page links
-        $("#jar").show();
-        showPage(1);
-
-        // Use event delegation, as these items are recreated later
-        $(
-            document
-        ).on("click", ".pagination li.current-page:not(.active)", function() {
-            return showPage(+$(this).text());
-        });
-        $("#next-page").on("click", function() {
-            return showPage(currentPage + 1);
-        });
-
-        $("#previous-page").on("click", function() {
-            return showPage(currentPage - 1);
-        });
-        $(".pagination").on("click", function() {
-            $("html,body").animate({ scrollTop: 0 }, 0);
-        });
-    });
-
-</script>
