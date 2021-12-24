@@ -50,7 +50,7 @@
                                             By: <a href="{{route('notContent', ['id'=>$rs->id, 'slug'=>$rs->slug])}}" class="d-inline-block">{{$rs->user->name}}</a>
                                         </li>
 
-                                        <li><a href="#">August 30, 2021</a></li>
+                                        <li><a href="#">{{$rs->created_at}}</a></li>
                                     </ul>
                                     <h3><a href="#" class="d-inline-block">{{$rs->description}}</a></h3>
                                     <a href="{{route('notContent', ['id'=>$rs->id, 'slug'=>$rs->slug])}}" class="read-more-btn">Read More <i class='bx bx-right-arrow-alt'></i></a>

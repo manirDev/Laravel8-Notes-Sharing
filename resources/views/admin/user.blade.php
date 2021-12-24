@@ -84,9 +84,7 @@
             </div>
         </div>
         <!-- /.card-body -->
-        <div class="card-footer">
-            <a href="{{route('admin_content_add')}}"><button type="button" class="btn  btn-primary">Add Not-Content</button></a>
-        </div>
+
         <!-- /.card-footer-->
     </div>
 

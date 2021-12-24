@@ -35,9 +35,8 @@ class HomeController extends Controller
         $data = Content::find($id);
         $datalist = Content::where('category_id',$id)->get();
         $reviews = Review::where('content_id', $id)->get();
-//        print_r($reviews);
-//        exit();
-        return view('home.not-content_detail', ['data' => $data,'datalist' => $datalist, 'reviews'=>$reviews]);
+        $picked = Content::select('id', 'title', 'image', 'description', 'slug', 'created_at')->limit(6)->get();
+        return view('home.not-content_detail', ['data' => $data,'datalist' => $datalist, 'reviews'=>$reviews, 'picked'=>$picked]);
     }
     public function getcontent(Request $request){
         if($request->input('search')){ $search =$request->input('search');}
@@ -69,7 +68,7 @@ class HomeController extends Controller
 
 
     public function index(){
-
+        $tags = Content::select('id', 'title', 'image', 'description', 'slug')->limit(5)->inRandomOrder()->get();
         $setting = Setting::first();
         $slider = Content::select('id', 'title', 'image', 'description', 'slug')->limit(4)->get();
         $daily = Content::select('id','title', 'image', 'description', 'slug')->limit(6)->inRandomOrder()->get();
@@ -79,10 +78,11 @@ class HomeController extends Controller
 //        exit();
         $data = [
             'setting'=>$setting,
-            'slidee' => $slider,
+            'slider' => $slider,
             'daily'=>$daily,
             'last'=>$last,
-            'picked'=>$picked
+            'picked'=>$picked,
+            'tags' => $tags
         ];
         return view('home.index', $data);
     }

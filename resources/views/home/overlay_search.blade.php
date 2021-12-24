@@ -14,7 +14,7 @@
                     @livewire('search')
                     <button type="submit"><i class='bx bx-search-alt'></i></button>
                 </form>
-                @livewireScripts
+
             </div>
         </div>
     </div>

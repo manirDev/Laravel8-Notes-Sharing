@@ -59,7 +59,7 @@
             <a href="{{route('admin_faq')}}">
                 <div class="parent-icon"><i class='bx bx-question-mark'></i>
                 </div>
-                <div class="menu-title">FAQs</div>
+                <div class="menu-title">FAQ's</div>
             </a>
         </li>
         <li>

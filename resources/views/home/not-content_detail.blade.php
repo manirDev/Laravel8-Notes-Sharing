@@ -143,43 +143,45 @@
                                             <div class="product-review-form">
                                                 <h3>User Reviews</h3>
 
-                                                <div class="review-title">
-                                                    <div class="rating">
-                                                        @for ($i = 0; $i < 5; $i++)
-                                                            @if ($i < $avgrev)
-                                                                <i class='bx bxs-star'></i>
-                                                            @else
-                                                                <span class="star"></span>
-                                                            @endif
-                                                        @endfor
-                                                            <a href="#rev" ><span class="label">{{$countrev}} Reviews {{$avgrev}}</span></a>
-                                                    </div>
+                                                    <div class="review-title">
+                                                        <div class="rating">
+                                                            @for ($i = 0; $i < 5; $i++)
+                                                                @if ($i < $avgrev)
+                                                                    <i class='bx bxs-star'></i>
+                                                                @else
+                                                                    <span class="star"></span>
+                                                                @endif
+                                                            @endfor
+                                                                <a href="#rev" ><span class="label">{{$countrev}} Reviews {{$avgrev}}</span></a>
+                                                        </div>
 
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-6 review-comments">
-                                                        @foreach($reviews as $rs)
-                                                            <div class="review-item">
-                                                                <div class="rating">
-                                                                    @for ($i = 0; $i < 5; $i++)
-                                                                        @if ($i < $rs->rate)
-                                                                            <i class='bx bxs-star'></i>
-                                                                        @else
-                                                                            <span class="star"></span>
-                                                                        @endif
-                                                                    @endfor
 
+                                                            @foreach($reviews as $rs)
+                                                                <div class="review-item">
+                                                                    <div class="rating">
+                                                                        @for ($i = 0; $i < 5; $i++)
+                                                                            @if ($i < $rs->rate)
+                                                                                <i class='bx bxs-star'></i>
+                                                                            @else
+                                                                                <span class="star"></span>
+                                                                            @endif
+                                                                        @endfor
+
+                                                                    </div>
+                                                                    <h3>{{$rs->subject}}</h3>
+                                                                    <span>
+    {{--                                                                    @if($rs->user->profile_photo_url)--}}
+                                                                        {{--                                                                     <img src="{{Storage::url($rs->user->profile_photo_url)}}" style="width: 30px; height: 30px; border-radius: 100%;" class="shadow" alt="image">--}}
+                                                                        {{--                                                                    @endif--}}
+                                                                        <strong>{{$rs->user->name}}</strong> on <strong>{{$rs->created_at}}</strong>
+                                                                    </span>
+                                                                    <p>{{$rs->review}}.</p>
                                                                 </div>
-                                                                <h3>{{$rs->subject}}</h3>
-                                                                <span>
-{{--                                                                    @if($rs->user->profile_photo_url)--}}
-                                                                    {{--                                                                     <img src="{{Storage::url($rs->user->profile_photo_url)}}" style="width: 30px; height: 30px; border-radius: 100%;" class="shadow" alt="image">--}}
-                                                                    {{--                                                                    @endif--}}
-                                                                    <strong>{{$rs->user->name}}</strong> on <strong>{{$rs->created_at}}</strong>
-                                                                </span>
-                                                                <p>{{$rs->review}}.</p>
-                                                            </div>
-                                                        @endforeach
+                                                            @endforeach
+
                                                     </div>
                                                     <div id="rev" class="col-6 review-form">
                                                         <h3>Write a Review</h3>
@@ -197,6 +199,46 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="blog-area pt-100 pb-70">
+        <div class="container">
+            <div class="section-title text-left">
+
+                <h2>Related Notes</h2>
+
+            </div>
+            <div class="blog-slides owl-carousel owl-theme">
+                @foreach($picked as $rs)
+                    <div class="single-blog-post mb-30">
+                        <div class="post-image">
+                            <a href="{{route('notContent', ['id'=>$rs->id, 'slug'=>$rs->slug])}}" class="d-block">
+                                <img src="{{Storage::url($rs->image)}}" alt="image">
+                            </a>
+                            <div class="tag">
+                                <a href="#">{{$rs->title}}</a>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            <ul class="post-meta">
+                                <li class="post-author">
+                                    @if($data->user->profile_photo_path)
+
+                                        <img src="{{Storage::url($data->user->profile_photo_path)}}" style="width: 30px; height: 30px; border-radius: 100%;" class="shadow" alt="image">
+                                    @endif
+                                    By: <a href="#" class="d-inline-block">{{$data->user->name}}</a>
+                                </li>
+                                <li><a href="#">{{$rs->created_at}}</a></li>
+                            </ul>
+                            <h3><a href="{{route('notContent', ['id'=>$rs->id, 'slug'=>$rs->slug])}}" class="d-inline-block">{{$rs->description}}</a></h3>
+                            <a href="{{route('notContent', ['id'=>$rs->id, 'slug'=>$rs->slug])}}" class="read-more-btn">Read More <i class='bx bx-right-arrow-alt'></i></a>
+                        </div>
+                    </div>
+                @endforeach
+
             </div>
         </div>
     </section>

@@ -30,27 +30,24 @@
             </div>
             <div class="col-lg-2 col-md-6 col-sm-6">
                 <div class="single-footer-widget mb-30">
-                    <h3>Support</h3>
+                    <h3>Quick Menu</h3>
                     <ul class="support-link">
-                        <li><a href="#">Privacy</a></li>
-                        <li><a href="#">FAQ's</a></li>
-                        <li><a href="#">Support</a></li>
-                        <li><a href="#">Terms</a></li>
-                        <li><a href="#">Condition</a></li>
-                        <li><a href="#">Policy</a></li>
+                        <li><a href="{{route('home')}}">Home</a></li>
+                        <li><a href="{{route('faq')}}">FAQ's</a></li>
+                        <li><a href="{{route('contact')}}">Contact</a></li>
+                        <li><a href="{{route('aboutus')}}">About Us</a></li>
+                        <li><a href="{{route('references')}}">References</a></li>
+                        <li><a href="{{route('home')}}">All Notes</a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-lg-2 col-md-6 col-sm-6">
                 <div class="single-footer-widget mb-30">
-                    <h3>Useful Link</h3>
+                    <h3>Some Randoms Tags</h3>
                     <ul class="useful-link">
-                        <li><a href="#">Web Design</a></li>
-                        <li><a href="#">UI/UX Design</a></li>
-                        <li><a href="#">WP Development</a></li>
-                        <li><a href="#">App</a></li>
-                        <li><a href="#">Whitepaper</a></li>
-                        <li><a href="#">Web Development</a></li>
+                        @foreach($tags as $rs)
+                         <li><a href="{{route('notContent', ['id'=>$rs->id, 'slug'=>$rs->slug])}}">{{$rs->slug}}</a></li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -75,7 +72,7 @@
             <div class="logo">
                 <a href="index-5.html" class="d-inline-block"><img src="{{asset('assets')}}/fhome/img/logo.png" alt="image"></a>
             </div>
-            <p><i class='bx bx-copyright'></i>2021 <a href="index-5.html" target="_blank">Raque</a> Designed By <a href="/" target="_blank">{{$setting->title}}</a> | All rights reserved.</p>
+            <p><i class='bx bx-copyright'></i>2021 <a href="index-5.html" target="_blank"></a> Powered By <a href="/" target="_blank">{{$setting->title}}</a> | All rights reserved.</p>
         </div>
     </div>
 </footer>
