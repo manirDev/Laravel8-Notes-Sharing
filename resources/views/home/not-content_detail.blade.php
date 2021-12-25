@@ -7,7 +7,23 @@
 @endsection
 
 @section('keywords', $data->keywords)
+@section('csz')
+    <script src="{{asset('assets')}}/pdfobject.js"></script>
 
+    <style>
+        .pdfobject-container {width:100%;height: 35rem; border: 1rem solid rgba(0,0,0,.1);}
+        .pdfobject { border: 1px solid #666; }
+        #word-break{
+            display: block;
+            width: 95%;
+            overflow: hidden;
+            word-wrap: break-word;
+            text-overflow: ellipsis;
+            max-height: 16px;
+            line-height:16px;
+        }
+    </style>
+@endsection
 
 @section('hero')
     <div class="page-title-area item-bg1 jarallax" data-jarallax='{"speed": 0.3}' style="background-image:url({{asset('assets')}}/fhome/img/main-banner3.jpg);">
@@ -32,20 +48,16 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-12">
                     <div class="products-details-image">
-                        <ul class="slickslide">
+                        <ul class="slickslide"  >
                             <li>
                                 @if($data->file)
-                                    <a href="{{Storage::url($data->file)}}" onclick="return !window.open(this.href, '', 'top=50 left=100 width=800 height=600')"> <img src="{{Storage::url($data->image)}}" style="height: 400px !important;width: 400px !important;" alt="image"></a>
+
+                                    <a href="{{Storage::url($data->file)}}" onclick="popupCenter({url: this.href, title: 'xtf', w: 900, h: 500});"target="_blank">
+                                        <div id="example1"></div>
+                                        <script>PDFObject.embed("{{Storage::url($data->file)}}", "#example1");</script>
+                                    </a>
                                 @endif
                             </li>
-                            @foreach($datalist as $rs)
-                                <li>
-                                    @if($data->file)
-                                    <a href="{{Storage::url($data->file)}}" onclick="return !window.open(this.href, '', 'top=50 left=100 width=800 height=600')"> <img src="{{Storage::url($rs->image)}}" style="height: 400px !important;width: 400px !important;"  alt="image"></a>
-                                    @endif
-                                </li>
-                            @endforeach
-
                         </ul>
                         <b></b>
                         <div class="slick-thumbs">
@@ -173,9 +185,9 @@
                                                                     </div>
                                                                     <h3>{{$rs->subject}}</h3>
                                                                     <span>
-    {{--                                                                    @if($rs->user->profile_photo_url)--}}
-                                                                        {{--                                                                     <img src="{{Storage::url($rs->user->profile_photo_url)}}" style="width: 30px; height: 30px; border-radius: 100%;" class="shadow" alt="image">--}}
-                                                                        {{--                                                                    @endif--}}
+                                                                        @if($rs->user->profile_photo_path)
+                                                                          <img src="{{Storage::url($rs->user->profile_photo_path)}}" style="width: 30px; height: 30px; border-radius: 100%;" class="shadow" alt="image">
+                                                                          @endif
                                                                         <strong>{{$rs->user->name}}</strong> on <strong>{{$rs->created_at}}</strong>
                                                                     </span>
                                                                     <p>{{$rs->review}}.</p>
@@ -220,7 +232,7 @@
                     <div class="single-blog-post mb-30">
                         <div class="post-image">
                             <a href="{{route('notContent', ['id'=>$rs->id, 'slug'=>$rs->slug])}}" class="d-block">
-                                <img src="{{Storage::url($rs->image)}}" alt="image">
+                                <img src="{{Storage::url($rs->image)}}" style="height:200px;" alt="image">
                             </a>
                             <div class="tag">
                                 <a href="#">{{$rs->title}}</a>
@@ -237,7 +249,7 @@
                                 </li>
                                 <li><a href="#">{{$rs->created_at}}</a></li>
                             </ul>
-                            <h3><a href="{{route('notContent', ['id'=>$rs->id, 'slug'=>$rs->slug])}}" class="d-inline-block">{{$rs->description}}</a></h3>
+                            <p id="word-break"><a href="{{route('notContent', ['id'=>$rs->id, 'slug'=>$rs->slug])}}" class="d-inline-block">{{$rs->description}}</a>....</p>
                             <a href="{{route('notContent', ['id'=>$rs->id, 'slug'=>$rs->slug])}}" class="read-more-btn">Read More <i class='bx bx-right-arrow-alt'></i></a>
                         </div>
                     </div>
@@ -251,5 +263,29 @@
 @endsection
 
 @section('jsz')
+<script>
+    const popupCenter = ({url, title, w, h}) => {
+        // Fixes dual-screen position                             Most browsers      Firefox
+        const dualScreenLeft = window.screenLeft !==  undefined ? window.screenLeft : window.screenX;
+        const dualScreenTop = window.screenTop !==  undefined   ? window.screenTop  : window.screenY;
 
+        const width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
+        const height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
+
+        const systemZoom = width / window.screen.availWidth;
+        const left = (width - w) / 2 / systemZoom + dualScreenLeft
+        const top = (height - h) / 2 / systemZoom + dualScreenTop
+        const newWindow = window.open(url, title,
+            `
+      scrollbars=yes,
+      width=${w / systemZoom},
+      height=${h / systemZoom},
+      top=${top},
+      left=${left}
+      `
+        )
+
+        //if (window.focus) newWindow.focus();
+    }
+</script>
 @endsection

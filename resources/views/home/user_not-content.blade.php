@@ -53,7 +53,6 @@
                             <th>Category</th>
                             <th>Title</th>
                             <th>Keywords</th>
-                            <th>Description</th>
                             <th>Image</th>
                             <th>Gallery</th>
                             <th>PDF-File</th>
@@ -75,7 +74,6 @@
                                 </td>
                                 <td>{{ $rs->title}}</td>
                                 <td>{{ $rs->keywords}}</td>
-                                <td>{{ $rs->description}}</td>
                                 <td>
                                     <div class="p-2">
                                         @if($rs->image)

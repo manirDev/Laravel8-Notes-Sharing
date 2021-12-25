@@ -30,8 +30,9 @@ class ImageController extends Controller
         //
         $data = Content::find($content_id);
         $images = DB::table('images')->where('content_id', '=', $content_id)->get();
+        $tags = Content::select('id', 'title', 'image', 'description', 'slug')->limit(5)->inRandomOrder()->get();
 
-        return view('home.user_image_add', ['data' => $data, 'images'=>$images]);
+        return view('home.user_image_add', ['data' => $data, 'images'=>$images, 'tags'=>$tags]);
     }
 
     /**

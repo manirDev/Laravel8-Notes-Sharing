@@ -1,3 +1,18 @@
+@section('csz')
+
+    <style>
+        .word-break{
+            display: block;
+            width: 95%;
+            overflow: hidden;
+            word-wrap: break-word;
+            text-overflow: ellipsis;
+            max-height: 26px;
+            line-height:16px;
+        }
+    </style>
+@endsection
+
 
 <section class="courses-area pt-100 pb-70">
     <div class="container">
@@ -47,7 +62,7 @@
                                     </div>
                                 </div>
                                 <h3><a href="single-courses.html" class="d-inline-block">{{$rs->title}}</a></h3>
-                                <p>{{$rs->description}}</p>
+                                <p class="word-break">{{$rs->description}}...</p>
                             </div>
                             <div class="courses-box-footer">
                                 <ul>
@@ -227,8 +242,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <h3><a href="single-courses.html" class="d-inline-block">{{$rs->title}}</a></h3>
-                            <p>{{$rs->description}}</p>
+                            <h3><a href="{{route('notContent', ['id'=>$rs->id, 'slug'=>$rs->slug])}}" class="d-inline-block">{{$rs->title}}</a></h3>
+                            <p class="word-break">{{$rs->description}}</p>
                         </div>
                         <div class="courses-box-footer">
                             <ul>
