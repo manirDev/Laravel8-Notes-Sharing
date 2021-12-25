@@ -23,7 +23,8 @@ class ContentController extends Controller
         //$datalist = DB::table('contents')->get();
         $datalist = Content::where('user_id', Auth::id())->get();
         //echo var_dump($datalist) ;
-        return view('home.user_not-content', ['datalist' => $datalist]);
+        $tags = Content::select('id', 'title', 'image', 'description', 'slug')->limit(5)->inRandomOrder()->get();
+        return view('home.user_not-content', ['datalist' => $datalist, 'tags'=>$tags]);
     }
 
     /**
@@ -35,8 +36,9 @@ class ContentController extends Controller
     {
         //
         // $datalist = Category::all();
+        $tags = Content::select('id', 'title', 'image', 'description', 'slug')->limit(5)->inRandomOrder()->get();
         $datalist = Category::with('children')->get();
-        return view('home.user_not-content_add', ['datalist' => $datalist]);
+        return view('home.user_not-content_add', ['datalist' => $datalist, 'tags'=>$tags]);
     }
 
     /**
@@ -84,10 +86,11 @@ class ContentController extends Controller
     public function edit(Content $content, $id)
     {
         //
+        $tags = Content::select('id', 'title', 'image', 'description', 'slug')->limit(5)->inRandomOrder()->get();
         $data = Content::find($id);
         //$datalist = Category::all();
         $datalist = Category::with('children')->get();
-        return view('home.user_not-content_edit', ['data' => $data,'datalist'=>$datalist]);
+        return view('home.user_not-content_edit', ['data' => $data,'datalist'=>$datalist, 'tags'=>$tags]);
     }
 
     /**

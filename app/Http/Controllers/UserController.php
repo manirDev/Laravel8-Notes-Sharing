@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Content;
 use App\Models\Review;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -17,17 +18,20 @@ class UserController extends Controller
     public function index()
     {
         //
-        return view('home.user-profile');
+        $tags = Content::select('id', 'title', 'image', 'description', 'slug')->limit(5)->inRandomOrder()->get();
+        return view('home.user-profile',['tags'=>$tags]);
     }
 
     public function userProfile()
     {
-        return view('home.user-profile');
+        $tags = Content::select('id', 'title', 'image', 'description', 'slug')->limit(5)->inRandomOrder()->get();
+        return view('home.user-profile', ['tags'=>$tags]);
     }
 
     public function myreviews(){
         $datalist = Review::where('user_id', '=', Auth::user()->id)->get();
-        return view('home.user_reviews', ['datalist' => $datalist]);
+        $tags = Content::select('id', 'title', 'image', 'description', 'slug')->limit(5)->inRandomOrder()->get();
+        return view('home.user_reviews', ['datalist' => $datalist, 'tags'=>$tags]);
     }
     public function destroyreview(Review $review, $id){
         $data = Review::find($id);

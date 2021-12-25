@@ -52,7 +52,7 @@
 
                                         <li><a href="#">{{$rs->created_at}}</a></li>
                                     </ul>
-                                    <h3><a href="#" class="d-inline-block">{{$rs->description}}</a></h3>
+
                                     <a href="{{route('notContent', ['id'=>$rs->id, 'slug'=>$rs->slug])}}" class="read-more-btn">Read More <i class='bx bx-right-arrow-alt'></i></a>
                                 </div>
                             </div>
@@ -71,119 +71,76 @@
                         </div>
                     </div>
                 </div>
+
+
                 <div class="col-lg-4 col-md-12">
                     <aside class="widget-area">
                         <section class="widget widget_search">
-                            <form class="search-form">
+
+                            <form action="{{route('getcontent')}}" method="post" class="search-form">
+                                @csrf
                                 <label>
                                     <span class="screen-reader-text">Search for:</span>
-                                    <input type="search" class="search-field" placeholder="Search...">
+                                    @livewire('search')
                                 </label>
                                 <button type="submit"><i class="bx bx-search-alt"></i></button>
                             </form>
+
                         </section>
                         <section class="widget widget_raque_posts_thumb">
-                            <h3 class="widget-title">Popular Posts</h3>
-                            <article class="item">
-                                <a href="single-blog.html" class="thumb">
-                                    <span class="fullimage cover bg1" role="img"></span>
-                                </a>
-                                <div class="info">
-                                    <time datetime="2021-06-30">June 10, 2021</time>
-                                    <h4 class="title usmall"><a href="single-blog.html">Making Peace With The Feast Or Famine Of Freelancing</a></h4>
-                                </div>
-                                <div class="clear"></div>
-                            </article>
-                            <article class="item">
-                                <a href="single-blog.html" class="thumb">
-                                    <span class="fullimage cover bg2" role="img"></span>
-                                </a>
-                                <div class="info">
-                                    <time datetime="2021-06-30">June 21, 2021</time>
-                                    <h4 class="title usmall"><a href="single-blog.html">I Used The Web For A Day On A 50 MB Budget</a></h4>
-                                </div>
-                                <div class="clear"></div>
-                            </article>
-                            <article class="item">
-                                <a href="single-blog.html" class="thumb">
-                                    <span class="fullimage cover bg3" role="img"></span>
-                                </a>
-                                <div class="info">
-                                    <time datetime="2021-06-30">June 30, 2021</time>
-                                    <h4 class="title usmall"><a href="single-blog.html">How To Create A Responsive Popup Gallery?</a></h4>
-                                </div>
-                                <div class="clear"></div>
-                            </article>
+                            <h3 class="widget-title">Most Reviewed Notes</h3>
+                            @foreach($rand as $rs)
+
+
+
+                                @php
+                                    $avgmax = App\Http\Controllers\HomeController::avgmax($rs->id);
+                                    $avgrev = App\Http\Controllers\HomeController::avgreview($rs->id);
+                                    $count = count($avgmax)
+                                @endphp
+
+                                @for ($i = 0; $i < 3; $i++)
+                                    @if ($avgrev>4)
+                                        <article class="item">
+                                            <a href="{{route('notContent', ['id'=>$rs->id, 'slug'=>$rs->slug])}}" class="thumb">
+                                                <img src="{{ Storage::url($rs->image) }}"   style="border-radius: 10px; height:50px !important;">
+                                            </a>
+                                            <div class="info">
+                                                <time datetime="2021-06-30">{{$rs->created_at}}</time>
+                                                <h4 class="title usmall"><a href="{{route('notContent', ['id'=>$rs->id, 'slug'=>$rs->slug])}}">{{$rs->title}}</a></h4>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </article>
+                                    @endif
+                                @endfor
+
+
+                            @endforeach
                         </section>
                         <section class="widget widget_categories">
-                            <h3 class="widget-title">Categories</h3>
+                            <h3 class="widget-title"> Some Categories</h3>
                             <ul>
-                                <li><a href="#">Design <span class="post-count">(03)</span></a></li>
-                                <li><a href="#">Lifestyle <span class="post-count">(05)</span></a></li>
-                                <li><a href="#">Script <span class="post-count">(10)</span></a></li>
-                                <li><a href="#">Device <span class="post-count">(08)</span></a></li>
-                                <li><a href="#">Tips <span class="post-count">(01)</span></a></li>
+                                @foreach($rand as $rs)
+                                    <li><a href="{{route('categorycontents', ['id'=>$rs->id, 'slug'=>$rs->slug])}}"> {{ \App\Http\Controllers\Admin\CategoryController::getParentsTree($rs->category, $rs->category->title) }} <span class="post-count"></span></a></li>
+                                @endforeach
                             </ul>
                         </section>
                         <section class="widget widget_tag_cloud">
-                            <h3 class="widget-title">Raque Tags</h3>
+                            <h3 class="widget-title">Some Tags</h3>
+                            @php
+                                $tag = App\Http\Controllers\HomeController::gettags();
+                                //$countrev = App\Http\Controllers\HomeController::countreview($rs->id);
+                            @endphp
                             <div class="tagcloud">
-                                <a href="#">IT <span class="tag-link-count"> (3)</span></a>
-                                <a href="#">Raque <span class="tag-link-count"> (3)</span></a>
-                                <a href="#">Games <span class="tag-link-count"> (2)</span></a>
-                                <a href="#">Fashion <span class="tag-link-count"> (2)</span></a>
-                                <a href="#">Travel <span class="tag-link-count"> (1)</span></a>
-                                <a href="#">Smart <span class="tag-link-count"> (1)</span></a>
-                                <a href="#">Marketing <span class="tag-link-count"> (1)</span></a>
-                                <a href="#">Tips <span class="tag-link-count"> (2)</span></a>
+                                @foreach($rand as $rs)
+                                    <a href="{{route('notContent', ['id'=>$rs->id, 'slug'=>$rs->slug])}}">{{$rs->slug}} <span class="tag-link-count"></span></a>
+                                @endforeach
                             </div>
                         </section>
-                        <section class="widget widget_instagram">
-                            <h3 class="widget-title">Instagram</h3>
-                            <ul>
-                                <li>
-                                    <a href="#" class="d-block">
-                                        <img src="{{asset('assets')}}/fhome/img/blog/1.jpg" alt="image">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="d-block">
-                                        <img src="{{asset('assets')}}/fhome/img/blog/2.jpg" alt="image">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="d-block">
-                                        <img src="{{asset('assets')}}/fhome/img/blog/3.jpg" alt="image">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="d-block">
-                                        <img src="{{asset('assets')}}/fhome/img/blog/4.jpg" alt="image">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="d-block">
-                                        <img src="{{asset('assets')}}/fhome/img/blog/5.jpg" alt="image">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="d-block">
-                                        <img src="{{asset('assets')}}/fhome/img/blog/6.jpg" alt="image">
-                                    </a>
-                                </li>
-                            </ul>
-                        </section>
-                        <section class="widget widget_contact">
-                            <div class="text">
-                                <div class="icon">
-                                    <i class='bx bx-phone-call'></i>
-                                </div>
-                                <span>Emergency</span>
-                                <a href="#">+0987-9876-8753</a>
-                            </div>
-                        </section>
+
                     </aside>
                 </div>
+
             </div>
         </div>
     </section>

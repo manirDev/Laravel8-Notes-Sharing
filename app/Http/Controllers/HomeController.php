@@ -75,10 +75,11 @@ class HomeController extends Controller
     //
     public function notContent($id, $slug){
         $data = Content::find($id);
+        $tags = Content::select('id', 'title', 'image', 'description', 'slug')->limit(5)->inRandomOrder()->get();
         $datalist = Content::where('category_id',$id)->get();
         $reviews = Review::where('content_id', $id)->get();
         $picked = Content::select('id', 'title', 'image', 'description', 'slug', 'created_at')->limit(6)->get();
-        return view('home.not-content_detail', ['data' => $data,'datalist' => $datalist, 'reviews'=>$reviews, 'picked'=>$picked]);
+        return view('home.not-content_detail', ['data' => $data,'datalist' => $datalist, 'reviews'=>$reviews, 'picked'=>$picked,'tags'=>$tags]);
     }
     public function getcontent(Request $request){
         if($request->input('search')){ $search =$request->input('search');}
@@ -103,8 +104,9 @@ class HomeController extends Controller
     public function allnotes(){
 
         $datalist = Content::all();
+        $tags = Content::select('id', 'title', 'image', 'description', 'slug')->limit(5)->inRandomOrder()->get();
         $rand = Content::select('id','category_id', 'title', 'image', 'description', 'slug','created_at','user_id')->limit(8)->inRandomOrder()->get();
-        return view('home.all_notes', ['datalist' => $datalist,'rand'=>$rand]);
+        return view('home.all_notes', ['datalist' => $datalist,'rand'=>$rand,'tags'=>$tags]);
 
     }
     public function categorycontents($id, $slug){
@@ -112,7 +114,9 @@ class HomeController extends Controller
         $data = Category::find($id);
 //        print_r($data);
 //        exit();
-        return view('home.category_content', ['data' => $data, 'datalist' => $datalist]);
+        $tags = Content::select('id', 'title', 'image', 'description', 'slug')->limit(5)->inRandomOrder()->get();
+        $rand = Content::select('id','category_id', 'title', 'image', 'description', 'slug','created_at','user_id')->limit(8)->inRandomOrder()->get();
+        return view('home.category_content', ['data' => $data, 'datalist' => $datalist,'rand'=>$rand, 'tags'=>$tags]);
     }
 
 
@@ -141,16 +145,19 @@ class HomeController extends Controller
 
     }
     public function references(){
+
         return  view('home.aboutus');
 
     }
     public function faq(){
+        $tags = Content::select('id', 'title', 'image', 'description', 'slug')->limit(5)->inRandomOrder()->get();
         $datalist = Faq::all()->sortBy('position');
-        return view('home.faq', ['datalist' => $datalist]);
+        return view('home.faq', ['datalist' => $datalist,'tags'=>$tags]);
 
     }
     public function contact(){
-        return  view('home.contact');
+        $tags = Content::select('id', 'title', 'image', 'description', 'slug')->limit(5)->inRandomOrder()->get();
+        return  view('home.contact', ['tags'=>$tags]);
     }
     public function sendmessage(Request $request)
     {

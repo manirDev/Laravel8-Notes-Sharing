@@ -251,20 +251,5 @@
 @endsection
 
 @section('jsz')
-    <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="http://botmonster.com/jquery-bootpag/jquery.bootpag.js"></script>
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
-
-    <script>
-        $('#show_paginator').bootpag({
-            total:10,
-            page: 1,
-            maxVisible: 4
-        }).on('page', function(event, num)
-        {
-            $("#dynamic_content").html("Page " + num); // or some ajax content loading...
-        });
-    </script>
 @endsection

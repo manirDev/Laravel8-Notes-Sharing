@@ -62,13 +62,16 @@
                 <div class="col-lg-4 col-md-12">
                     <aside class="widget-area">
                         <section class="widget widget_search">
-                            <form class="search-form">
+
+                            <form action="{{route('getcontent')}}" method="post" class="search-form">
+                                @csrf
                                 <label>
                                     <span class="screen-reader-text">Search for:</span>
-                                    <input type="search" class="search-field" placeholder="Search...">
+                                   @livewire('search')
                                 </label>
                                 <button type="submit"><i class="bx bx-search-alt"></i></button>
                             </form>
+
                         </section>
                         <section class="widget widget_raque_posts_thumb">
                             <h3 class="widget-title">Most Reviewed Notes</h3>
