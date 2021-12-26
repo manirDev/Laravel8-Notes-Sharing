@@ -1,6 +1,8 @@
+
 @extends('layouts.home')
 
-@section('title', 'User-Dashboard')
+@section('title', 'User-Not-Content')
+
 
 @section('hero')
 
@@ -17,25 +19,48 @@
     </div>
 @endsection
 
-@section('slider')
-    @include('home._slider')
-@endsection
+
 
 @section('content')
 
 
-        <section class="my-account-area ptb-100 d-flex justify-content-center">
-            <div class="container">
-                <div class="row">
-                    <div class="myAccount-navigation col-2">
-                        @include('home.user-header')
-                    </div>
-                    <div class="col-10">
+    <section class="my-account-area ptb-100">
+        <div class="container">
+            <div class="row">
+
+                <div class="myAccount-navigation col-2">
+                    @include('home.user-header')
+                </div>
+
+                <div class="myAccount-content col-lg-10">
+                    <div class="recent-orders-table table-responsive">
                         @include('profile.show')
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
+
+@endsection
+
+@section('jsz')
+    <!-- Libs CSS
+	============================================ -->
+    <link rel="stylesheet" href="{{asset('assets')}}/fhome/css/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{asset('assets')}}/fhome/css/bootstrap..min.css">
+
+
+    <link rel="stylesheet" href="{{asset('assets')}}/fhome/css/style.css">
+    <link rel="stylesheet" href="{{asset('assets')}}/fhome/css/responsive.css">
+
+   ============================================ -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="{{asset('assets')}}/fhome/js/jquery-2.2.4.min.js"></script>
+    <script src="{{asset('assets')}}/fhome/js/jquery.min.js"></script>
+    <script src="{{asset('assets')}}/fhome/js/popper.min.js"></script>
+    <script src="{{asset('assets')}}/fhome/js/bootstrap.min.js"></script>
+
+    <script src="{{asset('assets')}}/fhome/js/main.js"></script>
 
 @endsection

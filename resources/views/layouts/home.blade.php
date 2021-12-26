@@ -107,7 +107,7 @@
     ============================================ -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script type="text/javascript" src="{{asset('assets')}}/fhome/js/jquery-2.2.4.min.js"></script>
-
+    <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="{{asset('assets')}}/fhome/js/jquery.min.js"></script>
     <script src="{{asset('assets')}}/fhome/js/popper.min.js"></script>

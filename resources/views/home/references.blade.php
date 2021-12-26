@@ -1,6 +1,6 @@
 @extends('layouts.home')
 
-@section('title','About Us-' .$setting->title)
+@section('title','References-' .$setting->title)
 
 @section('description')
     {{$setting->description}}
@@ -15,32 +15,30 @@
             <div class="page-title-content">
                 <ul>
                     <li><a href="{{route('home')}}">Home</a></li>
-                    <li>About Us</li>
+                    <li>References</li>
                 </ul>
-                <h2>About Us</h2>
+                <h2>References</h2>
             </div>
         </div>
     </div>
 @endsection
 
 @section('content')
+
     <section class="about-area ptb-100">
-        <div class="container">
+        <h5  style="text-align: center; padding-bottom: 25px">University References</h5>
+        <div class="container" style="text-align: center; margin-top: 25px">
             <div class="row align-items-center">
-                <div class="col-lg-6 col-md-12">
-                    <div class="about-image">
-                        <img src="{{asset('assets')}}/fhome/img/about/1.jpg" class="shadow" alt="image">
-                        <img src="{{asset('assets')}}/fhome/img/about/2.jpg" class="shadow" alt="image">
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-12">
-                    <div class="about-content">
-                        <span class="sub-title">About Us</span>
 
-                        {!! $setting->aboutus !!}
+                    <div class="col-lg-12 col-md-12">
+                        <div class="about-content">
 
+
+                            {!! $setting->references !!}
+
+                        </div>
                     </div>
-                </div>
+
             </div>
 
         </div>

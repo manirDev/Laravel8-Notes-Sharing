@@ -141,23 +141,28 @@ class HomeController extends Controller
     }
 //Pages start
     public function aboutus(){
-        return   view('home.aboutus');
+        $setting = Setting::first();
+        $tags = Content::select('id', 'title', 'image', 'description', 'slug')->limit(5)->inRandomOrder()->get();
+        return  view('home.aboutus',  ['setting'=>$setting,'tags'=>$tags]);
 
     }
     public function references(){
-
-        return  view('home.aboutus');
+        $setting = Setting::first();
+        $tags = Content::select('id', 'title', 'image', 'description', 'slug')->limit(5)->inRandomOrder()->get();
+        return  view('home.references',  ['setting'=>$setting,'tags'=>$tags]);
 
     }
     public function faq(){
+        $setting = Setting::first();
         $tags = Content::select('id', 'title', 'image', 'description', 'slug')->limit(5)->inRandomOrder()->get();
         $datalist = Faq::all()->sortBy('position');
-        return view('home.faq', ['datalist' => $datalist,'tags'=>$tags]);
+        return view('home.faq', ['datalist' => $datalist,'tags'=>$tags,'setting'=>$setting]);
 
     }
     public function contact(){
+        $setting = Setting::first();
         $tags = Content::select('id', 'title', 'image', 'description', 'slug')->limit(5)->inRandomOrder()->get();
-        return  view('home.contact', ['tags'=>$tags]);
+        return  view('home.contact', ['setting'=>$setting,'tags'=>$tags]);
     }
     public function sendmessage(Request $request)
     {

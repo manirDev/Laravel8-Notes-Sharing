@@ -25,8 +25,8 @@
                         <li class="nav-item"><a href="{{route('home')}}" class="nav-link active">Home</a></li>
                         <!-- Category-->
                          @include('home._category')
-                        <li class="nav-item"><a href="{{route('home')}}" class="nav-link ">About Us </a></li>
-                        <li class="nav-item"><a href="{{route('home')}}" class="nav-link ">References </a></li>
+                        <li class="nav-item"><a href="{{route('aboutus')}}" class="nav-link ">About Us </a></li>
+                        <li class="nav-item"><a href="{{route('references')}}" class="nav-link ">References </a></li>
                         <li class="nav-item"><a href="{{route('faq')}}" class="nav-link ">FAQ's </a></li>
                         <li class="nav-item"><a href="{{route('contact')}}" class="nav-link">Contact</a></li>
                     </ul>
@@ -38,14 +38,15 @@
                                 <span>{{Auth::user()->name}} <i class='bx bx-chevron-down'></i></span>
                             </button>
                             <div class="dropdown-menu">
-                                <a href="{{route('admin_logout')}}" class="dropdown-item d-flex align-items-center">
-                                    <i class='bx bx-log-out'></i>
-                                    <span>Logout</span>
-                                </a>
                                 <a href="{{route('myprofile')}}" class="dropdown-item d-flex align-items-center">
                                     <i class='bx bx-user'></i>
                                     <span>My account</span>
                                 </a>
+                                <a href="{{route('admin_logout')}}" class="dropdown-item d-flex align-items-center">
+                                    <i class='bx bx-log-out'></i>
+                                    <span>Logout</span>
+                                </a>
+
                             </div>
                         </div>
                         @endauth

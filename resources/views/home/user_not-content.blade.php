@@ -43,7 +43,7 @@
             <div class="myAccount-navigation col-2">
                 @include('home.user-header')
             </div>
-            <div class="myAccount-content col-10">
+            <div class="myAccount-content col-lg-10">
 
                 <div class="recent-orders-table table-responsive">
                     <table id="example2" class="table table-striped table-bordered">

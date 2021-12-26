@@ -1,7 +1,12 @@
 @extends('layouts.home')
 
-@section('title','Frequently asked questions')
+@section('title','FAQ-' .$setting->title)
 
+@section('description')
+    {{$setting->description}}
+@endsection
+
+@section('keywords', $setting->keywords)
 
 
 @section('hero')

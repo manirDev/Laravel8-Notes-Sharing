@@ -19,7 +19,7 @@ class UserController extends Controller
     {
         //
         $tags = Content::select('id', 'title', 'image', 'description', 'slug')->limit(5)->inRandomOrder()->get();
-        return view('home.user-profile',['tags'=>$tags]);
+        return view('home.user',['tags'=>$tags]);
     }
 
     public function userProfile()

@@ -1,8 +1,12 @@
 @extends('layouts.home')
 
-@section('title','Contact-')
+@section('title','Contact-'.$setting->title)
 
+@section('description')
+    {{$setting->description}}
+@endsection
 
+@section('keywords', $setting->keywords)
 
 @section('hero')
 
@@ -30,8 +34,8 @@
                             <i class='bx bx-envelope'></i>
                         </div>
                         <h3>Email Here</h3>
-                        <p><a href="#"><span class="__cf_email__" >[email&#160;protected]</span></a></p>
-                        <p><a href="#"><span class="__cf_email__" >[email&#160;protected]</span></a></p>
+                        <p><a href="#"><span class="__cf_email__" >{{$setting->email}}</span></a></p>
+
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6">
@@ -40,7 +44,7 @@
                             <i class='bx bx-map'></i>
                         </div>
                         <h3>Location Here</h3>
-                        <p><a href="https://goo.gl/maps/Mii9keyeqXeNH4347" target="_blank">2750 Quadra Street Victoria Road, New York, USA</a></p>
+                        <p><a href="https://goo.gl/maps/Mii9keyeqXeNH4347" target="_blank">{{$setting->address}}</a></p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-0 offset-md-3 offset-sm-3">
@@ -49,8 +53,8 @@
                             <i class='bx bx-phone-call'></i>
                         </div>
                         <h3>Call Here</h3>
-                        <p><a href="tel:1234567890">+123 456 7890</a></p>
-                        <p><a href="tel:2414524526">+241 452 4526</a></p>
+                        <p><a href="tel:1234567890">{{$setting->phone}}</a></p>
+
                     </div>
                 </div>
             </div>
