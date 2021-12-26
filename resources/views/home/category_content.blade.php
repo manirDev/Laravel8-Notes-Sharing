@@ -7,6 +7,30 @@
 @endsection
 
 @section('keywords', $data->keywords)
+
+@section('csz')
+    <!--plugins-->
+    <link href="{{asset('assets')}}/Ahome/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet"/>
+
+    <link href="{{asset('assets')}}/Ahome/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
+    <link href="{{asset('assets')}}/Ahome/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    <script src="{{asset('assets')}}/pdfobject.js"></script>
+
+    <style>
+        .pdfobject-container {width:100%;height: 35rem; border: 1rem solid rgba(0,0,0,.1);}
+        .pdfobject { border: 1px solid #666; }
+        #word-break{
+            display: block;
+            width: 95%;
+            overflow: hidden;
+            word-wrap: break-word;
+            text-overflow: ellipsis;
+            max-height: 16px;
+            line-height:16px;
+        }
+    </style>
+@endsection
+
 @section('hero')
     <div class="page-title-area item-bg1 jarallax" data-jarallax='{"speed": 0.3}' style="background-image:url({{asset('assets')}}/fhome/img/main-banner3.jpg);">
         <div class="container">
@@ -29,34 +53,34 @@
                 <div class="col-lg-8 col-md-12">
                     <div class="row">
                         @foreach($datalist as $rs)
-                        <div class="col-lg-4 col-md-4">
-                            <div class="single-blog-post mb-30">
-                                <div class="post-image">
-                                    <a href="{{route('notContent', ['id'=>$rs->id, 'slug'=>$rs->slug])}}" class="d-block">
-                                        <img src="{{ Storage::url($rs->image) }}" alt="image" style="height: 200px">
-                                    </a>
-                                    <div class="tag">
-                                        <a href="{{route('notContent', ['id'=>$rs->id, 'slug'=>$rs->slug])}}">{{$rs->title}}</a>
+                                    <div class="col-lg-4 col-md-4" >
+                                        <div class="single-blog-post mb-30">
+                                            <div class="post-image">
+                                                <a href="{{route('notContent', ['id'=>$rs->id, 'slug'=>$rs->slug])}}" class="d-block">
+                                                    <img src="{{ Storage::url($rs->image) }}" alt="image" style="height: 200px">
+                                                </a>
+                                                <div class="tag">
+                                                    <a href="{{route('notContent', ['id'=>$rs->id, 'slug'=>$rs->slug])}}">{{$rs->title}}</a>
+                                                </div>
+                                            </div>
+                                            <div class="post-content">
+                                                <ul class="post-meta">
+
+                                                    <li class="post-author">
+                                                        @if($rs->user->profile_photo_path)
+                                                            <img src="{{Storage::url($rs->user->profile_photo_path)}}" class="d-inline-block rounded-circle mr-2" alt="image">
+                                                        @endif
+
+                                                        By: <a href="{{route('notContent', ['id'=>$rs->id, 'slug'=>$rs->slug])}}" class="d-inline-block">{{$rs->user->name}}</a>
+                                                    </li>
+
+                                                    <li><a href="#">{{$rs->created_at}}</a></li>
+                                                </ul>
+
+                                                <a href="{{route('notContent', ['id'=>$rs->id, 'slug'=>$rs->slug])}}" class="read-more-btn">Read More <i class='bx bx-right-arrow-alt'></i></a>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="post-content">
-                                    <ul class="post-meta">
-
-                                        <li class="post-author">
-                                            @if($rs->user->profile_photo_path)
-                                                <img src="{{Storage::url($rs->user->profile_photo_path)}}" class="d-inline-block rounded-circle mr-2" alt="image">
-                                            @endif
-
-                                            By: <a href="{{route('notContent', ['id'=>$rs->id, 'slug'=>$rs->slug])}}" class="d-inline-block">{{$rs->user->name}}</a>
-                                        </li>
-
-                                        <li><a href="#">{{$rs->created_at}}</a></li>
-                                    </ul>
-
-                                    <a href="{{route('notContent', ['id'=>$rs->id, 'slug'=>$rs->slug])}}" class="read-more-btn">Read More <i class='bx bx-right-arrow-alt'></i></a>
-                                </div>
-                            </div>
-                        </div>
                         @endforeach
 
                         <div class="col-lg-12 col-md-12 col-sm-12">
@@ -144,5 +168,34 @@
             </div>
         </div>
     </section>
+
+@endsection
+@section('jsz')
+    <!-- Bootstrap JS -->
+    <script src="{{asset('assets')}}/Ahome/js/bootstrap.bundle.min.js"></script>
+    <!--plugins-->
+    <script src="{{asset('assets')}}/Ahome/js/jquery.min.js"></script>
+    <script src="{{asset('assets')}}/Ahome/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+
+    <script src="{{asset('assets')}}/Ahome/plugins/datatable/js/jquery.dataTables.min.js"></script>
+    <script src="{{asset('assets')}}/Ahome/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
+
+    <script src="{{asset('assets')}}/Ahome/js/index.js"></script>
+    <!--app JS-->
+    <script src="{{asset('assets')}}/Ahome/js/app.js"></script>
+
+    <script src="{{asset('assets')}}/Ahome/js/pace.min.js"></script>
+
+    <script>
+
+        $(document).ready(function() {
+            $('#example2').DataTable({
+                "iDisplayLength" : 3
+            })
+        });
+
+    </script>
+
+
 
 @endsection

@@ -8,6 +8,11 @@
 
 @section('keywords', $data->keywords)
 @section('csz')
+    <!--plugins-->
+    <link href="{{asset('assets')}}/Ahome/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet"/>
+
+    <link href="{{asset('assets')}}/Ahome/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
+    <link href="{{asset('assets')}}/Ahome/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
     <script src="{{asset('assets')}}/pdfobject.js"></script>
 
     <style>
@@ -52,7 +57,7 @@
                             <li>
                                 @if($data->file)
 
-                                    <a href="{{Storage::url($data->file)}}" onclick="popupCenter({url: this.href, title: 'xtf', w: 900, h: 500});"target="_blank">
+                                    <a href="{{Storage::url($data->file)}}" onclick="popupCenter({url: this.href, title: 'xtf', w: 900, h: 900});"target="_blank">
                                         <div id="example1"></div>
                                         <script>PDFObject.embed("{{Storage::url($data->file)}}", "#example1");</script>
                                     </a>
@@ -153,6 +158,7 @@
                                     <div class="tabs-item">
                                         <div class="products-details-tab-content">
                                             <div class="product-review-form">
+
                                                 <h3>User Reviews</h3>
 
                                                     <div class="review-title">
@@ -169,9 +175,19 @@
 
                                                 </div>
                                                 <div class="row">
+                                                    @if($avgrev)
                                                     <div class="col-6 review-comments" >
-{{--                                                        id="dynamic_content"--}}
+                                                        <table id="example2" class="table table-bordered">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th> </th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+
                                                             @foreach($reviews as $rs)
+                                                                <tr>
+                                                                <td>
                                                                 <div class="review-item">
                                                                     <div class="rating">
                                                                         @for ($i = 0; $i < 5; $i++)
@@ -192,11 +208,16 @@
                                                                     </span>
                                                                     <p>{{$rs->review}}.</p>
                                                                 </div>
-
-
+                                                                </td>
+                                                                </tr>
                                                             @endforeach
 
+                                                            </tbody>
+                                                        </table>
                                                     </div>
+                                                    @else
+                                                        <div class="col-6 review-comments" ></div>
+                                                    @endif
 {{--                                                    <div id="show_paginator"></div>--}}
 
                                                     <div id="rev" class="col-6 review-form">
@@ -285,7 +306,35 @@
       `
         )
 
-        //if (window.focus) newWindow.focus();
+        if (window.focus) newWindow.focus();
     }
 </script>
+
+<!-- Bootstrap JS -->
+<script src="{{asset('assets')}}/Ahome/js/bootstrap.bundle.min.js"></script>
+<!--plugins-->
+<script src="{{asset('assets')}}/Ahome/js/jquery.min.js"></script>
+<script src="{{asset('assets')}}/Ahome/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+
+<script src="{{asset('assets')}}/Ahome/plugins/datatable/js/jquery.dataTables.min.js"></script>
+<script src="{{asset('assets')}}/Ahome/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
+
+<script src="{{asset('assets')}}/Ahome/js/index.js"></script>
+<!--app JS-->
+<script src="{{asset('assets')}}/Ahome/js/app.js"></script>
+
+<script src="{{asset('assets')}}/Ahome/js/pace.min.js"></script>
+
+<script>
+
+    $(document).ready(function() {
+        $('#example2').DataTable({
+            "iDisplayLength" : 3
+        })
+    });
+
+</script>
+
+
+
 @endsection

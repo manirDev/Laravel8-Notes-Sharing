@@ -4,6 +4,8 @@
 @section('title', 'Note Content')
 
 @section('cssx')
+
+
 @endsection
 
 @section('content')
@@ -38,7 +40,7 @@
                         <th>Category</th>
                         <th>Title</th>
                         <th>Keywords</th>
-                        <th>Description</th>
+{{--                        <th>Description</th>--}}
                         <th>Image</th>
                         <th>Gallery</th>
                         <th>PDF-File</th>
@@ -58,7 +60,7 @@
                         </td>
                         <td>{{ $rs->title}}</td>
                         <td>{{ $rs->keywords}}</td>
-                        <td>{{ $rs->description}}</td>
+{{--                        <td id="word-break">{{ $rs->description}}</td>--}}
                         <td>
                             <div class="p-2">
                                 @if($rs->image)
@@ -73,7 +75,7 @@
                         </td>
                         <td>
                             @if($rs->file)
-                                <a href="{{Storage::url($rs->file)}}" target="_blank">
+                                <a href="{{Storage::url($rs->file)}}" onclick="popupCenter({url: this.href, title: 'xtf', w: 900, h: 900});" target="_blank">
                                     <i class="bx bxs-file-pdf p2" style="font-size: 32px"><span style="font-size: 16px">{{$rs->title}}</span></i>
 
                                 </a>
@@ -140,5 +142,31 @@
             table.buttons().container()
                 .appendTo( '#example2_wrapper .col-md-6:eq(0)' );
         } );
+    </script>
+
+    <script>
+        const popupCenter = ({url, title, w, h}) => {
+            // Fixes dual-screen position                             Most browsers      Firefox
+            const dualScreenLeft = window.screenLeft !==  undefined ? window.screenLeft : window.screenX;
+            const dualScreenTop = window.screenTop !==  undefined   ? window.screenTop  : window.screenY;
+
+            const width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
+            const height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
+
+            const systemZoom = width / window.screen.availWidth;
+            const left = (width - w) / 2 / systemZoom + dualScreenLeft
+            const top = (height - h) / 2 / systemZoom + dualScreenTop
+            const newWindow = window.open(url, title,
+                `
+      scrollbars=yes,
+      width=${w / systemZoom},
+      height=${h / systemZoom},
+      top=${top},
+      left=${left}
+      `
+            )
+
+            //if (window.focus) newWindow.focus();
+        }
     </script>
 @endsection
