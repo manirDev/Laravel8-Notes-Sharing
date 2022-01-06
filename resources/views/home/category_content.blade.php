@@ -171,31 +171,5 @@
 
 @endsection
 @section('jsz')
-    <!-- Bootstrap JS -->
-    <script src="{{asset('assets')}}/Ahome/js/bootstrap.bundle.min.js"></script>
-    <!--plugins-->
-    <script src="{{asset('assets')}}/Ahome/js/jquery.min.js"></script>
-    <script src="{{asset('assets')}}/Ahome/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
-
-    <script src="{{asset('assets')}}/Ahome/plugins/datatable/js/jquery.dataTables.min.js"></script>
-    <script src="{{asset('assets')}}/Ahome/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
-
-    <script src="{{asset('assets')}}/Ahome/js/index.js"></script>
-    <!--app JS-->
-    <script src="{{asset('assets')}}/Ahome/js/app.js"></script>
-
-    <script src="{{asset('assets')}}/Ahome/js/pace.min.js"></script>
-
-    <script>
-
-        $(document).ready(function() {
-            $('#example2').DataTable({
-                "iDisplayLength" : 3
-            })
-        });
-
-    </script>
-
-
 
 @endsection

@@ -19,7 +19,7 @@ class ContentController extends Controller
      */
     public function index()
     {
-        //
+
         //$datalist = DB::select('select * from categories');
         //$datalist = DB::table('contents')->get();
         $datalist = Content::all();

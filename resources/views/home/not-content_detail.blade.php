@@ -306,7 +306,7 @@
       `
         )
 
-        if (window.focus) newWindow.focus();
+       // if (window.focus) newWindow.focus();
     }
 </script>
 

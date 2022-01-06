@@ -68,7 +68,7 @@
             <div class="section-title">
                 <span class="sub-title">Contact Us</span>
                 <h2>Drop us Message for any Query</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p>{!! $setting->contact !!}</p>
             </div>
             <div class="contact-form" >
                 <p>@include('home.flash-message')</p>
