@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Content;
 use App\Models\Review;
+use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,21 +18,21 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
-        $tags = Content::select('id', 'title', 'image', 'description', 'slug')->limit(5)->inRandomOrder()->get();
-        return view('home.user',['tags'=>$tags]);
+        $setting = Setting::first();
+        return view('home.user', ['setting'=>$setting]);
     }
 
     public function userProfile()
     {
-        $tags = Content::select('id', 'title', 'image', 'description', 'slug')->limit(5)->inRandomOrder()->get();
-        return view('home.user-profile', ['tags'=>$tags]);
+        $setting = Setting::first();
+        return view('home.user-profile', ['setting'=>$setting]);
     }
 
     public function myreviews(){
+        $setting = Setting::first();
         $datalist = Review::where('user_id', '=', Auth::user()->id)->get();
-        $tags = Content::select('id', 'title', 'image', 'description', 'slug')->limit(5)->inRandomOrder()->get();
-        return view('home.user_reviews', ['datalist' => $datalist, 'tags'=>$tags]);
+//        $tags = Content::select('id', 'title', 'image', 'description', 'slug')->limit(5)->inRandomOrder()->get();
+        return view('home.user_reviews', ['datalist' => $datalist,'setting'=>$setting]);
     }
     public function destroyreview(Review $review, $id){
         $data = Review::find($id);

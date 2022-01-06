@@ -12,7 +12,14 @@
 
 @extends('layouts.home')
 
-@section('title', 'User-Not-Content')
+
+@section('title','User-Reviews-' .$setting->title)
+
+@section('description')
+    {{$setting->description}}
+@endsection
+
+@section('keywords', $setting->keywords)
 
 
 
@@ -135,7 +142,8 @@
         $(document).ready(function() {
             var table = $('#example2').DataTable( {
                 lengthChange: false,
-                buttons: [ 'copy', 'excel', 'pdf', 'print']
+                buttons: [ 'copy', 'excel', 'pdf', 'print'],
+                "iDisplayLength" : 5
             } );
 
             table.buttons().container()

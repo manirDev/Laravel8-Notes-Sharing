@@ -12,7 +12,13 @@
 
 @extends('layouts.home')
 
-@section('title', 'User-Not-Content-Image-Add')
+@section('title','User-IMage-Add-' .$setting->title)
+
+@section('description')
+    {{$setting->description}}
+@endsection
+
+@section('keywords', $setting->keywords)
 
 
 

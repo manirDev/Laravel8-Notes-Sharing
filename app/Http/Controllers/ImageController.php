@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Content;
 use App\Models\Image;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -30,9 +31,10 @@ class ImageController extends Controller
         //
         $data = Content::find($content_id);
         $images = DB::table('images')->where('content_id', '=', $content_id)->get();
-        $tags = Content::select('id', 'title', 'image', 'description', 'slug')->limit(5)->inRandomOrder()->get();
+        $setting = Setting::first();
 
-        return view('home.user_image_add', ['data' => $data, 'images'=>$images, 'tags'=>$tags]);
+
+        return view('home.user_image_add', ['data' => $data, 'images'=>$images, 'setting'=>$setting]);
     }
 
     /**

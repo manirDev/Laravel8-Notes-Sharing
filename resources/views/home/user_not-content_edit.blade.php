@@ -1,6 +1,12 @@
 @extends('layouts.home')
 
-@section('title', 'User-Not-Content-Edit')
+@section('title','User-Not-Content-Edit-' .$setting->title)
+
+@section('description')
+    {{$setting->description}}
+@endsection
+
+@section('keywords', $setting->keywords)
 <style>
     .ck-editor__editable {min-height: 100px; color: black;}
 </style>

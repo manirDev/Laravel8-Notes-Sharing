@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Content;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -21,10 +22,11 @@ class ContentController extends Controller
         //
         //$datalist = DB::select('select * from categories');
         //$datalist = DB::table('contents')->get();
+        $setting = Setting::first();
         $datalist = Content::where('user_id', Auth::id())->get();
         //echo var_dump($datalist) ;
         $tags = Content::select('id', 'title', 'image', 'description', 'slug')->limit(5)->inRandomOrder()->get();
-        return view('home.user_not-content', ['datalist' => $datalist, 'tags'=>$tags]);
+        return view('home.user_not-content', ['datalist' => $datalist, 'tags'=>$tags, 'setting'=>$setting]);
     }
 
     /**
@@ -35,10 +37,11 @@ class ContentController extends Controller
     public function create()
     {
         //
+        $setting = Setting::first();
         // $datalist = Category::all();
-        $tags = Content::select('id', 'title', 'image', 'description', 'slug')->limit(5)->inRandomOrder()->get();
+//        $tags = Content::select('id', 'title', 'image', 'description', 'slug')->limit(5)->inRandomOrder()->get();
         $datalist = Category::with('children')->get();
-        return view('home.user_not-content_add', ['datalist' => $datalist, 'tags'=>$tags]);
+        return view('home.user_not-content_add', ['datalist' => $datalist,'setting'=>$setting]);
     }
 
     /**
@@ -86,11 +89,12 @@ class ContentController extends Controller
     public function edit(Content $content, $id)
     {
         //
-        $tags = Content::select('id', 'title', 'image', 'description', 'slug')->limit(5)->inRandomOrder()->get();
+        $setting = Setting::first();
+
         $data = Content::find($id);
         //$datalist = Category::all();
         $datalist = Category::with('children')->get();
-        return view('home.user_not-content_edit', ['data' => $data,'datalist'=>$datalist, 'tags'=>$tags]);
+        return view('home.user_not-content_edit', ['data' => $data,'datalist'=>$datalist, 'setting'=>$setting]);
     }
 
     /**

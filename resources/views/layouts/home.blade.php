@@ -1,5 +1,6 @@
 @php
-    $setting = \App\Http\Controllers\HomeController::getSetting()
+    $setting = \App\Http\Controllers\HomeController::getSetting();
+    $tags = \App\Http\Controllers\HomeController::gettags();
 @endphp
 
 

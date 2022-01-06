@@ -1,6 +1,13 @@
 @extends('layouts.home')
 
-@section('title', 'All Notes')
+
+@section('title','ALL-Notes-' .$setting->title)
+
+@section('description')
+    {{$setting->description}}
+@endsection
+
+@section('keywords', $setting->keywords)
 
 
 @section('hero')
