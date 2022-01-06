@@ -12,7 +12,7 @@
 </style>
 @section('hero')
 
-    <div class="page-title-area jarallax" data-jarallax='{"speed": 0.3}' style="background-image:url({{asset('assets')}}/fhome/img/main-banner3.jpg);max-height: 50px">
+    <div class="page-title-area jarallax" data-jarallax='{"speed": 0.3}' style="background-image:url({{ Storage::url($setting->hero_images) }});max-height: 50px">
         <div class="container">
             <div class="page-title-content">
                 <ul>

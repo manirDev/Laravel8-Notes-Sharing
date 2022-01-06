@@ -1,77 +1,20 @@
-
-<section class="banner-wrapper">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6 col-md-12">
-                <div class="wrapper-content">
-                    <h1>A Better Future Starts Here</h1>
-                    <p>Raque supports students by introducing collaborators outside R, internships and research experience abroad.</p>
-                    <form>
-                        <input type="text" class="input-search" placeholder="What do you want to learn?">
-                        <button type="button">Search</button>
-                    </form>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-12">
-                <div class="banner-courses-category">
-                    <ul>
-                        <li>
-                            <a href="#">
-                                <i class='bx bx-shape-triangle'></i>
-                                Technology
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class='bx bx-font-family'></i>
-                                Language
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class='bx bxs-drink'></i>
-                                Science
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class='bx bx-first-aid'></i>
-                                Health
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class='bx bx-bar-chart-alt-2'></i>
-                                Humanities
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class='bx bx-briefcase-alt-2'></i>
-                                Business
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class='bx bx-book-reader'></i>
-                                Math
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class='bx bx-target-lock'></i>
-                                Marketing
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class='bx bx-desktop'></i>
-                                Design
-                            </a>
-                        </li>
-                    </ul>
+<div class="banner-section" style="background-image:url({{ Storage::url($setting->hero_images) }});" >
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="container">
+                <div class="banner-content">
+                    <span class="sub-title">{{$setting->hero_title}}</span>
+                    <h1>{{$setting->hero_subtitle}}</h1>
+                    <p>{{$setting->hero_description}}.</p>
+                    <div class="btn-box">
+                        <a href="{{route('register')}}" class="default-btn"><i class='bx bx-move-horizontal icon-arrow before'></i><span class="label">Get Started</span><i class="bx bx-move-horizontal icon-arrow after"></i></a>
+                        <a href="{{route('all_notes')}}" class="default-btn"><i class='bx bx-show-alt icon-arrow before'></i><span class="label">All Notes</span><i class='bx bx-show-alt icon-arrow after'></i></a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
+    <div class="divider"></div>
+</div>
+
+

@@ -8,7 +8,7 @@
 
 @section('keywords', $data->keywords)
 @section('hero')
-    <div class="page-title-area item-bg1 jarallax" data-jarallax='{"speed": 0.3}' style="background-image:url({{asset('assets')}}/fhome/img/main-banner3.jpg);">
+    <div class="page-title-area item-bg1 jarallax" data-jarallax='{"speed": 0.3}' style="background-image:url({{ Storage::url($setting->hero_images) }});">
         <div class="container">
             <div class="page-title-content">
                 <ul>

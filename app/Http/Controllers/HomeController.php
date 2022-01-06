@@ -74,12 +74,13 @@ class HomeController extends Controller
 
     //
     public function notContent($id, $slug){
+        $setting = Setting::first();
         $data = Content::find($id);
 //        $tags = Content::select('id', 'title', 'image', 'description', 'slug')->limit(5)->inRandomOrder()->get();
         $datalist = Content::where('category_id',$id)->get();
         $reviews = Review::where('content_id', $id)->get();
         $picked = Content::select('id', 'title', 'image', 'description', 'slug', 'created_at')->limit(6)->get();
-        return view('home.not-content_detail', ['data' => $data,'datalist' => $datalist, 'reviews'=>$reviews, 'picked'=>$picked]);
+        return view('home.not-content_detail', ['data' => $data,'datalist' => $datalist, 'reviews'=>$reviews, 'picked'=>$picked, 'setting'=>$setting]);
     }
     public function getcontent(Request $request){
         if($request->input('search')){ $search =$request->input('search');}
@@ -110,13 +111,14 @@ class HomeController extends Controller
 
     }
     public function categorycontents($id, $slug){
+        $setting = Setting::first();
         $datalist = Content::where('category_id',$id)->get();
         $data = Category::find($id);
 //        print_r($data);
 //        exit();
 //        $tags = Content::select('id', 'title', 'image', 'description', 'slug')->limit(5)->inRandomOrder()->get();
         $rand = Content::select('id','category_id', 'title', 'image', 'description', 'slug','created_at','user_id')->limit(8)->inRandomOrder()->get();
-        return view('home.category_content', ['data' => $data, 'datalist' => $datalist,'rand'=>$rand]);
+        return view('home.category_content', ['data' => $data, 'datalist' => $datalist,'rand'=>$rand,'setting'=>$setting]);
     }
 
 

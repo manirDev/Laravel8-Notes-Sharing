@@ -114,7 +114,8 @@
         $(document).ready(function() {
             var table = $('#example2').DataTable( {
                 lengthChange: false,
-                buttons: [ 'copy', 'excel', 'pdf', 'print']
+                buttons: [ 'copy', 'excel', 'pdf', 'print'],
+                "iDisplayLength" : 5
             } );
 
             table.buttons().container()

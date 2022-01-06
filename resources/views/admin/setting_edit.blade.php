@@ -58,6 +58,9 @@
                                         <a href="javascript:void();" data-target="#general" data-toggle="pill" class="nav-link active"><i class="icon-user"></i> <span class="hidden-xs" style="color: #ccc; font-size: 16px">General</span></a>
                                     </li>
                                     <li class="nav-item">
+                                        <a href="javascript:void();" data-target="#hero" data-toggle="pill" class="nav-link"><i class="icon-envelope-open"></i> <span class="hidden-xs" style="color: #ccc; font-size: 16px">Hero Section</span></a>
+                                    </li>
+                                    <li class="nav-item">
                                         <a href="javascript:void();" data-target="#smtp" data-toggle="pill" class="nav-link"><i class="icon-envelope-open"></i> <span class="hidden-xs" style="color: #ccc; font-size: 16px">Smtp Email</span></a>
                                     </li>
                                     <li class="nav-item">
@@ -116,6 +119,41 @@
                                             </div>
                                             <!--/row-->
                                         </div>
+                                        <div class="tab-pane" id="hero">
+                                            <div class="form-group">
+                                                <label for="exampleInputPassword1">Hero Title</label>
+                                                <input type="text" name="hero_title" value="{{$data->hero_title}}" class="form-control" id="exampleInputPassword1" >
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputPassword1">Hero SubTitle</label>
+                                                <input type="text" name="hero_subtitle" value="{{$data->hero_subtitle}}" class="form-control" id="exampleInputPassword1" >
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputPassword1">Hero Description</label>
+                                                <input type="text" name="hero_description" value="{{$data->hero_description}}" class="form-control" id="exampleInputPassword1" >
+                                            </div>
+
+                                            <br>
+
+                                            <div class="form-group">
+
+                                                <label for="inputProductDescription" class="form-label">Hero-Section Image</label> <br>
+                                                <input id="image-uploadify" type="file" value="{{$data->hero_images}}" name="image" accept=".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf" multiple>
+
+                                            </div><br><br>
+                                           <div>
+                                               @if($data->hero_images)
+                                                   <img src="{{Storage::url($data->hero_images)}}" width="570" height="300" style="border-radius: 10px;" >
+                                               @endif
+                                           </div>
+                                            <script>
+                                                $(document).ready(function () {
+                                                    $('#image-uploadify').imageuploadify();
+                                                })
+                                            </script>
+                                            <!--/row-->
+                                        </div>
+
                                         <div class="tab-pane" id="smtp">
                                             <div class="form-group">
                                                 <label for="exampleInputPassword1">Smtpserver</label>
@@ -126,7 +164,7 @@
                                                 <input type="email" name="smtpemail" value="{{$data->smtpemail}}" class="form-control" id="exampleInputPassword1" >
                                             </div>
                                             <div class="form-group">
-                                                <label for="exampleInputPassword1">Smtppassword</label>
+                                                <label for="exampleInputPassword1">Smtp password</label>
                                                 <input type="type" name="smtppassword" value="{{$data->smtppassword}}" class="form-control" id="exampleInputPassword1" >
                                             </div>
                                             <div class="form-group">
@@ -262,7 +300,7 @@
 
     <!-- Index js -->
     <script src="{{asset('assets')}}/js/index.js"></script>
-
+    <script src="{{asset('assets')}}/Ahome/plugins/Drag-And-Drop/dist/imageuploadify.min.js"></script>
 
 
 

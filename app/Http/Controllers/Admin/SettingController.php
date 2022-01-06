@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use function PHPUnit\Framework\isEmpty;
 
 class SettingController extends Controller
@@ -21,7 +22,10 @@ class SettingController extends Controller
         // print_r($data);
         if (isEmpty($data)){
             $data = new Setting();
-            $data->title = 'Project Title';
+            $data->title = 'Not-Paylasim Sitesi';
+            $data->hero_title = 'THE FUTURE';
+            $data->hero_subtitle = 'THE FUTURE';
+            $data->hero_description = 'THE FUTURE';
             $data->save();
             $data = Setting::first();
         }
@@ -106,9 +110,14 @@ class SettingController extends Controller
         $data->contact = $request->input('contact');
         $data->references = $request->input('references');
         $data->status = $request->input('status');
-
+        $data->hero_title = $request->input('hero_title');
+        $data->hero_subtitle = $request->input('hero_subtitle');
+        $data->hero_description = $request->input('hero_description');
+        if($request->file('image')!=NULL){
+            $data->hero_images = Storage::putFile('images', $request->file('image'));
+        }
         $data->save();
-        return redirect()->route('admin_home');
+        return redirect()->back();
     }
 
     /**
