@@ -75,9 +75,16 @@ class ContentController extends Controller
      * @param  \App\Models\Content  $content
      * @return \Illuminate\Http\Response
      */
+
     public function show(Content $content)
     {
         //
+        if(Cookie::get($content->id)!=''){
+            Cookie::set('$content->id', '1', 60);
+            $content->incrementReadCount();
+        }
+
+        return view('home.index', compact($content));
     }
 
     /**

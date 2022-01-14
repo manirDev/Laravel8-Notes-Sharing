@@ -9,7 +9,7 @@
     <div class="myHeader">
         <ul>
             <li><a href="{{route('myprofile')}}" class="active"><i class='bx bxs-dashboard'></i> Dashboard</a></li>
-            <li><a href="{{route('user-profile')}}"  ><i class='bx bx-edit'></i> My Profile</a></li>
+            <li><a href="{{route('user-profile')}}"  ><i class='bx bx-edit'></i> Account Details</a></li>
             <li><a href="{{route('user_content')}}"><i class='bx bx-home-alt'></i> My Not-Contents</a></li>
             <li><a href="{{route('myreviews')}}"><i class='bx bx-revision'></i> My Reviews</a></li>
 

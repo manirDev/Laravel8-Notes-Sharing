@@ -35,7 +35,7 @@
                 <div class="col-lg-8 col-md-12 ">
                     <div class="row">
 
-                        @foreach($rand as $rs)
+                        @foreach($datalist as $rs)
                             <div class="col-lg-6 col-md-6">
                                 <div class="single-blog-post mb-30">
                                     <div class="post-image">
@@ -65,6 +65,7 @@
                         @endforeach
 
                     </div>
+                    <span>{{ $datalist->links("pagination::bootstrap-4") }}</span>
                 </div>
                 <div class="col-lg-4 col-md-12">
                     <aside class="widget-area">
@@ -81,34 +82,23 @@
 
                         </section>
                         <section class="widget widget_raque_posts_thumb">
-                            <h3 class="widget-title">Most Reviewed Notes</h3>
-                            @foreach($rand as $rs)
+                            <h3 class="widget-title">Most Viewed Notes</h3>
+                                @php
+                                    $mostViewed = App\Http\Controllers\HomeController::mostViewed();
+                                @endphp
+                                @foreach($mostViewed as $rs)
 
-
-
-                                    @php
-                                        $avgmax = App\Http\Controllers\HomeController::avgmax($rs->id);
-                                        $avgrev = App\Http\Controllers\HomeController::avgreview($rs->id);
-                                        $count = count($avgmax)
-                                    @endphp
-
-                                    @for ($i = 0; $i < 3; $i++)
-                                         @if ($avgrev>4)
-                                        <article class="item">
-                                            <a href="{{route('notContent', ['id'=>$rs->id, 'slug'=>$rs->slug])}}" class="thumb">
-                                                <img src="{{ Storage::url($rs->image) }}"   style="border-radius: 10px; height:50px !important;">
-                                            </a>
-                                            <div class="info">
-                                                <time datetime="2021-06-30">{{$rs->created_at}}</time>
-                                                <h4 class="title usmall"><a href="{{route('notContent', ['id'=>$rs->id, 'slug'=>$rs->slug])}}">{{$rs->title}}</a></h4>
-                                            </div>
+                                    <article class="item">
+                                        <a href="{{route('notContent', ['id'=>$rs->id, 'slug'=>$rs->slug])}}" class="thumb">
+                                            <img src="{{ Storage::url($rs->image) }}"   style="border-radius: 10px; height:50px !important;">
+                                        </a>
+                                        <div class="info">
+                                            <time datetime="2021-06-30">{{$rs->created_at}}</time>
+                                            <h4 class="title usmall"><a href="{{route('notContent', ['id'=>$rs->id, 'slug'=>$rs->slug])}}">{{$rs->title}}</a></h4>
+                                        </div>
                                         <div class="clear"></div>
-                                        </article>
-                                    @endif
-                                    @endfor
-
-
-                            @endforeach
+                                    </article>
+                                @endforeach
                         </section>
                         <section class="widget widget_categories">
                             <h3 class="widget-title"> Some Categories</h3>

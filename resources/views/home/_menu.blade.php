@@ -1,7 +1,22 @@
 @section('livewire')
     @livewireScripts
 @endsection
+<style>
+    a.hovered:hover{
+        background-color: red;
+    }
+</style>
+<script>
+    const libLink = document.getElementsByClassName("lib-link")[0];
+    // The array 0 assumes there is only one of these links,
+    // you would have to loop or use event delegation for multiples
+    // but we won't go into that here
+    libLink.onmouseover = function () {
+        this.style.color='red'
+        this.style.size='bold'
+    }
 
+</script>
 <div class="navbar-area">
     <div class="raque-responsive-nav">
         <div class="container">
@@ -37,12 +52,20 @@
                                 <i class='bx bx-user'></i>
                                 <span>{{Auth::user()->name}} <i class='bx bx-chevron-down'></i></span>
                             </button>
-                            <div class="dropdown-menu">
-                                <a href="{{route('myprofile')}}" class="dropdown-item d-flex align-items-center">
+                            <div class="dropdown-menu hovered">
+                                <a href="{{route('myprofile')}}" class="dropdown-item d-flex align-items-center hovered">
                                     <i class='bx bx-user'></i>
-                                    <span>My account</span>
+                                    <span >My account</span>
                                 </a>
-                                <a href="{{route('admin_logout')}}" class="dropdown-item d-flex align-items-center">
+                                <a href="{{route('user_content')}}" class="dropdown-item d-flex align-items-center hovered">
+                                    <i class='bx bx-note'></i>
+                                    <span>My Notes</span>
+                                </a>
+                                <a classe="myhover" href="{{route('myreviews')}}" class=" dropdown-item d-flex align-items-center hovered">
+                                    <i class='bx bx-revision'></i>
+                                    <span class="lib-link">My Reviews</span>
+                                </a>
+                                <a  href="{{route('admin_logout')}}" class="dropdown-item d-flex align-items-center hovered">
                                     <i class='bx bx-log-out'></i>
                                     <span>Logout</span>
                                 </a>

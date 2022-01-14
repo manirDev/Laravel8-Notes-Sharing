@@ -8,7 +8,7 @@
                         <div class="icon">
                             <i class='bx bx-book-reader'></i>
                         </div>
-                        <h3 class="odometer" data-count="1754">00</h3>
+                        <h3 class="odometer" data-count="{{$noteCount}}">00</h3>
                         <p>Total Notes</p>
                     </div>
                 </div>
@@ -17,17 +17,17 @@
                         <div class="icon">
                             <i class='bx bx-user-pin'></i>
                         </div>
-                        <h3 class="odometer" data-count="8190">00</h3>
+                        <h3 class="odometer" data-count="{{$userCount}}">00</h3>
                         <p>Happy Students</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-6">
                     <div class="single-funfact">
                         <div class="icon">
-                            <span class="iconify" data-icon="fa-solid:university"></span>
+                            <span class="bx bx-revision"></span>
                         </div>
-                        <h3 class="odometer" data-count="654">00</h3>
-                        <p>University</p>
+                        <h3 class="odometer" data-count="{{$reviewCount}}">00</h3>
+                        <p>Reviews</p>
                     </div>
                 </div>
             </div>

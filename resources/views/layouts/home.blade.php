@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="{{asset('assets')}}/fhome/css/style.css">
     <link rel="stylesheet" href="{{asset('assets')}}/fhome/css/responsive.css">
 {{--    <title>Raque - Education & Online Courses HTML Template</title>--}}
-    <link rel="icon" type="image/png" href="{{asset('assets')}}/fhomeassets/img/favicon.png">
+    <link rel="icon" type="image/png" href="{{asset('assets')}}/fhome/img/favicon.png">
 
     @yield('csz')
 </head>
@@ -48,16 +48,19 @@
     <header class="header-area ">
         <div class="top-header top-header-style-four">
             <div class="container">
-                <div class="row align-items-center">
+                <div class="row align-items-center"  style="padding-bottom: 14px">
                     <div class="col-lg-9 col-md-9">
                         <div class="top-header-social">
-                            <span>Soru, Ders Notu Talep - İstek</span>
+                            <span>
+                                <i class='bx bx-phone-call'></i>
+                                <a href="#">{{$setting->phone}}</a>
+                            </span>
                         </div>
                         <div class="top-header-social">
-                            <span>Üniversiteli Efsaneleri</span>
-                        </div>
-                        <div class="top-header-social">
-                            <span>Sınav Haftası Şarkıları</span>
+                            <span>
+                                <i class='bx bx-envelope'></i>
+                                <a href="#"><span class="__cf_email__" >{{$setting->email}}</span></a>
+                            </span>
                         </div>
 
                         <div class="top-header-social">

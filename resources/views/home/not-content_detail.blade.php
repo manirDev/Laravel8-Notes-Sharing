@@ -28,6 +28,54 @@
             line-height:16px;
         }
     </style>
+
+    <style>
+
+        @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+        fieldset, label { margin: 0; padding: 0; }
+        body{ margin: 20px; }
+        h1 { font-size: 1.5em; margin: 10px; }
+
+        /****** Style Star Rating Widget *****/
+
+        .ratings {
+            border: none;
+            float: left;
+        }
+
+        .ratings > input { display: none; }
+        .ratings > label:before {
+            margin: 5px;
+            font-size: 1.25em;
+            font-family: FontAwesome;
+            display: inline-block;
+            content: "\f005";
+        }
+
+        .ratings > .half:before {
+            content: "\f089";
+            position: absolute;
+        }
+
+        .ratings > label {
+            color: #ddd;
+            float: right;
+
+        }
+
+        /***** CSS Magic to Highlight Stars on Hover *****/
+
+        .ratings > input:checked ~ label, /* show gold star when clicked */
+        .ratings:not(:checked) > label:hover, /* hover current star */
+        .ratings:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+        .ratings > input:checked + label:hover, /* hover current star when changing rating */
+        .ratings > input:checked ~ label:hover,
+        .ratings > label:hover ~ input:checked ~ label, /* lighten current selection */
+        .ratings > input:checked ~ label:hover ~ label { color: #FFED85;  }
+
+    </style>
 @endsection
 
 @section('hero')

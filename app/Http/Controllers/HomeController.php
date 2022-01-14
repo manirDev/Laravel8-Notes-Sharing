@@ -30,6 +30,10 @@ class HomeController extends Controller
     {
         return Review::where('content_id', $id)->average('rate');
     }
+    //most viewed
+    public static function mostViewed(){
+        return Content::OrderBy('reads', 'DESC')->take(3)->get();
+    }
     public static function avgmax($id)
     {
          $avg = Review::where('content_id', $id)->average('rate');
@@ -72,14 +76,15 @@ class HomeController extends Controller
 //        return  Content::select('slug')->limit(6)->get();
 //    }
 
-    //
-    public function notContent($id, $slug){
+
+    public function notContent(Request $request, $id,  $slug){
+        Content::find($id)->increment('reads');
         $setting = Setting::first();
         $data = Content::find($id);
 //        $tags = Content::select('id', 'title', 'image', 'description', 'slug')->limit(5)->inRandomOrder()->get();
-        $datalist = Content::where('category_id',$id)->get();
+        $datalist = Content::where('category_id',$id)->where('status','True')->get();
         $reviews = Review::where('content_id', $id)->get();
-        $picked = Content::select('id', 'title', 'image', 'description', 'slug', 'created_at')->limit(6)->get();
+        $picked = Content::select('id', 'title', 'image', 'description', 'slug', 'created_at')->where('status','True')->limit(6)->get();
         return view('home.not-content_detail', ['data' => $data,'datalist' => $datalist, 'reviews'=>$reviews, 'picked'=>$picked, 'setting'=>$setting]);
     }
     public function getcontent(Request $request){
@@ -104,20 +109,20 @@ class HomeController extends Controller
     }
     public function allnotes(){
         $setting = Setting::first();
-        $datalist = Content::all();
+        $datalist = Content::inRandomOrder('1234')->paginate(6);
 //        $tags = Content::select('id', 'title', 'image', 'description', 'slug')->limit(5)->inRandomOrder()->get();
-        $rand = Content::select('id','category_id', 'title', 'image', 'description', 'slug','created_at','user_id')->limit(8)->inRandomOrder()->get();
+        $rand = Content::select('id','category_id', 'title', 'image', 'description', 'slug','created_at','user_id')->where('status','True')->limit(8)->inRandomOrder()->get();
         return view('home.all_notes', ['datalist' => $datalist,'rand'=>$rand, 'setting'=>$setting]);
 
     }
     public function categorycontents($id, $slug){
         $setting = Setting::first();
-        $datalist = Content::where('category_id',$id)->get();
+        $datalist = Content::where('category_id',$id)->where('status','True')->inRandomOrder('1234')->paginate(6);
         $data = Category::find($id);
 //        print_r($data);
 //        exit();
 //        $tags = Content::select('id', 'title', 'image', 'description', 'slug')->limit(5)->inRandomOrder()->get();
-        $rand = Content::select('id','category_id', 'title', 'image', 'description', 'slug','created_at','user_id')->limit(8)->inRandomOrder()->get();
+        $rand = Content::select('id','category_id', 'title', 'image', 'description', 'slug','created_at','user_id')->where('status','True')->limit(8)->inRandomOrder()->get();
         return view('home.category_content', ['data' => $data, 'datalist' => $datalist,'rand'=>$rand,'setting'=>$setting]);
     }
 
@@ -126,10 +131,17 @@ class HomeController extends Controller
 //        $tags = Content::select('id', 'title', 'image', 'description', 'slug')->limit(5)->inRandomOrder()->get();
         $setting = Setting::first();
         $slider = Content::select('id', 'title', 'image', 'description', 'slug')->limit(4)->get();
-        $daily = Content::select('id','title', 'image', 'description', 'slug','user_id')->limit(6)->inRandomOrder()->get();
+        $daily = Content::select('id','title', 'image', 'description', 'slug','user_id','reads')->where('status','True')->latest()->limit(6)->get();
+//        echo($daily);
+//        exit();
         $last = Content::select('id', 'title', 'image', 'description', 'slug')->limit(6)->inRandomOrder()->get();
-        $picked = Content::select('id', 'title', 'image', 'description', 'slug','user_id')->limit(6)->inRandomOrder()->get();
+        $picked = Content::select('id', 'title', 'image', 'description', 'slug','user_id','reads')->where('status','True')->limit(6)->inRandomOrder()->get();
 //        print_r($picked);
+//        exit();
+        $noteCount = Content::count();
+        $userCount = User::count();
+        $reviewCount = Review::count();
+//        echo $noteCount;
 //        exit();
         $data = [
             'setting'=>$setting,
@@ -137,7 +149,9 @@ class HomeController extends Controller
             'daily'=>$daily,
             'last'=>$last,
             'picked'=>$picked,
-
+            'noteCount'=>$noteCount,
+            'userCount'=>$userCount,
+            'reviewCount'=>$reviewCount
         ];
         return view('home.index', $data);
     }

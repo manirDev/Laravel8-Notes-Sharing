@@ -67,10 +67,10 @@
                             <div class="courses-box-footer">
                                 <ul>
                                     <li class="students-number">
-                                        <i class='bx bx-user'></i> 10 students
+                                        <i class='bx bxs-show'></i> {{$rs->reads}}
                                     </li>
                                     <li class="courses-lesson">
-                                        <i class='bx bx-book-open'></i> 6 lessons
+                                        <i class='bx bx-book-open'></i> {{$noteCount}} lessons
                                     </li>
                                     <li class="courses-price">
                                         Free
@@ -100,7 +100,7 @@
                     <i class='bx bx-code-alt'></i>
                 </div>
                 <h3>Web Development</h3>
-                <span>60 Courses</span>
+                <span>{{$noteCount}}0 Courses</span>
                 <a href="#" class="learn-more-btn">Learn More <i class='bx bx-book-reader'></i></a>
                 <a href="#" class="link-btn"></a>
             </div>
@@ -140,7 +140,7 @@
                 <a href="#" class="learn-more-btn">Learn More <i class='bx bx-book-reader'></i></a>
                 <a href="#" class="link-btn"></a>
             </div>
-            <div class="single-categories-courses-item bg6 mb-30">
+            <div class="single-categories-courses-item bg{{$noteCount}} mb-30">
                 <div class="icon">
                     <i class='bx bx-line-chart'></i>
                 </div>
@@ -248,10 +248,10 @@
                         <div class="courses-box-footer">
                             <ul>
                                 <li class="students-number">
-                                    <i class='bx bx-user'></i> 10 students
+                                    <i class='bx bxs-show'></i> {{$rs->reads}}
                                 </li>
                                 <li class="courses-lesson">
-                                    <i class='bx bx-book-open'></i> 6 lessons
+                                    <i class='bx bx-book-open'></i> {{$noteCount}} lessons
                                 </li>
                                 <li class="courses-price">
                                     Free
