@@ -90,65 +90,22 @@
 <section class="courses-categories-area pb-70">
     <div class="container">
         <div class="section-title text-left">
-            <span class="sub-title">Courses Categories</span>
+            <span class="sub-title">Notes Categories</span>
             <h2>Browse Trending Categories</h2>
-            <a href="courses-category-style-2.html" class="default-btn"><i class='bx bx-show-alt icon-arrow before'></i><span class="label">View All</span><i class="bx bx-show-alt icon-arrow after"></i></a>
+            <a href="{{route('all_categories')}}" class="default-btn"><i class='bx bx-show-alt icon-arrow before'></i><span class="label">View All</span><i class="bx bx-show-alt icon-arrow after"></i></a>
         </div>
         <div class="courses-categories-slides owl-carousel owl-theme">
-            <div class="single-categories-courses-item bg1 mb-30">
-                <div class="icon">
-                    <i class='bx bx-code-alt'></i>
+            @foreach($categories as $rs)
+                <div class="single-categories-courses-item  mb-30" style="background-image:url({{ Storage::url($rs->image) }}); ">
+                    <div class="icon" style="color: #1CB5A3">
+                        <i class='bx bx-search'></i>
+                    </div>
+                    <h3 style="color: #FEA116">{{$rs->title}}</h3>
+                    <span style="color: #FEA116">{{$noteCount}}0 Courses</span>
+                    <a href="#" class="learn-more-btn">Learn More <i class='bx bx-book-reader'></i></a>
+                    <a href="#" class="link-btn"></a>
                 </div>
-                <h3>Web Development</h3>
-                <span>{{$noteCount}}0 Courses</span>
-                <a href="#" class="learn-more-btn">Learn More <i class='bx bx-book-reader'></i></a>
-                <a href="#" class="link-btn"></a>
-            </div>
-            <div class="single-categories-courses-item bg2 mb-30">
-                <div class="icon">
-                    <i class='bx bx-camera'></i>
-                </div>
-                <h3>Photography </h3>
-                <span>21 Courses</span>
-                <a href="#" class="learn-more-btn">Learn More <i class='bx bx-book-reader'></i></a>
-                <a href="#" class="link-btn"></a>
-            </div>
-            <div class="single-categories-courses-item bg3 mb-30">
-                <div class="icon">
-                    <i class='bx bx-layer'></i>
-                </div>
-                <h3>Graphics Design</h3>
-                <span>58 Courses</span>
-                <a href="#" class="learn-more-btn">Learn More <i class='bx bx-book-reader'></i></a>
-                <a href="#" class="link-btn"></a>
-            </div>
-            <div class="single-categories-courses-item bg4 mb-30">
-                <div class="icon">
-                    <i class='bx bxs-flag-checkered'></i>
-                </div>
-                <h3>Web Language</h3>
-                <span>99 Courses</span>
-                <a href="#" class="learn-more-btn">Learn More <i class='bx bx-book-reader'></i></a>
-                <a href="#" class="link-btn"></a>
-            </div>
-            <div class="single-categories-courses-item bg5 mb-30">
-                <div class="icon">
-                    <i class='bx bx-health'></i>
-                </div>
-                <h3>Health & Fitness</h3>
-                <span>21 Courses</span>
-                <a href="#" class="learn-more-btn">Learn More <i class='bx bx-book-reader'></i></a>
-                <a href="#" class="link-btn"></a>
-            </div>
-            <div class="single-categories-courses-item bg{{$noteCount}} mb-30">
-                <div class="icon">
-                    <i class='bx bx-line-chart'></i>
-                </div>
-                <h3>Business Studies</h3>
-                <span>49 Courses</span>
-                <a href="#" class="learn-more-btn">Learn More <i class='bx bx-book-reader'></i></a>
-                <a href="#" class="link-btn"></a>
-            </div>
+            @endforeach
         </div>
     </div>
     <div id="particles-js-circle-bubble-2"></div>

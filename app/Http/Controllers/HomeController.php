@@ -115,6 +115,13 @@ class HomeController extends Controller
         return view('home.all_notes', ['datalist' => $datalist,'rand'=>$rand, 'setting'=>$setting]);
 
     }
+    public function allcategories(){
+        $setting = Setting::first();
+        $datalist = Category::inRandomOrder('1234')->paginate(8);
+        //$rand = Content::select('id','category_id', 'title', 'image', 'description', 'slug','created_at','user_id')->where('status','True')->limit(8)->inRandomOrder()->get();
+        return view('home.all_categories', ['datalist' => $datalist, 'setting'=>$setting]);
+
+    }
     public function categorycontents($id, $slug){
         $setting = Setting::first();
         $datalist = Content::where('category_id',$id)->where('status','True')->inRandomOrder('1234')->paginate(6);
@@ -143,6 +150,7 @@ class HomeController extends Controller
         $reviewCount = Review::count();
 //        echo $noteCount;
 //        exit();
+        $categories = Category::select('id', 'title', 'image', 'description')->limit(6)->inRandomOrder()->get();
         $data = [
             'setting'=>$setting,
             'slider' => $slider,
@@ -151,7 +159,8 @@ class HomeController extends Controller
             'picked'=>$picked,
             'noteCount'=>$noteCount,
             'userCount'=>$userCount,
-            'reviewCount'=>$reviewCount
+            'reviewCount'=>$reviewCount,
+            'categories'=>$categories
         ];
         return view('home.index', $data);
     }

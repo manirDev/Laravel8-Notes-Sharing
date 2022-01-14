@@ -24,6 +24,7 @@ Route::get('/categorycontents/{id}/{slug}', [\App\Http\Controllers\HomeControlle
 Route::post('/getcontent', [\App\Http\Controllers\HomeController::class, 'getcontent'])->name('getcontent');
 Route::get('/contentlist/{search}', [\App\Http\Controllers\HomeController::class, 'contentlist'])->name('contentlist');
 Route::get('/allnotes', [\App\Http\Controllers\HomeController::class, 'allnotes'])->name('all_notes');
+Route::get('/allcategories', [\App\Http\Controllers\HomeController::class, 'allcategories'])->name('all_categories');
 
 //admin routes
 Route::middleware('auth')->prefix('admin')->group(function () {
