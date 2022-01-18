@@ -84,7 +84,7 @@ class HomeController extends Controller
 //        $tags = Content::select('id', 'title', 'image', 'description', 'slug')->limit(5)->inRandomOrder()->get();
         $datalist = Content::where('category_id',$id)->where('status','True')->get();
         $reviews = Review::where('content_id', $id)->get();
-        $picked = Content::select('id', 'title', 'image', 'description', 'slug', 'created_at')->where('status','True')->limit(6)->get();
+        $picked = Content::select('id','category_id', 'title', 'image', 'description', 'slug', 'created_at','user_id')->where('status','True')->get();
         return view('home.not-content_detail', ['data' => $data,'datalist' => $datalist, 'reviews'=>$reviews, 'picked'=>$picked, 'setting'=>$setting]);
     }
     public function getcontent(Request $request){

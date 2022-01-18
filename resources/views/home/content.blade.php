@@ -97,13 +97,13 @@
         <div class="courses-categories-slides owl-carousel owl-theme">
             @foreach($categories as $rs)
                 <div class="single-categories-courses-item  mb-30" style="background-image:url({{ Storage::url($rs->image) }}); ">
-                    <div class="icon" style="color: #1CB5A3">
+                    <div class="icon" style="color: red">
                         <i class='bx bx-search'></i>
                     </div>
-                    <h3 style="color: #FEA116">{{$rs->title}}</h3>
-                    <span style="color: #FEA116">{{$noteCount}}0 Courses</span>
-                    <a href="#" class="learn-more-btn">Learn More <i class='bx bx-book-reader'></i></a>
-                    <a href="#" class="link-btn"></a>
+                    <h3 style="color: red">{{$rs->title}}</h3>
+                    <span style="color: red">{{$noteCount}} Courses</span>
+                    <a href="{{route('all_categories')}}" class="learn-more-btn" style="color: red;">Learn More <i class='bx bx-book-reader'></i></a>
+                    <a href="{{route('all_categories')}}" class="link-btn" style="color: red"></a>
                 </div>
             @endforeach
         </div>

@@ -19,9 +19,8 @@
                         </li>
                     </ul>
                     <ul class="social-link">
-                        <li>  @if($setting->twitter!=null)<a href="{{$setting->twitter}}" class="d-block" target="_blank"><i class='bx bxl-facebook'></i></a>@endif</li>
-                        <li>@if($setting->twitter!=null)<a href="{{$setting->twitter}}"  class="d-block" target="_blank"><i class='bx bxl-facebook'></i></a>@endif</li>
-                        <li> @if($setting->facebook!=null)<a href="{{$setting->facebook}}"  class="d-block" target="_blank"><i class='bx bxl-twitter'></i></a>@endif</li>
+                        <li>  @if($setting->facebook!=null)<a href="{{$setting->facebook}}" class="d-block" target="_blank"><i class='bx bxl-facebook'></i></a>@endif</li>
+                        <li>@if($setting->twitter!=null)<a href="{{$setting->twitter}}"  class="d-block" target="_blank"><i class='bx bxl-twitter'></i></a>@endif</li>
                         <li>@if($setting->youtube!=null) <a href="{{$setting->facebook}}"  class="d-block" target="_blank"><i class='bx bxl-linkedin'></i></a>@endif</li>
                         <li>@if($setting->instagram!=null) <a href="{{$setting->instagram}}"  class="d-block" target="_blank"><i class='bx bxl-instagram'></i></a>@endif</li>
                     </ul>
@@ -37,7 +36,8 @@
                         <li><a href="{{route('contact')}}">Contact</a></li>
                         <li><a href="{{route('aboutus')}}">About Us</a></li>
                         <li><a href="{{route('references')}}">References</a></li>
-                        <li><a href="{{route('home')}}">All Notes</a></li>
+                        <li><a href="{{route('all_notes')}}">All Notes</a></li>
+                        <li><a href="{{route('all_categories')}}">All Categories</a></li>
                     </ul>
                 </div>
             </div>

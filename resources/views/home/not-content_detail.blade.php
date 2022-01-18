@@ -195,11 +195,11 @@
                                     <div class="tabs-item">
                                         <div class="products-details-tab-content">
                                             <ul class="additional-information">
-                                                <li><span>Brand:</span> ThemeForest</li>
-                                                <li><span>Color:</span> Brown</li>
-                                                <li><span>Size:</span> Large, Medium</li>
-                                                <li><span>Weight:</span> 27 kg</li>
-                                                <li><span>Dimensions:</span> 16 x 22 x 123 cm</li>
+                                                <li><span>Title:</span> {{ $data->title}}</li>
+                                                <li><span>View's Number:</span> {{ $data->reads}}</li>
+                                                <li><span>Publisher:</span>{{$data->user->name}}</li>
+                                                <li><span>Category</span> {{ \App\Http\Controllers\Admin\CategoryController::getParentsTree($data->category, $data->category->title) }}</li>
+                                                <li><span>Slug:</span> {{ $data->slug}}</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -297,7 +297,15 @@
 
             </div>
             <div class="blog-slides owl-carousel owl-theme">
+                @php
+                  $current = \App\Http\Controllers\Admin\CategoryController::getParentsTree($data->category, $data->category->title);
+                @endphp
                 @foreach($picked as $rs)
+                    @php
+                        //$current = \App\Http\Controllers\Admin\CategoryController::getParentsTree($data->category, $data->category->title);
+                        $this_one = \App\Http\Controllers\Admin\CategoryController::getParentsTree($rs->category, $rs->category->title);
+                    @endphp
+                    @if($current == $this_one)
                     <div class="single-blog-post mb-30">
                         <div class="post-image">
                             <a href="{{route('notContent', ['id'=>$rs->id, 'slug'=>$rs->slug])}}" class="d-block">
@@ -310,11 +318,11 @@
                         <div class="post-content">
                             <ul class="post-meta">
                                 <li class="post-author">
-                                    @if($data->user->profile_photo_path)
+                                    @if($rs->user->profile_photo_path)
 
-                                        <img src="{{Storage::url($data->user->profile_photo_path)}}" style="width: 30px; height: 30px; border-radius: 100%;" class="shadow" alt="image">
+                                        <img src="{{Storage::url($rs->user->profile_photo_path)}}" style="width: 30px; height: 30px; border-radius: 100%;" class="shadow" alt="image">
                                     @endif
-                                    By: <a href="#" class="d-inline-block">{{$data->user->name}}</a>
+                                    By: <a href="#" class="d-inline-block">{{$rs->user->name}}</a>
                                 </li>
                                 <li><a href="#">{{$rs->created_at}}</a></li>
                             </ul>
@@ -322,6 +330,7 @@
                             <a href="{{route('notContent', ['id'=>$rs->id, 'slug'=>$rs->slug])}}" class="read-more-btn">Read More <i class='bx bx-right-arrow-alt'></i></a>
                         </div>
                     </div>
+                    @endif
                 @endforeach
 
             </div>
