@@ -1,6 +1,11 @@
 @extends('layouts.adminHome')
 
-@section('title', 'Admine Gettir')
+@section('title', $data->title.'-Admine Gettir')
+@section('description')
+    {{$setting->description}}
+@endsection
+
+@section('keywords', $setting->keywords)
 @section('jsx')
     <script src="https://cdn.ckeditor.com/ckeditor5/31.1.0/classic/ckeditor.js"></script>
 @endsection

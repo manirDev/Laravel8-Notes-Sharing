@@ -1,6 +1,12 @@
 @extends('layouts.adminHome')
 
-@section('title', 'Category')
+@section('title',$setting->title. '-Category')
+
+@section('description')
+    {{$setting->description}}
+@endsection
+
+@section('keywords', $setting->keywords)
 
 @section('content')
 

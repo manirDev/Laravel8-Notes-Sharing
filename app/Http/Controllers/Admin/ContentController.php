@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Content;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -23,8 +24,9 @@ class ContentController extends Controller
         //$datalist = DB::select('select * from categories');
         //$datalist = DB::table('contents')->get();
         $datalist = Content::all();
+        $setting = Setting::first();
         //echo var_dump($datalist) ;
-        return view('admin.not-content', ['datalist' => $datalist]);
+        return view('admin.not-content', ['datalist' => $datalist,'setting'=>$setting]);
     }
 
     /**
@@ -36,8 +38,9 @@ class ContentController extends Controller
     {
         //
        // $datalist = Category::all();
+        $setting = Setting::first();
         $datalist = Category::with('children')->get();
-        return view('admin.content_add', ['datalist' => $datalist]);
+        return view('admin.content_add', ['datalist' => $datalist,'setting'=>$setting]);
     }
 
     /**
@@ -88,7 +91,8 @@ class ContentController extends Controller
         $data = Content::find($id);
         //$datalist = Category::all();
         $datalist = Category::with('children')->get();
-        return view('admin.content_edit', ['data' => $data,'datalist'=>$datalist]);
+        $setting = Setting::first();
+        return view('admin.content_edit', ['data' => $data,'datalist'=>$datalist,'setting'=>$setting]);
     }
 
     /**

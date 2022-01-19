@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Content;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -33,8 +34,9 @@ class CategoryController extends Controller
         //
         //$datalist = DB::select('select * from categories');
         //$datalist = DB::table('categories')->get();
+        $setting = Setting::first();
         $datalist = Category::with('children')->get();
-        return view('admin.category', ['datalist' => $datalist]);
+        return view('admin.category', ['datalist' => $datalist, 'setting'=>$setting]);
     }
 
     /**
@@ -42,14 +44,16 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function add()
     {
         //
         //$datalist = DB::table('categories')->get()->where('parent_id', 0);
         //print_r($datalist);
         //exit();
+        $setting = Setting::first();
         $datalist = Category::with('children')->get();
-        return view('admin.category_add', ['datalist' => $datalist]);
+        return view('admin.category_add', ['datalist' => $datalist,'setting'=>$setting]);
     }
     public function create(Request $request)
     {
@@ -105,10 +109,11 @@ class CategoryController extends Controller
     public function edit(Category $category, $id)
     {
         //
+        $setting = Setting::first();
         $data = Category::find($id);
         //$datalist = DB::table('categories')->get()->where('parent_id', 0);
         $datalist = Category::with('children')->get();
-        return view('admin.category_edit', ['data' => $data,'datalist'=>$datalist]);
+        return view('admin.category_edit', ['data' => $data,'datalist'=>$datalist,'setting'=>$setting]);
     }
 
     /**

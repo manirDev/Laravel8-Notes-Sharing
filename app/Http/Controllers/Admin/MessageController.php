@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Message;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -17,9 +18,10 @@ class MessageController extends Controller
     public function index()
     {
         //
+        $setting = Setting::first();
         $datalist = Message::all();
         //echo var_dump($datalist) ;
-        return view('admin.messages', ['datalist' => $datalist]);
+        return view('admin.messages', ['datalist' => $datalist, 'setting'=>$setting]);
     }
 
     /**

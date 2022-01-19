@@ -27,13 +27,13 @@
     <section class="about-area ptb-100">
         <div class="container">
             <div class="row align-items-center">
-{{--                <div class="col-lg-6 col-md-12">--}}
-{{--                    <div class="about-image">--}}
-{{--                        <img src="{{asset('assets')}}/fhome/img/about/1.jpg" class="shadow" alt="image">--}}
-{{--                        <img src="{{asset('assets')}}/fhome/img/about/2.jpg" class="shadow" alt="image">--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-                <div class="col-lg-12 col-md-12">
+                <div class="col-lg-6 col-md-12">
+                    <div class="about-image">
+                        <img src="{{asset('assets')}}/fhome/img/about/1.jpg" class="shadow" alt="image">
+                        <img src="{{asset('assets')}}/fhome/img/about/2.jpg" class="shadow" alt="image">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
                     <div class="about-content">
                         <span class="sub-title">About Us</span>
 

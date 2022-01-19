@@ -1,6 +1,12 @@
 @extends('layouts.adminHome')
 
 @section('title', $data->title.' Gallery')
+@section('description')
+    {{$setting->description}}
+@endsection
+
+@section('keywords', $setting->keywords)
+
 
 @section('content')
 

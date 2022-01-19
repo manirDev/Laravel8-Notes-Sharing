@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Content;
 use App\Models\Review;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -21,7 +22,8 @@ class ReviewController extends Controller
         //
         $datalist = Review::all();
         //echo var_dump($datalist) ;
-        return view('admin.review', ['datalist' => $datalist]);
+        $setting = Setting::first();
+        return view('admin.review', ['datalist' => $datalist, 'setting'=>$setting]);
     }
 
     /**

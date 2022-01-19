@@ -5,7 +5,7 @@
             <img src="{{asset('assets')}}/Ahome/images/logo-icon.png" class="logo-icon" alt="logo icon">
         </div>
         <div>
-            <h4 class="logo-text">Dashtreme</h4>
+            <h6 class="logo-text" style="font-size: 16px">{{$setting->title}}</h6>
         </div>
         <div class="toggle-icon ms-auto"><i class='bx bx-arrow-to-left'></i>
         </div>

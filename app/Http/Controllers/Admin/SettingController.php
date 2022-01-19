@@ -29,8 +29,8 @@ class SettingController extends Controller
             $data->save();
             $data = Setting::first();
         }
-
-        return view('admin.setting_edit', ['data'=>$data]);
+        $setting = Setting::first();
+        return view('admin.setting_edit', ['data'=>$data,'setting'=>$setting]);
     }
 
     /**

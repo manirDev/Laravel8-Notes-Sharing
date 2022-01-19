@@ -1,7 +1,13 @@
 
 @extends('layouts.adminHome')
 
-@section('title', 'Note Content')
+@section('title', $setting->title.'-Note Content')
+
+@section('description')
+    {{$setting->description}}
+@endsection
+
+@section('keywords', $setting->keywords)
 
 @section('cssx')
 

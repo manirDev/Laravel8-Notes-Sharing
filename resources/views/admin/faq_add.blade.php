@@ -1,6 +1,12 @@
 @extends('layouts.adminHome')
 
-@section('title', 'Faq Add')
+@section('title', $setting->title.'-Faq Add')
+
+@section('description')
+    {{$setting->description}}
+@endsection
+
+@section('keywords', $setting->keywords)
 
 @section('content')
 

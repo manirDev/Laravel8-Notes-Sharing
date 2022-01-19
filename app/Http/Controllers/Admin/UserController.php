@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Content;
 use App\Models\Role;
+use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,7 +23,8 @@ class UserController extends Controller
     {
         //
         $datalist = User::all();
-        return view('admin.user',['datalist'=>$datalist]);
+        $setting = Setting::first();
+        return view('admin.user',['datalist'=>$datalist, 'setting'=>$setting]);
     }
 
     /**
@@ -69,8 +71,9 @@ class UserController extends Controller
     public function edit(User $user, $id)
     {
         //
+        $setting = Setting::first();
         $data = User::find($id);
-        return view('admin.user_edit', ['data' => $data]);
+        return view('admin.user_edit', ['data' => $data,'setting'=>$setting]);
     }
 
     /**

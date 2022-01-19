@@ -1,7 +1,13 @@
 
 @extends('layouts.adminHome')
 
-@section('title', 'Faq List')
+@section('title', $setting->title. '-Faq-List')
+
+@section('description')
+    {{$setting->description}}
+@endsection
+
+@section('keywords', $setting->keywords)
 
 @section('cssx')
 @endsection

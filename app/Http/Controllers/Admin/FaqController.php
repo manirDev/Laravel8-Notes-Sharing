@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Content;
 use App\Models\Faq;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -21,9 +22,10 @@ class FaqController extends Controller
     public function index()
     {
         //
+        $setting = Setting::first();
         $datalist = Faq::all();
         //echo var_dump($datalist) ;
-        return view('admin.faq', ['datalist' => $datalist]);
+        return view('admin.faq', ['datalist' => $datalist,'setting'=>$setting]);
     }
 
     /**
@@ -34,8 +36,9 @@ class FaqController extends Controller
     public function create()
     {
         //
+        $setting = Setting::first();
         $datalist = Faq::all();
-        return view('admin.faq_add', ['datalist' => $datalist]);
+        return view('admin.faq_add', ['datalist' => $datalist,'setting'=>$setting]);
     }
 
     /**
@@ -77,7 +80,8 @@ class FaqController extends Controller
     {
         //
         $data = Faq::find($id);
-        return view('admin.faq_edit', ['data' => $data]);
+        $setting = Setting::first();
+        return view('admin.faq_edit', ['data' => $data, 'setting'=>$setting]);
     }
 
     /**
