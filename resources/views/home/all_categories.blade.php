@@ -34,7 +34,7 @@
                 @foreach($datalist as $rs)
                     <div class="col-lg-3 col-sm-6 col-md-4">
                         <div class="single-courses-category mb-30">
-                            <a href="#">
+                            <a href="{{route('categorycontents',['id'=>$rs->id, 'slug'=>$rs->title])}}">
                                 <i class='bx bx-shape-triangle'></i>
                                 {{$rs->title}}
                             </a>

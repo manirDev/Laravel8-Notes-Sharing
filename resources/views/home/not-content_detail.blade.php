@@ -8,11 +8,7 @@
 
 @section('keywords', $data->keywords)
 @section('csz')
-    <!--plugins-->
-    <link href="{{asset('assets')}}/Ahome/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet"/>
 
-    <link href="{{asset('assets')}}/Ahome/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
-    <link href="{{asset('assets')}}/Ahome/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
     <script src="{{asset('assets')}}/pdfobject.js"></script>
 
     <style>
@@ -34,7 +30,7 @@
         @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 
         fieldset, label { margin: 0; padding: 0; }
-        body{ margin: 20px; }
+
         h1 { font-size: 1.5em; margin: 10px; }
 
         /****** Style Star Rating Widget *****/
@@ -224,18 +220,18 @@
                                                 </div>
                                                 <div class="row">
                                                     @if($avgrev)
-                                                    <div class="col-6 review-comments" >
-                                                        <table id="example2" class="table table-bordered">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th> </th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
+                                                    <div class="col-lg-6 col-md-6 review-comments">
+{{--                                                        <table id="example2" class="table table-bordered">--}}
+{{--                                                            <thead>--}}
+{{--                                                                <tr>--}}
+{{--                                                                    <th> </th>--}}
+{{--                                                                </tr>--}}
+{{--                                                            </thead>--}}
+{{--                                                            <tbody>--}}
 
                                                             @foreach($reviews as $rs)
-                                                                <tr>
-                                                                <td>
+{{--                                                                <tr>--}}
+{{--                                                                <td>--}}
                                                                 <div class="review-item">
                                                                     <div class="rating">
                                                                         @for ($i = 0; $i < 5; $i++)
@@ -256,19 +252,19 @@
                                                                     </span>
                                                                     <p>{{$rs->review}}.</p>
                                                                 </div>
-                                                                </td>
-                                                                </tr>
+{{--                                                                </td>--}}
+{{--                                                                </tr>--}}
                                                             @endforeach
-
-                                                            </tbody>
-                                                        </table>
+                                                        <span>{{ $reviews->links("pagination::bootstrap-4") }}</span>
+{{--                                                            </tbody>--}}
+{{--                                                        </table>--}}
                                                     </div>
                                                     @else
                                                         <div class="col-6 review-comments" ></div>
                                                     @endif
 {{--                                                    <div id="show_paginator"></div>--}}
 
-                                                    <div id="rev" class="col-6 review-form">
+                                                    <div id="rev" class="col-lg-6 col-md-6 review-form">
                                                         <h3>Write a Review</h3>
 
                                                         @livewire('review', ['id' => $data->id])
@@ -366,32 +362,5 @@
        // if (window.focus) newWindow.focus();
     }
 </script>
-
-<!-- Bootstrap JS -->
-<script src="{{asset('assets')}}/Ahome/js/bootstrap.bundle.min.js"></script>
-<!--plugins-->
-<script src="{{asset('assets')}}/Ahome/js/jquery.min.js"></script>
-<script src="{{asset('assets')}}/Ahome/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
-
-<script src="{{asset('assets')}}/Ahome/plugins/datatable/js/jquery.dataTables.min.js"></script>
-<script src="{{asset('assets')}}/Ahome/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
-
-<script src="{{asset('assets')}}/Ahome/js/index.js"></script>
-<!--app JS-->
-<script src="{{asset('assets')}}/Ahome/js/app.js"></script>
-
-<script src="{{asset('assets')}}/Ahome/js/pace.min.js"></script>
-
-<script>
-
-    $(document).ready(function() {
-        $('#example2').DataTable({
-            "iDisplayLength" : 3
-        })
-    });
-
-</script>
-
-
 
 @endsection

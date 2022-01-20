@@ -44,47 +44,54 @@
                         <li class="nav-item"><a href="{{route('references')}}" class="nav-link ">References </a></li>
                         <li class="nav-item"><a href="{{route('faq')}}" class="nav-link ">FAQ's </a></li>
                         <li class="nav-item"><a href="{{route('contact')}}" class="nav-link">Contact</a></li>
+{{--                        @include('home.rightBar')--}}
                     </ul>
-                    <div class="others-option">
-                        @auth
-                        <div class="dropdown language-switcher d-inline-block">
-                            <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class='bx bx-user'></i>
-                                <span>{{Auth::user()->name}} <i class='bx bx-chevron-down'></i></span>
-                            </button>
-                            <div class="dropdown-menu hovered">
-                                <a href="{{route('myprofile')}}" class="dropdown-item d-flex align-items-center hovered">
-                                    <i class='bx bx-user'></i>
-                                    <span >My account</span>
-                                </a>
-                                <a href="{{route('user_content')}}" class="dropdown-item d-flex align-items-center hovered">
-                                    <i class='bx bx-note'></i>
-                                    <span>My Notes</span>
-                                </a>
-                                <a classe="myhover" href="{{route('myreviews')}}" class=" dropdown-item d-flex align-items-center hovered">
-                                    <i class='bx bx-revision'></i>
-                                    <span class="lib-link">My Reviews</span>
-                                </a>
-                                <a  href="{{route('admin_logout')}}" class="dropdown-item d-flex align-items-center hovered">
-                                    <i class='bx bx-log-out'></i>
-                                    <span>Logout</span>
-                                </a>
+                    <div class="others-option" >
 
+                        @auth
+                            <div class="dropdown language-switcher d-inline-block">
+                                <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                                    @if(Auth::user()->profile_photo_path)
+                                        <img src="{{Storage::url(Auth::user()->profile_photo_path)}}" style="width: 40px; height: 40px; border-radius: 100%;" class="shadow" alt="image">
+                                    @endif
+                                    <span>{{Auth::user()->name}} <i class='bx bx-chevron-down'></i></span>
+                                </button>
+                                <div class="dropdown-menu hovered">
+                                    <a href="{{route('myprofile')}}" class="dropdown-item d-flex align-items-center hovered">
+                                        <i class='bx bx-user'></i>
+                                        <span >My account</span>
+                                    </a>
+                                    <a href="{{route('user_content')}}" class="dropdown-item d-flex align-items-center hovered">
+                                        <i class='bx bx-note'></i>
+                                        <span>My Notes</span>
+                                    </a>
+                                    <a classe="myhover" href="{{route('myreviews')}}" class=" dropdown-item d-flex align-items-center hovered">
+                                        <i class='bx bx-revision'></i>
+                                        <span class="lib-link">My Reviews</span>
+                                    </a>
+                                    <a  href="{{route('admin_logout')}}" class="dropdown-item d-flex align-items-center hovered">
+                                        <i class='bx bx-log-out'></i>
+                                        <span>Logout</span>
+                                    </a>
+
+                                </div>
                             </div>
-                        </div>
                         @endauth
 
-                       @guest
+                        @guest
                             <span style="border-right: 1px solid black;height: 5px; padding: 10px"><a href="{{route('login')}}"><i class='bx bx-log-in'></i> Login</a></span>
                             <a href="{{route('register')}}" class=""><i class='bx bx-log-in-circle'></i> Register</a>
                         @endguest
-                            <div class="search-box d-inline-block">
-                                <i class='bx bx-search'></i>
-                            </div>
+                        <div class="search-box d-inline-block">
+                            <i class='bx bx-search'></i>
+                        </div>
 
                     </div>
                 </div>
+
             </nav>
+
         </div>
     </div>
 </div>

@@ -39,7 +39,7 @@
 
                                                 <img src="{{Storage::url($rs->user->profile_photo_path)}}" style="width: 30px; height: 30px; border-radius: 100%;" class="shadow" alt="image">
                                             @endif
-                                            By: <a href="#" class="d-inline-block">{{$rs->user->name}}</a>
+                                            <a href="#" class="d-inline-block"><b style="margin: 8px">{{$rs->user->name}}</b></a>
                                         </div>
                                     @php
                                         $avgrev = App\Http\Controllers\HomeController::avgreview($rs->id);
@@ -102,8 +102,8 @@
                     </div>
                     <h3 style="color: red">{{$rs->title}}</h3>
                     <span style="color: red">{{$noteCount}} Courses</span>
-                    <a href="{{route('all_categories')}}" class="learn-more-btn" style="color: red;">Learn More <i class='bx bx-book-reader'></i></a>
-                    <a href="{{route('all_categories')}}" class="link-btn" style="color: red"></a>
+                    <a href="{{route('categorycontents',['id'=>$rs->id, 'slug'=>$rs->title])}}" class="learn-more-btn" style="color: red;">Learn More <i class='bx bx-book-reader'></i></a>
+                    <a href="{{route('categorycontents',['id'=>$rs->id, 'slug'=>$rs->title])}}" class="link-btn" style="color: red"></a>
                 </div>
             @endforeach
         </div>
@@ -160,7 +160,7 @@
         <div class="section-title text-left">
 
             <h2>Picked Notes Lessons</h2>
-
+            <a href="{{route('all_notes')}}" class="default-btn"><i class='bx bx-show-alt icon-arrow before'></i><span class="label">All Notes</span><i class="bx bx-show-alt icon-arrow after"></i></a>
         </div>
         <div class="blog-slides owl-carousel owl-theme">
             @foreach($picked as $rs)
@@ -177,7 +177,7 @@
 
                                            <img src="{{Storage::url($rs->user->profile_photo_path)}}" style="width: 30px; height: 30px; border-radius: 100%;" class="shadow" alt="image">
                                        @endif
-                                       By: <a href="#" class="d-inline-block">{{$rs->user->name}}</a>
+                                           <a href="#" class="d-inline-block"><b style="margin: 8px">{{$rs->user->name}}</b></a>
                                    </div>
                                 @php
                                     $avgrev = App\Http\Controllers\HomeController::avgreview($rs->id);

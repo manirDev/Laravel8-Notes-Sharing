@@ -18,3 +18,24 @@
 </div>
 
 
+{{--<section class="home-slides owl-carousel owl-theme">--}}
+{{--    @foreach($slider as $rs)--}}
+{{--    <div class="main-banner item-bg1" style="background-image:url({{ Storage::url($rs->image) }});">--}}
+{{--        <div class="d-table">--}}
+{{--            <div class="d-table-cell">--}}
+{{--                <div class="container">--}}
+{{--                    <div class="main-banner-content">--}}
+{{--                        <span class="sub-title">{{$rs->title}}</span>--}}
+{{--                        <h1>{{$rs->title}}</h1>--}}
+{{--                        <p>{{$rs->description}}</p>--}}
+{{--                        <div class="btn-box">--}}
+{{--                            <a href="courses-2-columns-style-1.html" class="default-btn"><i class='bx bx-move-horizontal icon-arrow before'></i><span class="label">View Courses</span><i class="bx bx-move-horizontal icon-arrow after"></i></a>--}}
+{{--                            <a href="contact.html" class="optional-btn">Get Started Free</a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--    @endforeach--}}
+{{--</section>--}}

@@ -47,7 +47,7 @@
     <div class="container">
         <div class="row">
 
-            <div class="myAccount-navigation col-2">
+            <div class="myAccount-navigation col-lg-2 col-md-4">
                 @include('home.user-header')
             </div>
             <div class="myAccount-content col-lg-10">

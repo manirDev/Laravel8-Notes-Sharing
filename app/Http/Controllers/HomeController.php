@@ -83,7 +83,7 @@ class HomeController extends Controller
         $data = Content::find($id);
 //        $tags = Content::select('id', 'title', 'image', 'description', 'slug')->limit(5)->inRandomOrder()->get();
         $datalist = Content::where('category_id',$id)->where('status','True')->get();
-        $reviews = Review::where('content_id', $id)->get();
+        $reviews = Review::where('content_id', $id)->paginate(3);
         $picked = Content::select('id','category_id', 'title', 'image', 'description', 'slug', 'created_at','user_id')->where('status','True')->get();
         return view('home.not-content_detail', ['data' => $data,'datalist' => $datalist, 'reviews'=>$reviews, 'picked'=>$picked, 'setting'=>$setting]);
     }
@@ -117,7 +117,7 @@ class HomeController extends Controller
     }
     public function allcategories(){
         $setting = Setting::first();
-        $datalist = Category::inRandomOrder('1234')->paginate(8);
+        $datalist = Category::inRandomOrder()->paginate(8);
         //$rand = Content::select('id','category_id', 'title', 'image', 'description', 'slug','created_at','user_id')->where('status','True')->limit(8)->inRandomOrder()->get();
         return view('home.all_categories', ['datalist' => $datalist, 'setting'=>$setting]);
 
@@ -147,10 +147,13 @@ class HomeController extends Controller
 //        exit();
         $noteCount = Content::count();
         $userCount = User::count();
+
         $reviewCount = Review::count();
+        $readCount = Content::sum('reads');
+        //$noteCount = Content::where('id',)->count();
 //        echo $noteCount;
 //        exit();
-        $categories = Category::select('id', 'title', 'image', 'description')->limit(6)->inRandomOrder()->get();
+        $categories = Category::select('id', 'title', 'image', 'description')->where('id','>',0)->limit(6)->inRandomOrder()->get();
         $data = [
             'setting'=>$setting,
             'slider' => $slider,
@@ -160,6 +163,7 @@ class HomeController extends Controller
             'noteCount'=>$noteCount,
             'userCount'=>$userCount,
             'reviewCount'=>$reviewCount,
+            'readCount'=>$readCount,
             'categories'=>$categories
         ];
         return view('home.index', $data);

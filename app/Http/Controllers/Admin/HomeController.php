@@ -24,7 +24,7 @@ class HomeController extends Controller
         $noteCount = Content::count();
         $userCount = User::count();
         $reviewCount = Review::count();
-        $readsCount = Content::count();
+        $readsCount = Content::sum('reads');
         return view('admin.index',['setting'=>$setting,'noteCount'=>$noteCount, 'userCount'=>$userCount, 'reviewCount'=>$reviewCount, 'readsCount'=>$readsCount]);
     }
 }
