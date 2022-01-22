@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Content;
 use App\Models\Faq;
+use App\Models\Image;
 use App\Models\Message;
 use App\Models\Review;
 use App\Models\Setting;
@@ -81,11 +82,21 @@ class HomeController extends Controller
         Content::find($id)->increment('reads');
         $setting = Setting::first();
         $data = Content::find($id);
-//        $tags = Content::select('id', 'title', 'image', 'description', 'slug')->limit(5)->inRandomOrder()->get();
+        $slider = Image::where('content_id',$id);
+
         $datalist = Content::where('category_id',$id)->where('status','True')->get();
-        $reviews = Review::where('content_id', $id)->paginate(3);
+        $reviews = Review::where('content_id', $id)->latest()->paginate(3);
         $picked = Content::select('id','category_id', 'title', 'image', 'description', 'slug', 'created_at','user_id')->where('status','True')->get();
-        return view('home.not-content_detail', ['data' => $data,'datalist' => $datalist, 'reviews'=>$reviews, 'picked'=>$picked, 'setting'=>$setting]);
+
+        $allData = [
+            'data' => $data,
+            'datalist' => $datalist,
+            'reviews'=>$reviews,
+            'picked'=>$picked,
+            'setting'=>$setting,
+            'slider'=>$slider
+        ];
+        return view('home.not-content_detail', $allData);
     }
     public function getcontent(Request $request){
         if($request->input('search')){ $search =$request->input('search');}
@@ -117,7 +128,7 @@ class HomeController extends Controller
     }
     public function allcategories(){
         $setting = Setting::first();
-        $datalist = Category::inRandomOrder()->paginate(8);
+        $datalist = Category::where('parent_id','>',1)->inRandomOrder()->paginate(8);
         //$rand = Content::select('id','category_id', 'title', 'image', 'description', 'slug','created_at','user_id')->where('status','True')->limit(8)->inRandomOrder()->get();
         return view('home.all_categories', ['datalist' => $datalist, 'setting'=>$setting]);
 
@@ -153,7 +164,7 @@ class HomeController extends Controller
         //$noteCount = Content::where('id',)->count();
 //        echo $noteCount;
 //        exit();
-        $categories = Category::select('id', 'title', 'image', 'description')->where('id','>',0)->limit(6)->inRandomOrder()->get();
+        $categories = Category::select('id', 'title', 'image', 'description')->where('parent_id','>',1)->limit(6)->inRandomOrder()->get();
         $data = [
             'setting'=>$setting,
             'slider' => $slider,

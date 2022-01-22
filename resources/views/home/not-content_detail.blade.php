@@ -108,22 +108,26 @@
                                 @endif
                             </li>
                         </ul>
-                        <b></b>
-                        <div class="slick-thumbs">
-                            <ul>
-                                <li>
-                                    @if($data->file)
-                                       <img src="{{Storage::url($data->image)}}" style="height: 138px !important;width: 100px !important;"  alt="image">
-                                    @endif
-                                </li>
-                                @foreach($datalist as $rs)
-                                    <li>
-                                           <img src="{{Storage::url($rs->image)}}" style="height: 138px !important;width: 100px !important;" alt="image">
+{{--                        <ul class="slickslide"  >--}}
+{{--                            @foreach($slider as $rs)--}}
+{{--                                <li>--}}
+{{--                                    <img src="{{Storage::url($rs->image)}}" style="height: 138px !important;width: 100px !important;" alt="image">--}}
+{{--                                    {{$rs->title}}--}}
+{{--                                </li>--}}
+{{--                            @endforeach--}}
+{{--                        </ul>--}}
+{{--                        <b></b>--}}
+{{--                        <div class="slick-thumbs">--}}
+{{--                            <ul>--}}
 
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
+{{--                                @foreach($slider as $rs)--}}
+{{--                                    <li>--}}
+{{--                                           <img src="{{Storage::url($rs->image)}}" style="height: 138px !important;width: 100px !important;" alt="image">--}}
+
+{{--                                    </li>--}}
+{{--                                @endforeach--}}
+{{--                            </ul>--}}
+{{--                        </div>--}}
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-12">

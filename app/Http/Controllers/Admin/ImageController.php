@@ -34,8 +34,8 @@ class ImageController extends Controller
         //
         $data = Content::find($content_id);
         $images = DB::table('images')->where('content_id', '=', $content_id)->get();
-
-        return view('admin.image_add', ['data' => $data, 'images'=>$images]);
+        $setting = Setting::first();
+        return view('admin.image_add', ['data' => $data, 'images'=>$images, 'setting'=>$setting]);
     }
 
     /**
