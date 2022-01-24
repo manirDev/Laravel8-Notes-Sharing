@@ -120,7 +120,7 @@ class HomeController extends Controller
     }
     public function allnotes(){
         $setting = Setting::first();
-        $datalist = Content::inRandomOrder('1234')->paginate(6);
+        $datalist = Content::latest()->inRandomOrder('1234')->paginate(6);
 //        $tags = Content::select('id', 'title', 'image', 'description', 'slug')->limit(5)->inRandomOrder()->get();
         $rand = Content::select('id','category_id', 'title', 'image', 'description', 'slug','created_at','user_id')->where('status','True')->limit(8)->inRandomOrder()->get();
         return view('home.all_notes', ['datalist' => $datalist,'rand'=>$rand, 'setting'=>$setting]);
@@ -135,7 +135,7 @@ class HomeController extends Controller
     }
     public function categorycontents($id, $slug){
         $setting = Setting::first();
-        $datalist = Content::where('category_id',$id)->where('status','True')->inRandomOrder('1234')->paginate(6);
+        $datalist = Content::where('category_id',$id)->where('status','True')->latest()->inRandomOrder('1234')->paginate(6);
         $data = Category::find($id);
 //        print_r($data);
 //        exit();
@@ -148,7 +148,7 @@ class HomeController extends Controller
     public function index(){
 //        $tags = Content::select('id', 'title', 'image', 'description', 'slug')->limit(5)->inRandomOrder()->get();
         $setting = Setting::first();
-        $slider = Content::select('id', 'title', 'image', 'description', 'slug')->limit(4)->get();
+        $slider = Content::select('id', 'title', 'image', 'description', 'slug')->latest()->limit(4)->get();
         $daily = Content::select('id','title', 'image', 'description', 'slug','user_id','reads')->where('status','True')->latest()->limit(6)->get();
 //        echo($daily);
 //        exit();

@@ -22,7 +22,10 @@
 
 <section class="home-slides owl-carousel owl-theme">
     @foreach($slider as $rs)
-    <div class="main-banner item-bg1" style="background-image:url({{ Storage::url($setting->hero_images) }});
+    <div class="main-banner item-bg1" style="background-image:url({{ Storage::url($rs->image) }});
+        background-size: 1920px 740px!important;
+        height:740px;position:relative;z-index:1;background-color:#ff1949;background-position:center center;background-size:cover;background-repeat:no-repeat
+
         " >
         <div class="d-table" >
             <div class="d-table-cell">
